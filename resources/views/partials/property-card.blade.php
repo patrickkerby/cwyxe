@@ -46,7 +46,7 @@
             </span>
             <h3><a href="{{ $property['link']}}">{{ $property['name']}}</a></h3>
             <p>{{ $property['address']}}</p>
-            <span class="price">Lease price: ${{ $property['amount']}}</span>
+            <span class="price">Lease price: ${{ $property['price']}}</span>
         </div>
     </div>
 @endif
