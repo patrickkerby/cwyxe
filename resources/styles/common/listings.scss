@@ -1,0 +1,105 @@
+.property-search {
+    section.map {
+        // width: calc(100% - 2rem);
+        // margin: 0 1rem;
+        height: 40rem;
+        margin-bottom: 3rem;
+    }
+
+    .gm-style iframe + div { border:none!important; }
+
+    .main {
+        width: 86%;
+        margin: 2.5rem auto 0 auto;
+        display: flex;
+        flex-direction: row-reverse;
+        padding: 0;
+        justify-content: space-between;
+        column-gap: 1.5rem;
+    }
+}
+
+.single-property {
+    .facetwp-template,
+    .facetwp-map-filtering {
+      display: none;
+    }
+}
+
+.properties-container {
+    width: 70%;
+
+    .grid-head {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+
+        h2 {
+            margin: 0;
+            font-size: 2rem;
+        }
+    }
+}
+
+.properties-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+    column-gap: 1.5rem;
+    row-gap: 1.5rem;
+    margin-top: 2rem;
+
+    .grid-head {
+        grid-column: 1 / span 2;
+    }
+
+    .card {
+        border: 1px solid #ECEFF1;
+
+        img {
+            height: 15rem;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .content {
+            padding: 1.5rem;
+            width: 100%;
+
+            .availability {
+                width: 100%;
+                display: inline-flex;
+                color: #7F8283;
+                font-size: 0.875rem;
+                font-weight: 400;
+                line-height: 1.125rem;
+                letter-spacing: 0.00875rem;
+                text-transform: uppercase;
+                margin-bottom: 0.5rem;
+            }
+
+            .property_type {
+                margin-bottom: 1rem;
+            }
+
+            h3 {
+                font-size: 1.25rem;
+                margin-bottom: 0.5rem;
+
+                a:hover{
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+.related-properties {
+    justify-content: center;
+    margin-top: 5rem;
+
+    h4 {
+        text-align: center;
+    }
+}

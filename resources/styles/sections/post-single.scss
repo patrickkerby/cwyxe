@@ -1,0 +1,299 @@
+.single {
+  .main {
+    margin-top: 3.5rem;
+  }
+
+  &.single-property .main {
+    margin-top: 1.5rem;
+  }
+
+  article {
+    display: flex;
+    flex-flow: row-reverse;
+    margin-bottom: 6rem;
+
+    @media screen and (max-width: 680px) {
+      flex-flow: column-reverse;
+    }
+
+    &.type-property {
+      flex-flow: column;
+    }
+
+    .property_type {
+      margin-right: 0.5rem;
+      margin-bottom: 1rem;
+      display: inline-flex;
+      white-space: nowrap;
+    }
+
+    .availability {
+      font-weight: 400;
+      text-transform: uppercase;
+      display: inline-flex;
+      margin-bottom: 0.5rem;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin: 0;
+
+      @media screen and (max-width: 680px) {
+        display: none;
+      }
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 300;
+
+      @media screen and (max-width: 680px) {
+        display: none;
+      }
+    }
+
+    .container {
+      display: flex;
+      flex-flow: row;
+      // margin-top: 1.5rem;
+    }
+  
+    .sidebar {
+      display: flex;
+      width: 30%;
+      padding: 1.5rem 2rem;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+
+      @media screen and (max-width: 680px) {
+        width: 100%;
+        flex-direction: row;
+        padding: 0;
+        margin-bottom: 1rem;
+        align-items: flex-start;
+      }
+
+      h1,
+      h2 {
+        display: none;
+
+        @media screen and (max-width: 680px) {
+          display: inline-flex;
+          line-height: 1.1;
+        }
+      }
+    }
+    
+    .content {
+      width: 70%;
+      margin-left: 2rem;
+
+      @media screen and (max-width: 680px) {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+
+    // The following are styles for single property pages. This is everything within the <article> container
+    &.type-property {
+      .property-header {
+
+        h2 {
+          font-size: 1.5rem;
+        }
+        img {
+          width: 100%;
+          max-height: 33rem;
+          object-fit: cover;
+        }
+      }
+
+      .container {
+        @media screen and (max-width: 780px) {
+          flex-flow: column;
+        }
+      }
+
+      .sidebar {
+        background: $cw-grey-light;
+        border-top: solid 3px $cw-red;
+        padding: 0;
+        align-self: flex-start;
+        gap: 0;
+        min-width: 22rem;
+
+        @media screen and (max-width: 780px) {
+          width: 100%;
+          margin-top: 2rem;
+        }
+
+        .agent {
+          width: 100%;
+          padding: 1rem 1rem 0.25rem 1rem;
+          border-bottom: solid 7px #fff;
+        }
+
+        .headshot {
+          margin-bottom: 1.5rem;
+          width: 8rem;
+        }        
+
+        h4 {
+          font-size: 1.25rem;
+          text-transform: none;
+          text-align: center;
+        }
+
+        .contact-details ul li {
+          display: block;
+          color: $cw-charcoal;
+          font-size: 1rem;
+          
+          span {
+            display: inline-flex;
+            color: $cw-charcoal;
+            font-weight: 300;
+          }
+        }
+
+        .btn-hollow {
+          width: 100%;
+          margin-top: 1.25rem;
+        }
+
+        // Rules for when there is more than one agent on a listing
+        .additional-agent {
+          display: flex;
+          flex-direction: row;
+          padding: 1.5rem 1rem;
+
+          .headshot {
+            width: 6rem;
+            margin: 0;
+            align-self: flex-start;
+          }
+
+          h4 {
+            text-align: left;
+            font-size: 1rem;
+            color: $cw-red;
+            margin: 0;
+          }
+
+          .contact-details {
+            margin-left: 1.5rem; 
+
+            ul li {
+              text-align: left;
+              margin: 0;
+
+              a {
+                font-size: 0.875rem;
+              }
+
+              .emphasized-link {
+                margin-top: 0.5rem;                
+                display: flex;
+                font-size: 0.9375rem;
+              }
+            }
+          }
+         }
+
+         .listing-alerts {
+          width: 100%;
+         }
+      }
+
+      .content {
+        margin-left: 0;
+        margin-right: 1.5rem;
+
+        @media screen and (max-width: 780px) {
+          width: 100%;
+        }
+
+        .overview,
+        .key_features,
+        .details,
+        .map {
+          margin-top: 3rem;
+        }
+
+        .key_features {
+          background: $cw-grey-light;
+          border-top: solid 3px $cw-blue;
+          padding: 1.5rem;
+        }
+
+        .details {
+          border-bottom: solid 1px #EAEBEB;
+        }
+
+        .detail {
+          border-top: solid 1px #EAEBEB;
+          display: flex;
+          align-items: center;
+          padding: 0.75rem 0;
+
+          strong {
+            width: 40%; 
+            color: $cw-grey; 
+          }
+
+          p {
+            margin: 0;
+          }
+        }
+      }
+
+      .property-meta-featured {
+        background: $cw-grey-light;
+        display: flex;
+        flex-flow: row;
+        justify-content: space-evenly;
+        padding: 1.5rem;
+        margin-top: 0.75rem;
+        margin-bottom: 1.5rem;
+        gap: 1.5rem;
+
+        .label {
+         color: $cw-grey;
+         font-weight: 300;
+         display: flex;
+         width: 100%;
+         line-height: 1;
+        }
+
+        div {
+          background: left center no-repeat;
+          padding: 0 3rem;
+        }
+        .area_size {
+          background-image: url('/images/icons/meta-checkmark.svg');
+        }
+
+        .lot_size {
+          background-image: url('/images/icons/meta-drag_pan.svg');
+        }
+
+        .year_built {
+          background-image: url('/images/icons/meta-calendar.svg');
+        }
+      }
+
+      .download {
+        padding: 1rem 0 1rem 1.75rem;
+        border: solid 1px #EAEBEB;
+        border-width: 1px 0;
+        margin-top: 1rem;
+        width: 100%;
+        display: flex;
+        background: left center no-repeat;
+        background-image: url('/images/icons/download.svg');
+      }
+    }
+  }
+}

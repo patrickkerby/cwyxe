@@ -1,0 +1,117 @@
+.insights {
+    .main {
+        width: 86%;
+        margin: 2.5rem auto 0 auto;
+        display: flex;
+        flex-direction: row-reverse;
+        padding: 0;
+        justify-content: space-between;
+        column-gap: 1.5rem;
+    }
+}
+
+.insights-container {
+    width: 70%;
+
+    .grid-head {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+
+        h2 {
+            margin: 0;
+            font-size: 2rem;
+        }
+    }
+
+    .insights-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-flow: dense;
+        column-gap: 1.5rem;
+        row-gap: 0;
+
+        .card {
+            width: 100%;
+            text-wrap: pretty;
+            border: solid 1px #EAEBEB;
+            
+            h4 {
+                margin: 0.75rem 0 1rem 0;
+                line-height: 1.75rem;
+            }
+
+            .meta {
+                font-size: 0.875rem;
+            }
+
+            time,
+            .time {
+                font-size: .875rem;
+                font-weight: 300;
+                color: #686B6B;
+            }
+
+            &:nth-child(3) {
+                margin-top: 2.5rem;
+            }
+
+            .excerpt {
+                font-size: 0.9375rem;
+                text-transform: uppercase;
+            }
+
+            a:hover {
+                text-decoration: none;
+            }
+        }
+        
+        .card.wide {
+            grid-column: span 2;
+            display: flex;
+            flex-direction: row-reverse;
+            border: none;
+            border-bottom: solid 1px #EAEBEB;
+            justify-content: flex-end;
+            padding: 1.5rem 0;
+
+            .content {
+                width: 75%;
+            }
+
+            h4 {
+                margin: 0.5rem 0;
+            }
+
+            img {                
+                flex-basis: content;
+                height: 8rem;                
+                margin: auto 0 auto 0;
+            }
+
+            a:hover {
+                text-decoration: none;
+            }
+        }
+    }
+
+}
+
+.single-post {
+
+    section.page-header,
+    .main {
+        width: 70%;
+    }
+
+    img {
+        margin: 0 0 1.5rem 0;
+    }
+
+    .btn-hollow {
+        margin-top: 2.5rem;
+        width: 14rem;
+    }
+}

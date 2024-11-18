@@ -1,0 +1,244 @@
+.listings-search {
+    background: $cw-grey-light;
+    padding: 2.5rem 5rem 3rem 5rem;
+    margin-top: 3.5rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    div.facet {
+        width: 23%;
+
+        span {
+            font-size: 0.875rem;
+            font-weight: 300;
+        }
+    }
+
+    .submit-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        button.button {
+            width: auto;
+            padding-left: 4rem;
+            padding-right: 4rem;
+            background: $cw-red;
+        }
+    }
+
+    .listings-heading {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+.featured-property-types {
+    margin: 3.44rem 0 4.5rem 0;
+
+    h4 {
+        margin-bottom: 2rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    form {
+        height: 100%;
+    }
+
+    form h4 {
+        text-align: left;
+        margin-bottom: 1rem;
+    }
+}
+
+.property-type-grid {
+    display: grid;
+    column-gap: 1.5rem;
+    row-gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 10.75rem);
+    width: 100%;
+    margin: 0;
+
+    div:last-child {
+        grid-column: 3 / 3; /* span 2 columns */
+        grid-row: 1 / 3; /* span 2 rows */
+      }
+}
+
+.property-type-feature {
+    position: relative;
+    padding: 0;
+
+    a {
+        width: 100%;
+        height: 100%;
+        display: flex;
+
+        &::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            display: flex;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            box-shadow: 0px 4px 0px 0px #1694B1 inset;
+            background-color: rgba(0, 0, 0, 0.20);
+            transition: all 0.4s ease-in-out;
+        }
+        
+        &:hover::before {
+            background-color: rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease-in-out;
+        }
+    }
+
+    h3 {
+        color: #fff;
+        font-size: 2rem;
+        text-transform: uppercase;
+        position: absolute;
+        top: 1.5rem;
+        left: 1.5rem;
+        z-index: 2;
+        padding: 0;
+        text-shadow: -0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    img {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+.featured-properties {
+    margin-top: 5rem;
+
+    h4 {
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .properties-grid {
+        grid-template-columns: 1fr;
+
+        .card {
+            display: flex;
+            flex-direction: row;
+
+            img {
+                width: 23rem;
+                min-width: 23rem;
+                height: 100%;
+            }
+
+            .content {
+                max-width: 25rem;
+            }
+        }
+    }
+}
+
+.home .cta {
+    height: 37rem;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .content { 
+        background: #ffffff;
+        border-top: solid 3px $cw-blue;
+        width: 32%;
+        padding: 2rem 1.5rem 1rem 1.5rem;
+        margin-left: 7rem;
+
+        h3,
+        p {
+            color: $cw-charcoal;
+        }
+
+        p {
+            margin-top: 1rem;
+        }
+    }
+
+    a.button {
+        background: #fff;
+        width: 32%;
+        padding: 0 1.5rem 2rem 1.5rem;
+        color: $cw-red !important;
+        margin-left: 7rem;
+        justify-content: flex-start;
+    }
+}
+
+section.insights {
+    margin: 4.5rem 0 5rem 0;
+
+    h4 {
+        text-align: center;
+        margin: 1rem 0 2rem 0;
+    }
+
+    .meta {
+         font-size: 0.875rem;
+         font-weight: 300;
+         margin-bottom: 1rem;
+         color: #686B6B;
+    }
+
+    .excerpt {
+        font-size: 0.9375rem;
+        text-transform: uppercase;
+    
+        &.fullwidth {
+            width: 100%;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+    }
+}
+
+.insights-grid {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .card {
+        width: calc(100%/3 - 1rem);
+        border-bottom: solid 1px #EAEBEB;
+
+        img {
+            width: 100%;
+            height: 15rem;
+            object-fit: cover;
+            border-bottom: solid 4px $cw-blue
+        }
+
+        .content {
+            margin: 1.5rem;
+        }
+
+        h4 {
+            font-size: 1.25rem;
+            text-transform: none;
+            text-align: left;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 0.9375rem;
+            line-height: 1.4375rem; /* 153.333% */
+        }
+    }
+}

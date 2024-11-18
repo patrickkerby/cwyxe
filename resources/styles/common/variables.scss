@@ -1,0 +1,16 @@
+$cw-charcoal: #525454;
+$cw-charcoal-light: #808080;
+$cw-grey: #545859;
+$cw-grey-light: #F5F5F5;
+$cw-red: #E4002B;
+$cw-red-dark: #8E1000;
+$cw-blue: #0093AD;
+$cw-yellow: #F1B434;
+$cw-green: #007C58;
+$cw-indigo: #1D1740;
+
+@mixin slowfade($time: 0.4) {
+  -webkit-transition: all #{$time}s ease-in-out;
+  -moz-transition: all #{$time}s ease-in-out;
+  transition: all #{$time}s ease-in-out;
+}

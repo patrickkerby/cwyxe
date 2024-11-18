@@ -1,0 +1,72 @@
+.sidebar {
+    width: 28%;
+
+    .card {
+        border: 1px solid #ECEFF1;
+        margin-bottom: 1.5rem;
+        padding: 1.5rem;
+
+        h5 {
+            font-size: 1rem;
+        }
+    }
+}
+
+.facetwp-facet {
+    margin-bottom: 0 !important;
+}
+
+.facetwp-checkbox {
+    margin-bottom: 1.25rem !important;
+}
+
+.facetwp-display-value,
+.facetwp-counter {
+    color: $cw-charcoal;
+    font-size: 0.875rem;
+    font-weight: 300;
+    line-height: 1.125rem;
+}
+
+.facetwp-counter {
+    color: #808080;
+}
+
+.insights .facetwp-checkbox {
+    background-image: none;
+    padding-left: 36px;
+    position: relative;
+
+    &::before {
+        content: "";
+        width: 1.5rem;
+        height: 1.5rem;
+        border: solid 1px #EAEBEB;
+        display: flex;
+        position: absolute;
+        left: 0;
+    }
+  }
+   
+.insights .facetwp-checkbox.checked {
+    background-image: none;
+
+    &::before {
+        content: "";
+        border: solid 1px #cecece;
+        display: flex;
+    }
+
+    &::after {
+        content: "";
+        background-color: #a8a8a8;
+        display: flex;
+        width: 1.25rem;
+        height: 1.25rem;
+        border: solid 2px #fff;
+        position: absolute;
+        left: 2px;
+        top: 2px;
+        // border-radius: 4px;
+    }
+}

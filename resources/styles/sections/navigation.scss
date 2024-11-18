@@ -1,0 +1,85 @@
+section.banner-container {
+  box-shadow: 0px 1px 0px 0px #EAEBEB;
+}
+
+header.banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6875rem 0;
+  margin: 0 auto;
+  max-width: 88rem;
+  width: 86%;
+  margin: 0 auto;
+
+  @media screen and (max-width: 1060px) {
+    padding: 0.6875rem 1rem;
+    @include slowfade();
+  }
+
+  .brand {
+    max-width: 175px;
+  }
+
+  .nav-primary {
+    ul {
+      display: flex;
+      flex-direction: row;
+      list-style-type: none;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 2.5rem;
+
+      @media screen and (max-width: 860px) {
+        gap: 1.75rem;
+        @include slowfade();
+      }
+
+      @media screen and (max-width: 860px) {
+        display: none;
+      }
+
+      li {
+        margin: 0;
+      }
+
+      a {
+        color: #545859;
+        font-weight: 300;
+        font-size: 0.875rem;
+        display: inline-flex;
+        line-height: 1.2;
+        text-align: center;
+
+        @media screen and (max-width: 860px) {
+          font-size: 0.875rem;
+          @include slowfade();
+        }
+
+        &:hover {
+          color: #3F4243;
+          text-decoration: none;
+        }
+      }
+
+      li.contact a {
+        padding: 0.9375rem 1.2rem;
+        justify-content: center;
+        align-items: center;
+        background: $cw-red;
+        color: white;
+        display: flex;
+        font-size: 0.9375rem;
+        font-weight: 400;
+        text-transform: uppercase;
+        line-height: 1.15;
+
+        @media screen and (max-width: 860px) {
+          padding: 0.7rem 0.5rem;
+          font-size: 0.8rem;
+          @include slowfade();
+        }
+      }
+    }
+  }
+}
