@@ -1,0 +1,22 @@
+{
+  "app.js": "js/app.js",
+  "editor.js": "js/editor.js",
+  "runtime.js": "js/runtime.js",
+  "fonts/VentiCF-Black.woff2": "fonts/VentiCF-Black.woff2",
+  "fonts/Gotham-BookItalic.woff2": "fonts/Gotham-BookItalic.woff2",
+  "fonts/Gotham-MediumItalic.woff2": "fonts/Gotham-MediumItalic.woff2",
+  "fonts/Gotham-Book.woff2": "fonts/Gotham-Book.woff2",
+  "fonts/Gotham-Medium.woff2": "fonts/Gotham-Medium.woff2",
+  "fonts/Gotham-LightItalic.woff2": "fonts/Gotham-LightItalic.woff2",
+  "fonts/Gotham-BoldItalic.woff2": "fonts/Gotham-BoldItalic.woff2",
+  "fonts/Gotham-Light.woff2": "fonts/Gotham-Light.woff2",
+  "fonts/Gotham-Bold.woff2": "fonts/Gotham-Bold.woff2",
+  "images/cw-saskatoon-logo-small.png": "images/cw-saskatoon-logo-small.png",
+  "images/icons/meta-checkmark.svg": "images/icons/meta-checkmark.svg",
+  "images/icons/meta-calendar.svg": "images/icons/meta-calendar.svg",
+  "images/icons/meta-drag_pan.svg": "images/icons/meta-drag_pan.svg",
+  "images/icons/download.svg": "images/icons/download.svg",
+  "hmr.json": "hmr.json",
+  "entrypoints.json": "entrypoints.json",
+  "../theme.json": "../theme.json"
+}
