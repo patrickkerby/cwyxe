@@ -1,0 +1,55 @@
+{
+  "name": "log1x/sage-directives",
+  "type": "package",
+  "license": "MIT",
+  "description": "A set of Blade directives for use with Roots Sage.",
+  "homepage": "https://github.com/log1x/sage-directives",
+  "authors": [
+    {
+      "name": "Brandon Nifong",
+      "email": "brandon@tendency.me"
+    }
+  ],
+  "keywords": [
+    "roots",
+    "sage",
+    "acorn",
+    "wordpress",
+    "blade-directives",
+    "blade",
+    "directives"
+  ],
+  "support": {
+    "issues": "https://github.com/log1x/sage-directives/issues"
+  },
+  "autoload": {
+    "psr-4": {
+      "Log1x\\SageDirectives\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "php": ">=8.1"
+  },
+  "require-dev": {
+    "roots/acorn": "*",
+    "pestphp/pest": "^2.9",
+    "laravel/pint": "^1.10"
+  },
+  "extra": {
+    "acorn": {
+      "providers": [
+        "Log1x\\SageDirectives\\SageDirectivesServiceProvider"
+      ]
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  }
+}
