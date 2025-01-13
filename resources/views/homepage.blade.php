@@ -102,6 +102,9 @@
                 @if($property)
                     @include('partials.property-card')
                 @endif
+                @if ($loop->iteration == 3 )
+                    @break
+                @endif
             @endforeach
         </div>
     </section>

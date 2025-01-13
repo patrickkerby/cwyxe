@@ -6,25 +6,23 @@
   <div class="footer-menu">
     <nav>
       <h5>Links</h5>
-      <ul>
-        <li><a href="">Our People</a></li>
-        <li><a href="">Insights</a></li>
-        <li><a href="">About Us</a></li>
-        <li><a href="">Contact Us</a></li>
-      </ul>
+      @if (has_nav_menu('footer_navigation1'))
+        <nav class="nav-footer" aria-label="{{ wp_get_nav_menu_name('footer_navigation1') }}">
+          {!! wp_nav_menu(['theme_location' => 'footer_navigation1', 'menu_class' => 'nav', 'echo' => false]) !!}
+        </nav>
+      @endif
     </nav>
     <nav>
-      <h5>Our Services</h5>
-      <ul>
-        <li><a href="">Business Brokerage & Advisory</a></li>
-        <li><a href="">Leasing Services</a></li>
-        <li><a href="">Tenant Services</a></li>
-        <li><a href="">Retail Services</a></li>
-      </ul>
+      <h5>Our Services</h5>      
+      @if (has_nav_menu('footer_navigation2'))
+        <nav class="nav-footer" aria-label="{{ wp_get_nav_menu_name('footer_navigation2') }}">
+          {!! wp_nav_menu(['theme_location' => 'footer_navigation2', 'menu_class' => 'nav', 'echo' => false]) !!}
+        </nav>
+      @endif
     </nav>
   </div>
   <span class="copyright">
-    <p>Copyright ⓒ 2021-2022 Cushman & Wakefield Saskatoon, Ltd. | Independently Owned and Operated | All rights reserved</p>
+    <p>Copyright ⓒ {{ date('Y') }} Cushman & Wakefield Saskatoon, Ltd. | Independently Owned and Operated | All rights reserved</p>
     <p><a href="">Privacy Policy</a> | <a href="">Site Map</a></p>
   </span>
 </footer>

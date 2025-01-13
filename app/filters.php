@@ -15,32 +15,6 @@ add_filter('excerpt_more', function () {
     return sprintf(' &hellip; <a href="%s">%s</a>', get_permalink(), __('Continued', 'sage'));
 });
 
-add_filter( 'acf/fields/google_map/api', function($api) {
-    $api['key'] = 'AIzaSyB4tACHjkBLlcqFPGeMycOSvDadNWVurS0';
-    return $api;
-} );
-
-add_filter( 'facetwp_map_init_args', function ( $args ) {
- 
-  // $args['init']['zoomControl']       = false; // +- zoom control
-  $args['init']['mapTypeControl']    = false; // roadmap / satellite toggle
-  $args['init']['streetViewControl'] = false; // street view / yellow man icon
-  $args['init']['fullscreenControl'] = false; // full screen icon
-  
-  /** this overwrites all 4 lines above and will disable ALL of the default ui icons instead of the individual icons above */
-  $args['init']['disableDefaultUI']  = true; // disable the default ui
-  
-  return $args;
-  
-} );
-
-add_filter( 'facetwp_map_init_args', function( $args ) {
-  if ( isset( $args['config']['cluster'] ) ) {
-    $args['config']['cluster']['zoomOnClick'] = true; // default: false
-  }
-  return $args;
-} );
-
 
 // This block helps sync the facets on the homepage with the ones on the search page
 add_action( 'facetwp_scripts', function() {
@@ -58,7 +32,7 @@ add_action( 'facetwp_scripts', function() {
         if ( 'property_type' == fUtil(FWP.active_facet.nodes[0]).attr('data-name' ) ) {
           FWP.facets['property_type_homepage'] = FWP.facets['property_type'];
         } else if ( 'property_type_homepage' == fUtil(FWP.active_facet.nodes[0]).attr('data-name' ) ) {
-          FWP.facets['property_type'] = FWP.facets['property_type_homepage'];
+          FWP.facets['property_type'] = FWP.facets['property_type_homepage']; 
         }
         //Keyword
         if ( 'search' == fUtil(FWP.active_facet.nodes[0]).attr('data-name' ) ) {
@@ -115,3 +89,82 @@ add_filter('excerpt_more', function () {
   return '...';
 });
 
+add_filter( 'acf/fields/google_map/api', function($api) {
+    $api['key'] = 'AIzaSyB4tACHjkBLlcqFPGeMycOSvDadNWVurS0';
+    return $api;
+} );
+
+add_filter( 'facetwp_map_init_args', function ( $args ) {
+ 
+  $args['init']['zoomControl']       = true; // +- zoom control
+  $args['init']['mapTypeControl']    = false; // roadmap / satellite toggle
+  $args['init']['streetViewControl'] = false; // street view / yellow man icon
+  $args['init']['fullscreenControl'] = true; // full screen icon
+  
+  /** this overwrites all 4 lines above and will disable ALL of the default ui icons instead of the individual icons above */
+  // $args['init']['disableDefaultUI']  = true; // disable the default ui
+  
+  return $args;
+  
+} );
+
+add_filter( 'facetwp_map_init_args', function( $args ) {
+  if ( isset( $args['config']['cluster'] ) ) {
+    $args['config']['cluster']['zoomOnClick'] = true; // default: false
+  }
+  return $args;
+} );
+
+add_filter( 'facetwp_map_init_args', function ( $args ) {
+
+  if ( wp_is_mobile() ) {
+    $args['init']['gestureHandling'] = 'cooperative'; // Default: 'auto', other options: 'cooperative', 'greedy', 'none'a
+  }
+  else {
+    $args['init']['gestureHandling'] = 'greedy'; // Default: 'auto', other options: 'cooperative', 'greedy', 'none'a
+  }
+
+  // $args['init']['gestureHandling'] = 'auto'; // Default: 'auto', other options: 'cooperative', 'greedy', 'none'a
+
+  return $args;
+} );
+
+add_action('facetwp_scripts', function () {
+  ?>
+    <script>
+      (function($) {
+        document.addEventListener('facetwp-loaded', function() {
+          if ('undefined' === typeof FWP_MAP) {
+            return;
+          }
+          var filterButton = $(".facetwp-map-filtering");
+          if (!filterButton.hasClass('enabled') && 'undefined' == typeof FWP_MAP.enableFiltering) {
+            filterButton.text(FWP_JSON['map']['resetText']);
+            FWP_MAP.is_filtering = true;
+            filterButton.addClass('enabled');
+            FWP_MAP.enableFiltering = true;
+          }
+        });
+      })(fUtil);
+    </script>
+  <?php
+  }, 100);
+
+  add_action('facetwp_scripts', function () {
+    ?>
+    <script>
+      (function($) {
+        FWP.hooks.addAction('facetwp/reset', function() {
+          $.each(FWP.facet_type, function(type, name) {
+            if ('map' === type) {
+              var $button = $('.facetwp-map-filtering');
+              $button.text(FWP_JSON['map']['filterText']);
+              FWP_MAP.is_filtering = false;
+              $button.toggleClass('enabled');
+            }
+          });
+        });
+      })(fUtil);
+    </script>
+    <?php
+  }, 100);

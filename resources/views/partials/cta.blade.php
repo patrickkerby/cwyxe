@@ -1,3 +1,4 @@
+@hasfield('cta_title')
 <section class="cta">
   <div class="content">
     <h3>@field('cta_title')</h3>
@@ -12,3 +13,4 @@
       <img src="@field('cta_image', 'url')" alt="@field('cta_image', 'alt')">
     @endfield
 </section>
+@endfield

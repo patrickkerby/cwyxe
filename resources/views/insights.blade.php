@@ -19,7 +19,11 @@
             @posts
                 @php
                     // Will return `false` if no primary term has been set
-                    $primary_term_id = yoast_get_primary_term_id( 'category' );
+                    if (function_exists('yoast_get_primary_term_id')) {
+                        $primary_term_id = yoast_get_primary_term_id('category');
+                    } else {
+                        $primary_term_id = null;
+                    }
 
                     if ( $primary_term_id ) {
                         /** @var WP_Term $primary_term */

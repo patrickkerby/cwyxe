@@ -50,6 +50,11 @@
     row-gap: 1.5rem;
     margin-top: 2rem;
 
+    @media (max-width: 779px) {
+        grid-template-columns: auto;
+        margin-top: 6rem;
+    }
+
     .grid-head {
         grid-column: 1 / span 2;
     }
@@ -101,5 +106,80 @@
 
     h4 {
         text-align: center;
+    }
+}
+
+// Map Info Windows
+
+.gm-style .gm-style-iw-c,
+.gm-style-iw-d {
+    padding: 0;
+    border-radius: 0;
+    width: 15rem;
+    overflow: hidden !important;
+}
+
+button.gm-ui-hover-effect {
+    position: absolute !important;
+    right: 0;
+    opacity: 1;
+    z-index: 1;
+
+    span {
+        background-color: #fff;
+    }
+}
+
+.infowindow {
+    width: 15rem;
+    position: relative;
+
+    &::after {
+        content: "";
+        display: flex;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 10rem;
+        background: linear-gradient(-156deg, rgba(0, 0, 0,0.2), rgba(0, 0, 0, 0));
+    }
+
+    img {
+        width: 100%;
+        height: 10rem;
+        object-fit: cover;
+    }
+
+    h3 {
+        font-size: 0.875rem;
+        margin: 1rem;
+    }
+}
+
+// Utils
+.facetwp-map-filtering,
+.gm-style-iw-ch,
+.flyout-row h3 {
+    display: none;
+}
+
+@media (min-width: 780px) {
+    .facetwp-flyout-open {
+        display: none !important;
+    }
+}
+
+@media (max-width: 779px) {
+    .sidebar.filter,
+    .name-keyword_homepage,
+    .name-city_town,
+    .name-property_status_homepage,
+    .name-property_type_homepage {
+        display: none;
+    }
+
+    .properties-container {
+        width: 100%;
     }
 }

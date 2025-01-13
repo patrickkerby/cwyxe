@@ -1,7 +1,9 @@
 @if(is_page('property-search') || is_singular('agent') || is_singular('property'))
     <div class="property card">
         <div class="image">
+            @hasfield('primary_image')                
             <img src="@field('primary_image', 'url')" alt="@field('primary_image', 'alt')">
+            @endfield
         </div>
         <div class="content">    
             @foreach ($status_terms as $status)
@@ -11,7 +13,7 @@
                 @endphp
                 <span class="property_type status" style="background-color:{{$status_color}}">{{ $status->name }}</span>
             @endforeach
-            <span class="availability">For @field('availability') • @term('property-type')</span>                    
+            <span class="availability">For @group('general_settings') @sub('availability')@endgroup • @term('property-type')</span>                    
             <h3><a href="@permalink">@title</a></h3>
             <p>@field('address')</p>            
 
@@ -22,26 +24,36 @@
                     @else
                         @set($negotiable, '')
                     @endif
-                    <span class="price">For @sub('rate_type'): @hassub('amount')$@sub('amount') @sub('rate_postfix')@endsub {{ $negotiable }}</span>
+                    @php
+                        $price = get_sub_field('amount');
+                        $price_str = preg_replace('/(\d)(?=(?:\d{3})+$)/', '$1,', $price);    
+                    @endphp
+                    
+                    <span class="price">For @sub('rate_type'): @hassub('amount')${{ $price_str }} @sub('rate_postfix')@endsub {{ $negotiable }}</span>
                 @endgroup 
             @endhasfields
-
-
         </div>
     </div>
 @else
     <div class="property card">
         <div class="image">
+            @if($property['primary_image'])
             <img src="{{ $property['primary_image']['url']}}" alt="{{ $property['primary_image']['url']}}">
+            @endif
         </div>
         <div class="content">
             @foreach($property['property_status'] as $status)
                 <span class="property_type status" style="background-color:{{ $property['property_status_color'] }}">{{ $status->name }}</span>
             @endforeach
             <span class="availability">
-                For {{$property['availability']}} • 
+                @if($property['availability'])
+                    For {{$property['availability']}} • 
+                @endif 
                 @foreach ($property['property_type'] as $type)
-                    {{$type->name}}
+                    @if(!$loop->first)                        
+                        /
+                    @endif
+                {{$type->name}}
                 @endforeach
             </span>
             <h3><a href="{{ $property['link']}}">{{ $property['name']}}</a></h3>

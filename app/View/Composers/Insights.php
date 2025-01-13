@@ -6,7 +6,6 @@ use Roots\Acorn\View\Composer;
 
 class Insights extends Composer
 {
-
     /**
      * List of views served by this composer.
      *
@@ -33,18 +32,22 @@ class Insights extends Composer
                 'thumbnail' => get_the_post_thumbnail_url($post->ID),
                 'excerpt' => get_the_excerpt($post->ID),
                 'terms' => get_the_term_list($post->ID, 'category', '', ', ')
-            ];         
+            ];
         }, $insights);
     }
 
   public function with()
     {
-        $primary_term_id = yoast_get_primary_term_id( 'category' );
-
+        
+        if (function_exists('yoast_get_primary_term_id')) {
+            $primary_term_id = yoast_get_primary_term_id('category');
+        } else {
+            $primary_term_id = null;
+        }
+        
         return [
             'featuredInsights' => $this->featuredInsights()
         ];
     }
-
     
 }

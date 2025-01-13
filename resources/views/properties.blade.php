@@ -4,7 +4,7 @@
 @php
     $args = [
         "post_type"      => 'property',
-        "posts_per_page" => 4,
+        "posts_per_page" => 10,
         "orderby"        => ["title" => "ASC"],        
         "facetwp"        => true 
     ];
@@ -25,6 +25,7 @@
             {!! facetwp_display( 'facet', 'sort_listings' ) !!}
         </div>
         <section class="map">
+            <button class="button facetwp-flyout-open">Show filters</button>
             {!! facetwp_display( 'facet', 'map' ) !!}
         </section>        
         <section class="properties-grid">

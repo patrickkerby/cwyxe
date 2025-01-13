@@ -89,6 +89,7 @@ a.button:hover {
 
 .btn-hollow {
   border: solid 2px $cw-red;
+  color: $cw-red;
   text-transform: uppercase;
   font-weight: 400;
   display: flex;
@@ -324,7 +325,7 @@ a.button:hover {
   justify-content: center;
   align-items: center;
 
-  @media screen and (max-width: 580px) {
+  @media screen and (max-width: 768px) {
     flex-direction: column;
   }
 
@@ -411,6 +412,10 @@ a.button:hover {
   flex-direction: row;
   flex-wrap: wrap;
 
+  @media screen and (max-width: 768px) {
+    padding: 10rem 3rem 0 3rem;
+  }
+
   h4 {
     position: absolute;
     top: -1.5rem;
@@ -449,6 +454,44 @@ a.button:hover {
       text-transform: uppercase;
       flex-wrap: pre;
     }
+
+    @media screen and (max-width: 768px) {
+      margin-left: 0;
+      margin-right: 0;
+
+      .stat {
+        font-size: 3rem;
+        line-height: 3.5rem;
+      }
+    }
+  }
+}
+
+// Default Page Template Styles
+.page-template-default .main {
+  margin-top: 3rem;
+
+  h2 {
+    margin-top: 3rem;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+
+  h3 {
+    margin-top: 2rem;
+  }
+
+  .button {
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  hr {
+    outline: none;
+    border: solid 2px #ededed;
+    margin: 3rem 0;
   }
 }
 
@@ -462,14 +505,30 @@ a.button:hover {
   flex-wrap: wrap;
   font-weight: 300;
 
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+
   div {
     width: 50%;
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
 
     &.footer-menu {
       display: flex;
 
+      @media screen and (max-width: 768px) {
+        margin-top: 1.5rem;
+      }
+
       nav {
         width: 50%;
+
+        nav {
+          width: 100%;
+        }
 
         ul {
           list-style: none;
@@ -488,6 +547,10 @@ a.button:hover {
 
     p {
       width: 65%;
+
+      @media screen and (max-width: 768px) {
+        width: 100%;
+      }
     }
   }
 
@@ -508,6 +571,10 @@ a.button:hover {
 
     p {
       font-size: 0.875rem;
+    }
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
     }
   }
 }

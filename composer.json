@@ -39,13 +39,15 @@
     }
   },
   "require": {
-    "php": "^7.4|^8.0",
+    "php": "^7.4|^8.2",
+    "jeroendesloovere/vcard": "^1.7",
     "log1x/crumb": "^1.1",
     "log1x/sage-directives": "^2.0",
     "log1x/sage-html-forms": "^1.0",
     "roots/acorn": "^4.3"
   },
   "require-dev": {
+    "spatie/laravel-ignition": "^2.9",
     "squizlabs/php_codesniffer": "3.7.1"
   },
   "suggest": {

@@ -43,7 +43,7 @@
   </section>
   <section class="container">
     <div class="content">   
-      @hasfield('primary_image', 'url')   
+      @hasfield('primary_image')   
         <img src="@field('primary_image', 'url')" alt="@field('primary_image', 'alt')">
       @endfield
 
@@ -75,7 +75,15 @@
               @group($group)
                 @hassub($value)
                   <span class="label">{{ $meta['label'] }}</span>
-                  <span class="value">@sub($value)</span>
+                  @if($meta['label'] == 'Amount')                    
+                    @php
+                        $price = get_sub_field($value);
+                        $price_str = preg_replace('/(\d)(?=(?:\d{3})+$)/', '$1,', $price);
+                    @endphp
+                    <span class="value">${{ $price_str }}</span>
+                  @else
+                    <span class="value">@sub($value)</span>
+                  @endif
                 @endsub
               @endgroup
             </div>
@@ -141,7 +149,6 @@
         @endhasfields
 
         {{-- Add any rate related data to this list --}}
-
         @hasfields('rates')
           @group('rates')            
             @hassub('rate_type')
@@ -158,7 +165,7 @@
                 
             <div class="detail">        
               <strong>Price</strong>
-              <p>@hassub('amount')$@sub('amount') @sub('rate_postfix')@endsub {{ $negotiable }}</p>
+              <p>@hassub('amount')${{ $price_str }} @sub('rate_postfix')@endsub {{ $negotiable }}</p>
             </div>
           @endgroup 
         @endhasfields
@@ -184,35 +191,37 @@
 
     </div>
     <div class="sidebar">
-      @foreach ($agents as $agent)
-      @php
-          $agent_id = $agent->ID;
-          $headshot = get_field('headshot', $agent_id);
-      @endphp
-        <div class="agent @if($loop->count > 1) additional-agent @endif">
-          <div class="headshot">
-              <img src="{{ $headshot['url'] }}" alt="">
+      @if($agents)
+        @foreach ($agents as $agent)
+          @php
+            $agent_id = $agent->ID;
+            $headshot = get_field('headshot', $agent_id);
+          @endphp
+          <div class="agent @if($loop->count > 1) additional-agent @endif">
+            <div class="headshot">
+                <img src="{{ $headshot['url'] }}" alt="">
+            </div>
+            <div class="contact-details">
+              <h4>Agent @title($agent_id)</h4>          
+              <ul>
+                @group('contact_details', $agent_id)
+                  @hassub('office_phone')
+                    <li><span>Office:</span> @sub('office_phone')</li>
+                  @endsub
+                  @hassub('mobile_phone')
+                    <li><span>Mobile:</span> @sub('mobile_phone')</li>
+                  @endsub
+                  @hassub('email')
+                    <li><a href="mailto:@sub('email')">@if($loop->count == 1) @sub('email') @else Email Agent @endif</a></li>
+                  @endsub
+                @endgroup
+                <li><a class="emphasized-link @if($loop->count == 1) btn-hollow @endif" href="">Download vCard</a></li>
+                @if($loop->count == 1)<li><a class="emphasized-link" href="">View My listings</a></li>@endif
+              </ul>
+            </div>
           </div>
-          <div class="contact-details">
-            <h4>Agent @title($agent_id)</h4>          
-            <ul>
-              @group('contact_details', $agent_id)
-                @hassub('office_phone')
-                  <li><span>Office:</span> @sub('office_phone')</li>
-                @endsub
-                @hassub('mobile_phone')
-                  <li><span>Mobile:</span> @sub('mobile_phone')</li>
-                @endsub
-                @hassub('email')
-                  <li><a href="mailto:@sub('email')">@if($loop->count == 1) @sub('email') @else Email Agent @endif</a></li>
-                @endsub
-              @endgroup
-              <li><a class="emphasized-link @if($loop->count == 1) btn-hollow @endif" href="">Download vCard</a></li>
-              @if($loop->count == 1)<li><a class="emphasized-link" href="">View My listings</a></li>@endif
-            </ul>
-          </div>
-        </div>
-        @endforeach
+          @endforeach
+        @endif
       <div class="listing-alerts form">        
         <x-listing-alert />
       </div>

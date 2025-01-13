@@ -1,13 +1,23 @@
 @php
+        $agents = get_field('agent');
+
+
     $args = [
       "post_type"      => 'property',
-      "posts_per_page" => 3,
+      "posts_per_page" => 6,
       "orderby"        => ["title" => "ASC"],        
-      "facetwp"        => true
+      "facetwp"        => true,
+      'meta_query'  => array(
+        array(
+            'key' => 'agent',
+            'value' => $post->ID,
+            'compare' => 'LIKE',
+        ),
+    ),
   ];       
   $properties_loop = new WP_Query( $args );
-@endphp
 
+@endphp
 <article @php post_class('h-entry') @endphp>
 
   <div class="content">
@@ -88,9 +98,18 @@
       while ( $properties_loop->have_posts() ) :
         $properties_loop->the_post(); 
         $status_terms = get_the_terms( $properties_loop->post->ID, 'property-status' );
-        @endphp
-        
-        @include('partials.property-card')
+    @endphp
+@include('partials.property-card')
+
+        {{-- @foreach ($agents as $agent)
+          @if($agent->ID == $post->ID)            
+          @else  
+            @php
+                continue;
+            @endphp
+          @endif
+        @endforeach --}}
+
       @php endwhile;
       else : @endphp
         <p><?php  _e( 'Sorry, no posts matched your criteria.' ); ?></p>
@@ -98,4 +117,5 @@
     wp_reset_postdata(); @endphp
   </div>
   {!! facetwp_display( 'facet', 'paging' ) !!}
+
 </section>

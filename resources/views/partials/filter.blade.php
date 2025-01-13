@@ -8,12 +8,12 @@
         {!! facetwp_display( 'facet', 'property_type' ) !!}
     </div>
     <div class="card">
-        <h5>Min / Max Area</h5>
-        {!! facetwp_display( 'facet', 'min_max_area' ) !!}
+        <h5>Available Space Unit</h5>
+        {!! facetwp_display( 'facet', 'available_space_unit' ) !!}
     </div>
     <div class="card">
-        <h5>Price Range</h5>
-        {!! facetwp_display( 'facet', 'price_range' ) !!}
+        <h5>Available Space</h5>
+        {!! facetwp_display( 'facet', 'min_max_area' ) !!}
     </div>
     <div class="card">
         <h5>Broker</h5>
@@ -28,7 +28,6 @@
         {!! facetwp_display( 'facet', 'property_type_homepage' ) !!}
         {!! facetwp_display( 'facet', 'min_area_homepage' ) !!}
     </div>
-    {!! facetwp_display( 'facet', 'reset' ) !!}
 
 @endif
 
