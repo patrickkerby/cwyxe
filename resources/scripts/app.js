@@ -36,22 +36,31 @@ domReady(async () => {
     matchingSection.classList.add("is-active");
   }
 
+  (function($) {
+    $(document).on('facetwp-loaded', function() {
+      if ( ! FWP.loaded ) { // Run on the initial page load only
+        if ( '' != FWP.buildQueryString() ) { // Run only when there are facet selections in the URL
 
-    (function($) {
-      $(document).on('facetwp-loaded', function() {
-        if ( ! FWP.loaded ) { // Run on the initial page load only
-          if ( '' != FWP.buildQueryString() ) { // Run only when there are facet selections in the URL
- 
-            // Do something. 
-            // For example a scroll to the top of the results listing:
-            $('html, body').animate({
-              scrollTop: $('.properties-container').offset().top
-            }, 500);
- 
-          }
+          // Do something. 
+          // For example a scroll to the top of the results listing:
+          $('html, body').animate({
+            scrollTop: $('.properties-container').offset().top
+          }, 500);
+
         }
-      });
-    })(jQuery);
+      }
+    });
+
+      // JavaScript to be fired on all pages
+    $('.hamb').click(function() {
+      $(this).toggleClass('is-active');
+      $('.nav-mobile').toggleClass('is-active');
+      $('body').toggleClass('is-active');
+    });
+  })(jQuery);
+
+   
+
 });
 
 /**
