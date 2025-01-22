@@ -5,6 +5,12 @@
   color: $cw-charcoal;
 }
 
+body.logged-in {
+  @media screen and (max-width: 860px) {
+    margin-top: 5rem;
+  }
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   color: $cw-charcoal;
@@ -511,6 +517,10 @@ a.button:hover {
 
   div {
     width: 50%;
+
+    div {
+      width: 100%;
+    }
 
     @media screen and (max-width: 768px) {
       width: 100%;

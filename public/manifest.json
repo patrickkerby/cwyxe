@@ -1,6 +1,6 @@
 {
-  "app.css": "css/app.92163d.css",
-  "app.js": "js/app.8fa4cf.js",
+  "app.css": "css/app.029a3b.css",
+  "app.js": "js/app.87829e.js",
   "editor.css": "css/editor.ef46db.css",
   "editor.js": "js/editor.8443dd.js",
   "runtime.js": "js/runtime.17cdd5.js",
@@ -17,6 +17,7 @@
   "images/icons/meta-checkmark.svg": "images/icons/meta-checkmark.819069.svg",
   "images/icons/meta-calendar.svg": "images/icons/meta-calendar.27ce8c.svg",
   "images/icons/meta-drag_pan.svg": "images/icons/meta-drag_pan.dae2f5.svg",
+  "images/menu-arrow.svg": "images/menu-arrow.0bef2c.svg",
   "images/icons/download.svg": "images/icons/download.b56aa5.svg",
   "entrypoints.json": "entrypoints.json",
   "../theme.json": "../theme.json"

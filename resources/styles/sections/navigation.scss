@@ -14,6 +14,7 @@ header.banner {
 
   @media screen and (max-width: 1060px) {
     padding: 0.6875rem 1rem;
+    width: 100%;
     @include slowfade();
   }
 
@@ -21,6 +22,9 @@ header.banner {
     width: 100vw;
     background: #fff;
     height: 5rem;
+    position: fixed;
+    z-index: 4;
+    top: 0;
   }
 
   .brand {
@@ -38,7 +42,7 @@ header.banner {
       align-items: center;
       gap: 2.5rem;
 
-      @media screen and (max-width: 860px) {
+      @media screen and (max-width: 1060px) {
         gap: 1.75rem;
         @include slowfade();
       }
@@ -49,43 +53,140 @@ header.banner {
 
       li {
         margin: 0;
-      }
+        position: relative;
 
-      a {
-        color: #545859;
-        font-weight: 300;
-        font-size: 0.875rem;
-        display: inline-flex;
-        line-height: 1.2;
-        text-align: center;
-
-        @media screen and (max-width: 860px) {
+        a {
+          color: #545859;
+          font-weight: 300;
           font-size: 0.875rem;
-          @include slowfade();
+          display: inline-flex;
+          line-height: 1.2;
+          text-align: center;
+          padding: 1rem 0;
+
+          @media screen and (max-width: 860px) {
+            font-size: 0.875rem;
+            @include slowfade();
+          }
+
+          &:hover {
+            color: #3F4243;
+            text-decoration: none;
+          }
         }
 
-        &:hover {
-          color: #3F4243;
-          text-decoration: none;
+        &.contact a {
+          padding: 0.9375rem 1.2rem;
+          justify-content: center;
+          align-items: center;
+          background: $cw-red;
+          color: white;
+          display: flex;
+          font-size: 0.9375rem;
+          font-weight: 400;
+          text-transform: uppercase;
+          line-height: 1.15;
+
+          @media screen and (max-width: 860px) {
+            padding: 0.7rem 0.5rem;
+            font-size: 0.8rem;
+            @include slowfade();
+          }
         }
-      }
 
-      li.contact a {
-        padding: 0.9375rem 1.2rem;
-        justify-content: center;
-        align-items: center;
-        background: $cw-red;
-        color: white;
-        display: flex;
-        font-size: 0.9375rem;
-        font-weight: 400;
-        text-transform: uppercase;
-        line-height: 1.15;
-
-        @media screen and (max-width: 860px) {
-          padding: 0.7rem 0.5rem;
-          font-size: 0.8rem;
+        ul.sub-menu {
+          visibility: hidden;
+          opacity: 0;
+          height: 0;
+          background-color: #e4002b;
+          display: flex;
+          flex-direction: column;
+          list-style-type: none;
+          padding: 0;
+          position: absolute;
+          top: 92%;
+          margin-top: 0.5rem;
+          border-radius: 3px;
+          left: 50%;
+          transform: translateX(-50%);
+          white-space: nowrap;
+          box-shadow: 0 -3px 20px -20px rgba(0, 0, 0, 0.5);
+          z-index: 9999;
+          gap: 0;
+    
           @include slowfade();
+    
+          li {
+            position: static;
+    
+            a {
+              color: #fff;
+              font-size: 1rem;
+              padding: 1rem;
+              text-transform: none;
+    
+              @include slowfade();
+    
+              &:hover {
+                color: $cw-red-dark;
+                @include slowfade();
+              }
+            }
+    
+            &.active a {
+              color: $cw-red-dark;
+            }
+
+            &::before {
+              content: "";
+              position: absolute;
+              top: -10px;
+              left: 50%;
+              transform: translateX(-50%);
+              border: 6px solid transparent;
+              border-bottom-color: $cw-red;
+            }
+          }
+    
+          @media (max-width: 580px) {
+            width: 100%;
+            justify-content: space-evenly;
+    
+            li a {
+              padding: 15px 0;
+              line-height: 1;
+            }
+          }
+        }
+
+        &:hover > ul,
+        &:focus-within > ul,
+        ul:hover,
+        li.active ul {
+          visibility: visible;
+          opacity: 1;
+          display: flex;
+          padding: 1rem;
+          justify-content: space-evenly;
+          height: auto;
+  
+          @include slowfade();
+        }
+  
+        &.menu-item-has-children a {
+          background: url("/images/menu-arrow.svg") right center no-repeat;
+          padding-right: 1rem;
+          margin-right: 0.75rem;
+        }
+  
+        &.menu-item-has-children.active a {
+          background: url("/images/menu-arrow.svg") right center no-repeat;
+        }
+  
+        &.menu-item-has-children ul li a,
+        &.menu-item-has-children.active ul li a {
+          background: none;
+          margin-right: 0;
         }
       }
     }
@@ -96,12 +197,6 @@ header.banner {
 
 body.is-active {
   overflow: hidden;
-
-  .brand {
-    position: fixed;
-    z-index: 6;
-    top: 0.7rem;
-  }
 }
 
 nav.nav-mobile nav {
@@ -121,8 +216,8 @@ nav.nav-mobile nav {
   }
 
   ul {
-    margin: 0 auto;
-    padding: 7rem 3rem 3rem 3rem;
+    margin: 5rem auto 0 auto;
+    padding: 2rem 3rem 3rem 3rem;
     opacity: 0;
     transition: opacity 0.5s ease-out;
     list-style-type: none;
@@ -141,6 +236,23 @@ nav.nav-mobile nav {
         font-size: 1.25rem;
         font-weight: 400;
       }
+
+      ul {
+        margin-top: 0;
+        height: auto;
+
+        li a {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  .scrolling-active.logged-in & ul {
+    margin-top: 5rem;
+
+    ul {
+      margin-top: 0;
     }
   }
 
@@ -173,8 +285,20 @@ nav.nav-mobile nav {
 }
 
 .logged-in .hamb,
-.logged-in nav {
-  top: 32px;
+.logged-in nav,
+.logged-in header.banner {
+  top: 2rem;
+
+  @media screen and (max-width: 782px) {
+    top: 2.85rem;
+  }
+}
+
+.scrolling-active.logged-in header.banner,
+.scrolling-active.logged-in .hamb {
+  @media screen and (max-width: 600px) {
+    top: 0;
+  }
 }
 
 .hamb-line {
@@ -232,6 +356,23 @@ nav.nav-mobile nav {
     background: #fff;
     overflow: scroll;
     height: 100vh;
+
+    ul {
+      height: auto;
+      overflow: visible;
+      padding: 0 0 0 1rem;
+
+      li {
+        margin: 0 0 0.5rem 0;
+        padding: 0;
+
+        a {
+          color: $cw-charcoal;
+          line-height: 1;
+          display: inline-flex;
+        }
+      }
+    }
   }
 
   @media (max-width: 580px) {

@@ -57,9 +57,25 @@ domReady(async () => {
       $('.nav-mobile').toggleClass('is-active');
       $('body').toggleClass('is-active');
     });
-  })(jQuery);
 
-   
+    // Add class to body when scrolling to add white background
+    var targetDiv = $('body');
+
+    $(window).scroll(function() {
+
+         var windowpos = $(window).scrollTop();
+
+   // change amount here to choose distance from top to add class
+         if( windowpos >= 1 ) {
+              targetDiv.addClass('scrolling-active');
+         } else {
+              targetDiv.removeClass('scrolling-active');
+         }
+
+    });
+
+
+  })(jQuery);
 
 });
 
