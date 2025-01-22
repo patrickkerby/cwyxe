@@ -97,23 +97,21 @@ header.banner {
         ul.sub-menu {
           visibility: hidden;
           opacity: 0;
-          height: 0;
-          background-color: #e4002b;
           display: flex;
+          justify-content: space-evenly;
           flex-direction: column;
-          list-style-type: none;
-          padding: 0;
+          padding: 1rem;
+          margin-top: 0.5rem;
           position: absolute;
           top: 92%;
-          margin-top: 0.5rem;
-          border-radius: 3px;
           left: 50%;
+          z-index: 9999;
+          list-style-type: none;
+          border-radius: 3px;
           transform: translateX(-50%);
           white-space: nowrap;
-          box-shadow: 0 -3px 20px -20px rgba(0, 0, 0, 0.5);
-          z-index: 9999;
           gap: 0;
-    
+
           @include slowfade();
     
           li {
@@ -165,10 +163,9 @@ header.banner {
         li.active ul {
           visibility: visible;
           opacity: 1;
-          display: flex;
-          padding: 1rem;
-          justify-content: space-evenly;
           height: auto;
+          background-color: #e4002b;          
+          box-shadow: 0 -3px 20px -20px rgba(0, 0, 0, 0.5);
   
           @include slowfade();
         }
