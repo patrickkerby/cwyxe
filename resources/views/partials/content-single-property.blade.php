@@ -163,7 +163,11 @@
               @set($negotiable, '')
             @endif
                 
-            <div class="detail">        
+            <div class="detail">
+              @php 
+                $price = get_sub_field('amount');
+                $price_str = preg_replace('/(\d)(?=(?:\d{3})+$)/', '$1,', $price); 
+              @endphp
               <strong>Price</strong>
               <p>@hassub('amount')${{ $price_str }} @sub('rate_postfix')@endsub {{ $negotiable }}</p>
             </div>
@@ -184,7 +188,7 @@
       </div>
       
       <div class="map">
-        <h4>Location</h4>                  
+        <h4>Location</h4>
         {!! facetwp_display( 'facet', 'single_map' ) !!}
         {!! facetwp_display( 'template', 'single_map' ) !!}
       </div> 
