@@ -144,7 +144,7 @@
                   @php $value = (int) $value; @endphp
                     <div class="detail">        
                       <strong>{{ $label }}</strong>
-                      <p>{{ number_format($value, 3, ',') }} @sub($dimension.'_postfix')</p>
+                      <p>{{ number_format($value, 0, ',') }} @sub($dimension.'_postfix')</p>
                     </div>
                 @endsub
               @endforeach
