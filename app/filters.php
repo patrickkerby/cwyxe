@@ -176,9 +176,71 @@ add_action('facetwp_scripts', function () {
     $args['icon'] = [
       'url' => get_stylesheet_directory_uri() . '/resources/images/map-icons/CWS-map-icon-single.svg',
       'scaledSize' => [
-        'width' => 26,
-        'height' => 26
+        'width' => 30,
+        'height' => 30
       ]
     ];
     return $args;
   }, 10, 2 );
+
+  // Add new icon when marker is clicked
+  add_action( 'facetwp_scripts', function() {
+    ?>
+    <script>
+      (function($) {
+        if ('object' !== typeof FWP) {
+          return;
+        }
+   
+        // Change URL to the default marker icon
+        let icon_default = {
+          url: '/app/themes/cwyxe/resources/images/map-icons/CWS-map-icon-single.svg',
+          scaledSize: {
+            width: 30,
+            height: 30
+          }
+        };
+   
+        // Change URL to the alternative, 'active' icon
+        let icon_active = {
+          url: '/app/themes/cwyxe/resources/images/map-icons/CWS-map-icon-selected.svg',
+          scaledSize: {
+            width: 30,
+            height: 30
+          }
+        };
+   
+        $(function() {
+          FWP.hooks.addAction('facetwp_map/marker/click', function(marker) {
+   
+            // Check if another marker is already active. If so set to default icon
+            if (window.marker_post_id) {
+              let post_id = window.marker_post_id;
+              let marker = FWP_MAP.get_post_markers(post_id)[0];
+              marker.setIcon(icon_default); // or use marker.setIcon(null); for the default pin
+            }
+            // Set the clicked marker to have the 'active' icon
+            window.marker_post_id = marker.post_id;
+            marker.setIcon(icon_active);
+          });
+   
+          // When an infoWindow is closed revert its marker to the default icon
+          google.maps.event.addListener(FWP_MAP.infoWindow, 'closeclick', function() {
+            let post_id = window.marker_post_id;
+            let marker = FWP_MAP.get_post_markers(post_id)[0];
+            marker.setIcon(icon_default); // or use marker.setIcon(null); for the default pin
+          });
+   
+          // When the map is clicked anywhere, revert the active marker to the default icon
+          google.maps.event.addListener(FWP_MAP.map, 'click', function(event) {
+            if (window.marker_post_id) {
+              let post_id = window.marker_post_id;
+              let marker = FWP_MAP.get_post_markers(post_id)[0];
+              marker.setIcon(icon_default); // or use marker.setIcon(null); for the default pin
+            }
+          });
+        });
+      })(jQuery);
+    </script>
+    <?php
+  }, 100 );
