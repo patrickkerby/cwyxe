@@ -170,3 +170,15 @@ add_action('facetwp_scripts', function () {
     </script>
     <?php
   }, 100);
+
+  // Custom map icons
+  add_filter( 'facetwp_map_marker_args', function( $args, $post_id ) {
+    $args['icon'] = [
+      'url' => get_stylesheet_directory_uri() . '/resources/images/map-icons/CWS-map-icon-single.svg',
+      'scaledSize' => [
+        'width' => 26,
+        'height' => 26
+      ]
+    ];
+    return $args;
+  }, 10, 2 );

@@ -18,6 +18,9 @@
   "images/icons/meta-calendar.svg": "images/icons/meta-calendar.27ce8c.svg",
   "images/icons/meta-drag_pan.svg": "images/icons/meta-drag_pan.dae2f5.svg",
   "images/menu-arrow.svg": "images/menu-arrow.0bef2c.svg",
+  "images/map-icons/CWS-map-icon-selected.svg": "images/map-icons/CWS-map-icon-selected.15db27.svg",
+  "images/map-icons/CWS-map-icon-single.svg": "images/map-icons/CWS-map-icon-single.ecbfc8.svg",
+  "images/map-icons/CWS-map-icon-multiple.svg": "images/map-icons/CWS-map-icon-multiple.4796d7.svg",
   "images/icons/download.svg": "images/icons/download.b56aa5.svg",
   "entrypoints.json": "entrypoints.json",
   "../theme.json": "../theme.json"
