@@ -100,7 +100,7 @@ add_filter( 'facetwp_map_init_args', function ( $args ) {
   $args['init']['mapTypeControl']    = false; // roadmap / satellite toggle
   $args['init']['streetViewControl'] = false; // street view / yellow man icon
   $args['init']['fullscreenControl'] = true; // full screen icon
-  $args['init']['maoId'] = '98064b9348db619a'; // map style id
+  $args['init']['mapId'] = '98064b9348db619a'; // map style id
   $args['init']['styles'] = ''; // map style array
   
   /** this overwrites all 4 lines above and will disable ALL of the default ui icons instead of the individual icons above */
