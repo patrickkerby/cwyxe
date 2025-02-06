@@ -141,10 +141,13 @@
               @hassub($dimension)
                   @set($label, get_sub_field_object($dimension)['label'])
                   @set($value, get_sub_field_object($dimension)['value'])
-                  @php $value = (int) $value; @endphp
+
+                  @php 
+                  var_dump($value);
+                  $value = (float) $value; @endphp
                     <div class="detail">        
                       <strong>{{ $label }}</strong>
-                      <p>{{ number_format($value, 0, ',') }} @sub($dimension.'_postfix')</p>
+                      <p>{{ number_format($value, 2, '.') }} @sub($dimension.'_postfix')</p>
                     </div>
                 @endsub
               @endforeach
