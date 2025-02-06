@@ -244,3 +244,31 @@ add_action('facetwp_scripts', function () {
     </script>
     <?php
   }, 100 );
+
+  // Custom map cluster icons
+  // add_filter( 'facetwp_map_init_args', function( $settings ) {
+  //   $clustericonsizes     = array( 30, 30, 30, 30, 30 ); // specify custom icon image sizes
+  //   $clustericontextsizes = array( 13, 13, 13, 13, 13 ); // specify custom icon text sizes
+  //   for ( $i = 1; $i <= 5; $i ++ ) {
+  //     $settings['config']['cluster']['styles'][] = [
+  //       'url'       => '/app/themes/cwyxe/resources/images/map-icons/CWS-map-icon-multiple.svg', // custom directory, required. The url becomes the CSS background-image url.
+  //       // 'width'     => $clustericonsizes[ $i - 1 ], // required
+  //       'width'     => 24, // required
+  //       'height'    => 32, // required
+  //       // 'height'    => $clustericonsizes[ $i - 1 ], // required
+  //       'textColor' => '#ffffff', // white, optional
+  //       'textSize'  => $clustericontextsizes[ $i - 1 ], // optional
+  //   //  'anchor' => [5,5], // Optional. Anchor position of the label text. By default label text is centered horizontally and vertically in the icon. [10,20] means 10px from the top of the icon (y) and 20px (x) from the left of the icon. Values need to be smaller than width and height of the icon to take effect.
+  //   //  'iconAnchor' => [0,0], // Optional. The negative anchor position of the icon. [10,20] means the left top of the icon is 10px left of the lat/lng center, and 20px above the lat/lng center. Without iconAnchor values, the icon is centered on the lat/lng center horizontally and vertically.
+  //   //  'backgroundPosition' => '0 0' // Optional. The CSS background-position of the icon images, including 'px'. Default= '0,0'.
+  //     ];
+  //   }
+  //   return $settings;
+  // } );
+
+  add_filter( 'facetwp_map_init_args', function( $args ) {
+    if ( isset( $args['config']['cluster'] ) ) {
+      $args['config']['cluster']['cssClass'] = 'my-cluster-class'; 
+    }
+    return $args;
+  } );
