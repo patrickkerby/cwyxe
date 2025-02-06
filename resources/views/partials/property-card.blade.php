@@ -2,7 +2,7 @@
     <div class="property card">
         <div class="image">
             @hasfield('primary_image')                
-            <img src="@field('primary_image', 'url')" alt="@field('primary_image', 'alt')">
+            <a href="@permalink"><img src="@field('primary_image', 'url')" alt="@field('primary_image', 'alt')"></a>
             @endfield
         </div>
         <div class="content">    
@@ -38,7 +38,7 @@
     <div class="property card">
         <div class="image">
             @if($property['primary_image'])
-            <img src="{{ $property['primary_image']['url']}}" alt="{{ $property['primary_image']['url']}}">
+            <a href="@permalink"><img src="{{ $property['primary_image']['url']}}" alt="{{ $property['primary_image']['url']}}"></a>
             @endif
         </div>
         <div class="content">
