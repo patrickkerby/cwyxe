@@ -143,7 +143,6 @@
                   @set($value, get_sub_field_object($dimension)['value'])
 
                   @php 
-                  var_dump($value);
                   $value = (float) $value; @endphp
                     <div class="detail">        
                       <strong>{{ $label }}</strong>
