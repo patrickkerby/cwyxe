@@ -86,6 +86,12 @@ button.button {
     width: 60vw !important;
     height: 4rem !important;
     padding-left: 1.5rem;
+    max-width: 1000px;
+
+    @media (max-width: 580px) {
+        width: 85vw !important;
+    }
+
 }
 
 .property-search .facetwp-icon {
