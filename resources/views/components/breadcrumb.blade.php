@@ -11,7 +11,7 @@
       @if (empty($item['url']) && $item['label'] == 'Our People' && is_singular('agent')) 
         <span class="current cursor-default">
           <a href="/our-people">
-            {{ $item['label'] }}
+            {!! $item['label'] !!}
           </a>
         </span> |
 
@@ -28,7 +28,7 @@
       
       @elseif (empty($item['url']))
         <span class="current cursor-default">
-          {{ $item['label'] }}
+          {!! $item['label'] !!}
         </span>
       
       {{-- For Insights Articles, replace archive links with links to facet-filtered insights landing page --}}
