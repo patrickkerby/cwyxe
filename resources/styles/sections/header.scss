@@ -50,6 +50,10 @@ section.page-header {
       margin: 3rem auto;
       @include slowfade();
     }
+
+    .property-search & {
+      margin: 5.5rem auto auto auto;
+    }
   }
 
   h1, h2, span {
