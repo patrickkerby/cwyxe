@@ -118,7 +118,7 @@ header.banner {
             position: static;
     
             a {
-              color: #fff;
+              color: $cw-charcoal-light;
               font-size: 1rem;
               padding: 1rem;
               text-transform: none;
@@ -126,7 +126,7 @@ header.banner {
               @include slowfade();
     
               &:hover {
-                color: $cw-red-dark;
+                color: $cw-charcoal;
                 @include slowfade();
               }
             }
@@ -138,11 +138,11 @@ header.banner {
             &::before {
               content: "";
               position: absolute;
-              top: -10px;
+              top: -20px;
               left: 50%;
               transform: translateX(-50%);
-              border: 6px solid transparent;
-              border-bottom-color: $cw-red;
+              border: 10px solid transparent;
+              border-bottom-color: #fff;
             }
           }
     
@@ -164,8 +164,8 @@ header.banner {
           visibility: visible;
           opacity: 1;
           height: auto;
-          background-color: #e4002b;          
-          box-shadow: 0 -3px 20px -20px rgba(0, 0, 0, 0.5);
+          background-color: #fff;          
+          box-shadow: 0 0 26px -20px rgba(0, 0, 0, 0.5);
   
           @include slowfade();
         }
