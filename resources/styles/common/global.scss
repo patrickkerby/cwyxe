@@ -241,6 +241,7 @@ a.button:hover {
 
   span.current {
     color: #fff;
+    text-wrap-mode: nowrap;
 
     .single &,
     .insights & {
