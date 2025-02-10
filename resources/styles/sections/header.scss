@@ -183,6 +183,11 @@ section.page-header {
       align-items: center;
       position: relative;
       column-gap: 2rem;
+
+      @media screen and (max-width: 860px) {
+        flex-direction: column;
+        row-gap: 1.5rem;
+      }
     }
 
     h1, h2, h3 {

@@ -42,6 +42,10 @@
         column-gap: 1.5rem;
         row-gap: 0;
 
+        @media screen and (max-width: 695px) {
+            display: flex;
+        }
+
         .card {
             width: 100%;
             text-wrap: pretty;
@@ -85,6 +89,14 @@
             border-bottom: solid 1px #EAEBEB;
             justify-content: flex-end;
             padding: 1.5rem 0;
+
+            @media screen and (max-width: 695px) {
+                margin-bottom: 0;
+
+                a {
+                    margin: auto;
+                }
+            }
 
             .content {
                 width: 75%;
