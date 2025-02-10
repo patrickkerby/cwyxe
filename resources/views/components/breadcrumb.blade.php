@@ -25,6 +25,13 @@
             Insights
           </a>
         </span> |
+
+      @elseif ($item['label'] == 'Properties')
+        <span class="current cursor-default">
+          <a href="/property-search">
+            Properties
+          </a>
+        </span> |  
       
       @elseif (empty($item['url']))
         <span class="current cursor-default">
@@ -75,7 +82,9 @@
           </a>
           <meta property="position" content="{{ $loop->iteration }}">
         </span>
-        @if (!$loop->last)|@endif
+        @if (!$loop->last)
+          |
+        @endif
       @endif
     @endforeach
   </nav>
