@@ -327,7 +327,7 @@ nav.nav-mobile nav {
 
 .nav-title {
   font-size: 0.8125rem;
-  font-weight: 700;
+  font-weight: 600;
   color: #e4002b;
   position: relative;
   top: 1rem;
@@ -337,6 +337,7 @@ nav.nav-mobile nav {
   opacity: 1;
   transition: all 0.4s ease-out;
   text-transform: uppercase;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 .nav-mobile input {
