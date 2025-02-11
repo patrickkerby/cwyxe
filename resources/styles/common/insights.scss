@@ -12,6 +12,12 @@
             width: 100%;
         }
     }
+
+    section.page-header h1 {
+        @media screen and (max-width: 680px) {
+            font-size: 2.25rem;
+        }
+    }
 }
 
 .insights-container {
@@ -129,6 +135,10 @@
     section.page-header,
     .main {
         width: 70%;
+
+        @media screen and (max-width: 860px) {
+            width: 86%;
+        }
     }
 
     img {
@@ -139,4 +149,8 @@
         margin-top: 2.5rem;
         width: 14rem;
     }
+}
+
+.single-post .brand img {
+    margin: 0;
 }

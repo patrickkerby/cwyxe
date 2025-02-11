@@ -4,6 +4,14 @@
         // margin: 0 1rem;
         height: 40rem;
         margin-bottom: 3rem;
+
+        @media (max-width: 680px) {
+            height: auto;
+
+            .button {
+                margin-bottom: 1.5rem;
+            }
+        }
     }
 
     .gm-style iframe + div { border:none!important; }
@@ -39,6 +47,10 @@
         h2 {
             margin: 0;
             font-size: 2rem;
+
+            @media (max-width: 779px) {
+                font-size: 1.5rem;
+            }
         }
     }
 }
@@ -52,7 +64,6 @@
 
     @media (max-width: 779px) {
         grid-template-columns: auto;
-        margin-top: 6rem;
     }
 
     .grid-head {
