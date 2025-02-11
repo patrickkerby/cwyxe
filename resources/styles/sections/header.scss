@@ -113,7 +113,7 @@ section.page-header {
 
     @media screen and (max-width: 695px) {
       font-size: 1rem;
-      max-width: 75%;
+      max-width: 100%;
       @include slowfade();
     }
   }
