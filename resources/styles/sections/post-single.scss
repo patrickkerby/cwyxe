@@ -69,7 +69,7 @@
 
       @media screen and (max-width: 680px) {
         width: 100%;
-        flex-direction: row;
+        // flex-direction: row;
         padding: 0;
         margin-bottom: 1rem;
         align-items: flex-start;
@@ -112,7 +112,7 @@
       }
 
       .container {
-        @media screen and (max-width: 780px) {
+        @media screen and (max-width: 1080px) {
           flex-flow: column;
         }
       }
@@ -125,7 +125,7 @@
         gap: 0;
         min-width: 22rem;
 
-        @media screen and (max-width: 780px) {
+        @media screen and (max-width: 1080px) {
           width: 100%;
           margin-top: 2rem;
         }
@@ -212,7 +212,7 @@
         margin-left: 0;
         margin-right: 1.5rem;
 
-        @media screen and (max-width: 780px) {
+        @media screen and (max-width: 1080px) {
           width: 100%;
         }
 
@@ -259,6 +259,10 @@
         margin-top: 0.75rem;
         margin-bottom: 1.5rem;
         gap: 1.5rem;
+        
+        @media screen and (max-width: 780px) {
+          flex-direction: column;
+        }
 
         .label {
          color: $cw-grey;
