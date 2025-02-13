@@ -133,6 +133,25 @@ add_filter( 'facetwp_map_init_args', function ( $args ) {
 
 add_action('facetwp_scripts', function () {
   ?>
+  <script>
+    (function($) {
+      FWP.hooks.addAction('facetwp/reset', function() {
+        $.each(FWP.facet_type, function(type, name) {
+          if ('map' === type) {
+            var $button = $('.facetwp-map-filtering');
+            $button.text(FWP_JSON['map']['filterText']);
+            FWP_MAP.is_filtering = false;
+            $button.toggleClass('enabled');
+          }
+        });
+      });
+    })(fUtil);
+  </script>
+  <?php
+}, 100);
+
+add_action('facetwp_scripts', function () {
+  ?>
     <script>
       (function($) {
         document.addEventListener('facetwp-loaded', function() {
@@ -152,24 +171,7 @@ add_action('facetwp_scripts', function () {
   <?php
   }, 100);
 
-  add_action('facetwp_scripts', function () {
-    ?>
-    <script>
-      (function($) {
-        FWP.hooks.addAction('facetwp/reset', function() {
-          $.each(FWP.facet_type, function(type, name) {
-            if ('map' === type) {
-              var $button = $('.facetwp-map-filtering');
-              $button.text(FWP_JSON['map']['filterText']);
-              FWP_MAP.is_filtering = false;
-              $button.toggleClass('enabled');
-            }
-          });
-        });
-      })(fUtil);
-    </script>
-    <?php
-  }, 100);
+
 
   // Custom map icons
   add_filter( 'facetwp_map_marker_args', function( $args, $post_id ) {
