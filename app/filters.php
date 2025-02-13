@@ -251,3 +251,12 @@ add_action('facetwp_scripts', function () {
     }
     return $args;
   } );
+
+  add_filter( 'facetwp_preload_url_vars', function( $url_vars ) {
+    if ( 'property-search' == FWP()->helper->get_uri() ) { // Replace 'demo/cars' with the URI of your page (everything after the domain name, excluding any slashes at the beginning and end)
+      if ( empty( $url_vars['availability'] ) ) { // Replace 'make' with the name of your facet
+        $url_vars['availability'] = [ 'lease' ]; // Replace 'audi' with the facet choice that needs to be pre-selected. Use the technical name/slug as it appears in the URL when filtering
+      }
+    }
+    return $url_vars;
+  } );

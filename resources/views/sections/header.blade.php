@@ -79,6 +79,9 @@
     <div class="breadcrumb">
       <x-breadcrumb />
     </div>
+    <div class="search-type">
+      {!! facetwp_display( 'facet', 'availability' ) !!}
+    </div>
     <h1>Property Lease Search</h1>
     <div class="search card">
       {!! facetwp_display( 'facet', 'search' ) !!}
