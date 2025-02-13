@@ -82,7 +82,7 @@
     <div class="search-type">
       {!! facetwp_display( 'facet', 'availability' ) !!}
     </div>
-    <h1>Property Lease Search</h1>
+    <h1>Properties Search</h1>
     <div class="search card">
       {!! facetwp_display( 'facet', 'search' ) !!}
     </div>
