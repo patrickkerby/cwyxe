@@ -30,7 +30,7 @@
             <span>Min / Max Area</span>
             
             {{-- {!! facetwp_display( 'facet', 'min_max_fields' ) !!} --}}
-            {!! facetwp_display( 'facet', 'min_area_homepage' ) !!}
+            {!! facetwp_display( 'facet', 'min__max_area_homepage' ) !!}
         </div>
 
         <div style="display: none;">
