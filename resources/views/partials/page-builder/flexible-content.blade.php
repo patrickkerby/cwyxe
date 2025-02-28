@@ -1,10 +1,10 @@
 @php
   $content = get_sub_field('content');
+  $border = get_sub_field('following-border');
 @endphp
 
-<section class="row content-row justify-content-center">
-  <div class="col-9 col-sm-8">
-   <h1>test</h1>
+<section class="flexible-content {{ $border ? 'border-follow' : '' }}">
+  <div class="wysiwyg columns-@sub('columns')">    
     {!! $content !!}
   </div>
 </section>

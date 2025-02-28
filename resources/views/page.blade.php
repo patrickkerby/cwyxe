@@ -17,4 +17,5 @@
       endif;
     @endphp
     @includeFirst(['partials.content-page', 'partials.content'])
+    @include('partials.cta')
 @endsection
