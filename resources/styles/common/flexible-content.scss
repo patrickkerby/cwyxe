@@ -67,6 +67,7 @@
 
         &.right {
             flex-direction: row-reverse;
+            justify-content: space-between;
 
             img {
                 margin-left: 2rem;
