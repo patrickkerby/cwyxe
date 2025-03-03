@@ -144,6 +144,10 @@
         .column-start {
             break-before: column;
         }
+
+        &.v2 {
+            display: flex;
+        }
     }
 
     .full-width {

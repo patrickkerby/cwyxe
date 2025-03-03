@@ -4,7 +4,7 @@
 @endphp
 
 <section class="flexible-content {{ $border ? 'border-follow' : '' }}">
-  <div class="wysiwyg">
+  <div class="wysiwyg v2">
     @hassub('content_1col')
       <div class="columns-1">
         @sub('content_1col')
