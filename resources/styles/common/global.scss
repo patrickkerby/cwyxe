@@ -175,6 +175,7 @@ a.button:hover {
     &:hover {
       text-decoration: none;
       color: #fff !important;
+      background: $cw-red;
       @include slowfade();
     }
   }
