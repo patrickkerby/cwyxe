@@ -3,7 +3,7 @@
   $border = get_sub_field('following-border');
 @endphp
 
-<section class="flexible-content {{ $border ? 'border-follow' : '' }}">
+<section class="flexible-content {{ $border ? 'border-follow' : '' }} @hassub('vertical_padding')extrapadding-@sub('vertical_padding') @endsub">
   <div class="wysiwyg v2">
     @hassub('content_1col')
       <div class="columns-1">

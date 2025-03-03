@@ -1,6 +1,7 @@
 .flexible-content {
     width: 86%;
-    margin: 2.5rem auto 0 auto;
+    margin: 0 auto 0 auto;
+    padding: 2rem 0;
 
     @media screen and (max-width: 860px) {
         width: 100%;
@@ -15,8 +16,6 @@
         grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
         column-gap: 1.5rem;
         row-gap: 1.5rem;
-        margin-top: 5rem;
-        margin-bottom: 5rem;
 
         &.count-3 {
             grid-template-columns: 1fr 1fr 1fr;
@@ -56,7 +55,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        margin: 3rem 0 0 0;
+        margin: 0;
 
         img {
             max-width: 50%;
@@ -160,14 +159,11 @@
     }
 
     &.full-wdith-photo {
-        margin: 4rem 0;
         width: 100%;
     }
 
     .full-width {
         // margin: 0 calc(50% - 50vw);
-        margin-top: 5rem;
-        margin-bottom: 5rem;
         max-height: 30rem;
         object-fit: cover;
         overflow: hidden;
@@ -180,8 +176,19 @@
 
     &.border-follow {
         border-bottom: 4px solid #ededed;
-        margin-bottom: 3rem;
         padding-bottom: 3rem;
+    }
+
+    &.extrapadding-both {
+        padding: 4rem 0;
+    }
+
+    &.extrapadding-top {
+        padding-top: 4rem;   
+    }
+
+    &.extrapadding-bottom {
+        padding-bottom: 4rem;
     }
 
     p:last-child {
