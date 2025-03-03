@@ -108,7 +108,11 @@
         h2 {
             column-span: all;
             margin-bottom: 1.5rem;
-        }    
+        }
+        
+        h3 {
+            margin-top: 0;
+        }
 
         .column-start {
             break-before: column;
