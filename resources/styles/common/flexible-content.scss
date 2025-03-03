@@ -157,8 +157,13 @@
         }
     }
 
+    &.full-wdith-photo {
+        margin: 4rem 0;
+        width: 100%;
+    }
+
     .full-width {
-        margin: 0 calc(50% - 50vw);
+        // margin: 0 calc(50% - 50vw);
         margin-top: 5rem;
         margin-bottom: 5rem;
         max-height: 30rem;
