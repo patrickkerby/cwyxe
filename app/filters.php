@@ -276,22 +276,22 @@ function my_mce_before_init_insert_formats( $init_array ) {
 	// Define the style_formats array
 	$style_formats = array(  
 		// Each array child is a format with it's own settings
-		array(  
-			'title' => 'H3 (Start New Column)',  
-      'selector' => 'h3',
-			'classes' => 'column-start',
-    ),  
-		array(  
+    array(  
 			'title' => 'Intro Text',  
 			'selector' => 'p',  
 			'classes' => 'intro-text',
 		),
-		// array(  
-		// 	'title' => '.ltr⇢',  
-		// 	'block' => 'blockquote',  
-		// 	'classes' => 'ltr',
-		// 	'wrapper' => true,
-		// ),
+    array(  
+			'title' => 'H3 (Start New Column)',  
+      'selector' => 'h3',
+			'classes' => 'column-start',
+    ),
+		array(  
+			'title' => 'Span all columns',  
+			'inline' => 'span',  
+			'classes' => 'span-colums',
+			'wrapper' => true,
+		),
 	);  
 	// Insert the array, JSON ENCODED, into 'style_formats'
 	$init_array['style_formats'] = wp_json_encode( $style_formats );  

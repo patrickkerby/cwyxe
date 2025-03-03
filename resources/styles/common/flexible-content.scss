@@ -148,6 +148,12 @@
         &.v2 {
             display: flex;
         }
+
+        .span-colums {
+            column-span: all;
+            display: flex;
+            margin-bottom: 2rem;
+        }
     }
 
     .full-width {
