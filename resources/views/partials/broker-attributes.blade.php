@@ -8,7 +8,8 @@
       ul.pills li.{{ $item->slug }} a:hover { background: {{ $color }} !important; }
     </style>
     <li class="{{ $item->slug }}">
-      <a style="color: {{ $color }}; border-color: {{ $color }};" href="{{ $item->slug }}">{!! $item->name !!}</a>
+      <!-- a style="color: {{ $color }}; border-color: {{ $color }};" href="{{ $item->slug }}">{!! $item->name !!}</a -->
+      <a style="color: {{ $color }}; border-color: {{ $color }};" href="#">{!! $item->name !!}</a>
     </li>
   @endforeach
 </ul>
