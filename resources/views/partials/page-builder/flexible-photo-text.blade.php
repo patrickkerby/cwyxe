@@ -10,7 +10,9 @@
             @group('feature-content')
                 <h3>@sub('feature_title')</h3>
                 <p>@sub('feature_text')</p>
-                <a href="@sub('button', 'url')" class="button">@sub('button_text')</a>
+                @hassub('button')
+                    <a href="@sub('button', 'url')" class="button">@sub('button_text')</a>
+                @endsub
             @endgroup
         </div>
       @endif

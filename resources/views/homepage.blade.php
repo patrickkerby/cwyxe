@@ -71,7 +71,7 @@
             </div>
         </div>
     </section>
-    @include('partials.cta')
+    @include('partials.cta-homepage', ['count' => 'first'])
     <section class="insights">
         <h4>Insights</h4>
         <div class="insights-grid">
@@ -95,6 +95,7 @@
     <section class="statistics">
         @include('partials.cta-stats')
     </section>
+    @include('partials.cta-homepage', ['count' => 'second'])
     <section class="featured-properties">
         <h4>Featured Properties</h4>
         <div class="properties-grid">
