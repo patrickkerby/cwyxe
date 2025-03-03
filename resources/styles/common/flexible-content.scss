@@ -104,9 +104,28 @@
     .wysiwyg {
         column-gap: 4rem;
 
+        h2 {
+            column-span: all;
+            margin-bottom: 1.5rem;
+        }
+
         h3 {
             font-size: 1.5rem;
             margin-top: 0;
+        }
+
+        .column-start {
+            break-before: column;
+        }
+
+        &.v2 {
+            display: flex;
+        }
+
+        .span-colums {
+            column-span: all;
+            display: flex;
+            margin-bottom: 2rem;
         }
 
         @media (max-width: 900px) {
@@ -135,25 +154,6 @@
             h3 {
                 margin-top: 2rem !important;
             }
-        }
-
-        h2 {
-            column-span: all;
-            margin-bottom: 2rem;
-        }
-
-        .column-start {
-            break-before: column;
-        }
-
-        &.v2 {
-            display: flex;
-        }
-
-        .span-colums {
-            column-span: all;
-            display: flex;
-            margin-bottom: 2rem;
         }
     }
 
