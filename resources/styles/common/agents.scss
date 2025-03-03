@@ -38,12 +38,12 @@
       }
 
       a {
-        color: $cw-charcoal;
+        color: $cw-red;
         @include slowfade();
 
         &:hover {
           text-decoration: none;
-          color: darken($color: $cw-charcoal, $amount: 10%);
+          color: darken($color: $cw-red, $amount: 10%);
           @include slowfade();
         }
       }
