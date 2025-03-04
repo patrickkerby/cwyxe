@@ -10,7 +10,8 @@ label {
 }
 
 input,
-select {
+select,
+textarea {
     display: flex;
     padding: 0.75rem 0.5rem;
     align-items: center;
