@@ -108,10 +108,12 @@
         h2 {
             column-span: all;
             margin-bottom: 1.5rem;
+            text-wrap: auto;
         }
         
         h3 {
             margin-top: 0;
+            text-wrap: auto;
         }
 
         .column-start {
