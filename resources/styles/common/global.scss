@@ -90,7 +90,8 @@ a:hover {
 
 .button,
 a.button:link,
-a.button:active {
+a.button:active,
+button {
   display: inline-flex;
   padding: 1.1875rem;
   margin: 1rem 0 0 0;
@@ -105,7 +106,8 @@ a.button:active {
 }
 
 .button:hover,
-a.button:hover {
+a.button:hover,
+button {
   background: color.scale($cw-red, $lightness: -10%);
   text-decoration: none;
   @include slowfade();
