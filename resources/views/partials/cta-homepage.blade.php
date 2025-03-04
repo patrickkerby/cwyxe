@@ -16,12 +16,11 @@
                         <div class="content related_post">
                             <p>{{ $cta['related_post_label'] }}</p>
                             @php
-                                $post = get_post( get_sub_field('related_post') );
-                                $title = $post->post_title;
+                                $post = $cta['related_post'];
                                 $url = get_permalink( $post->ID );
                             @endphp
                             @if($post)
-                                <a href="{{ $url }}" class="button">{{ $title }}</a>
+                                <a href="{{ $url }}" class="button">{{ $post->post_title }}</a>
                             @endif
                         </div>
                     @endif
@@ -43,12 +42,11 @@
                         <div class="content related_post">
                             <p>{{ $cta['related_post_label'] }}</p>
                             @php
-                                $post = get_post( get_sub_field('related_post') );
-                                $title = $post->post_title;
+                                $post = $cta['related_post'];
                                 $url = get_permalink( $post->ID );
                             @endphp
                             @if($post)
-                                <a href="{{ $url }}" class="button">{{ $title }}</a>
+                                <a href="{{ $url }}" class="button">{{ $post->post_title }}</a>
                             @endif
                         </div>
                     @endif
