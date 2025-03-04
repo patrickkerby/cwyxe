@@ -30,6 +30,18 @@ select {
     font-weight: 300;
 }
 
+.form-row {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin: 2rem 0;
+
+    input[type='checkbox'] {
+        width: auto;
+        margin: 0;
+    }
+}
+
 // form button.button {
 //     background: lighten($color: $cw-red, $amount: 20%) !important;
 // }

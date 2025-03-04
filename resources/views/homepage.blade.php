@@ -109,5 +109,19 @@
             @endforeach
         </div>
     </section>
+    <section class="listing-alerts">
+        <form action="" class="">
+            <h4>Sign up for listing alerts</h4>
+            <label>Name</label>
+            <input type="text" placeholder="John Smith">
+            <label>Email</label>
+            <input type="text" placeholder="john@example.com">
+            <div class="form-row">
+                <input id="subscribe" class="cws-form-checkbox" name="subscribe" type="checkbox" value="yes" />
+                <label class="cws-form-checkbox-label" for="subscribe">Yes, I would like to receive property listings, news, and market intelligence from Cushman &amp; Wakefield Saskatoon.</label>
+            </div>
+            <button class="button">Sign up</button>
+        </form>
+    </section>
   @endwhile
 @endsection
