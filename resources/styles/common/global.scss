@@ -438,6 +438,22 @@ a.button:hover {
     height: 100%;
     width: 100%;
   }
+
+  .content.related_post {
+    border-top: solid 1px #eaebeb !important;
+    padding-top: 1rem;
+
+    p {
+      margin-top: 0;
+      font-size: 0.875rem;
+    }
+
+    a.button {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+  }
 }
 
 .page .cta {

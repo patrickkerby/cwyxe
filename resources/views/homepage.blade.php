@@ -48,7 +48,7 @@
 
         </div>
     </section>
-    <section class="featured-property-types">
+    {{-- <section class="featured-property-types">
         <h4>Listing by Property Type</h4>
         <div class="property-type-grid">
             @foreach($propertyTypes['featured_property_types'] as $featured_property_type) 
@@ -70,7 +70,7 @@
             </form>
             </div>
         </div>
-    </section>
+    </section> --}}
     @include('partials.cta-homepage', ['count' => 'first'])
     <section class="insights">
         <h4>Insights</h4>

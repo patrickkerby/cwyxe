@@ -216,10 +216,27 @@
     a.button {
         background: #fff;
         width: 32%;
-        padding: 0 1.5rem 2rem 1.5rem;
+        padding: 0 1.5rem 1.5rem 1.5rem;
         color: $cw-red !important;
         margin-left: 7rem;
         justify-content: flex-start;
+    }
+
+    .content.related_post {
+        border-top: solid 1px #eaebeb !important;
+        padding-top: 1rem;
+        padding-bottom: 1.5rem;
+    
+        p {
+          margin-top: 0;
+          font-size: 0.875rem;
+        }
+    
+        a.button {
+          margin: 0;
+          padding: 0;
+          width: 100%;
+        }
     }
 
     @media screen and (max-width: 768px) {
