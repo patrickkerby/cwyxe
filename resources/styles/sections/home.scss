@@ -196,7 +196,7 @@
         background: #ffffff;
         border-top: solid 3px $cw-blue;
         width: 32%;
-        padding: 2rem 1.5rem 1rem 1.5rem;
+        padding: 2rem 1.5rem 1.25rem 1.5rem;
         margin-left: 7rem;
 
         h3,
@@ -211,17 +211,18 @@
 
     a.button {
         background: #fff;
-        width: 32%;
-        padding: 0 1.5rem 1.5rem 1.5rem;
         color: $cw-red !important;
-        margin-left: 7rem;
+        margin: 1rem 0 0 0;
+        padding: 0;
         justify-content: flex-start;
     }
 
     .content.related_post {
         border-top: solid 1px #eaebeb !important;
         padding-top: 1rem;
-        padding-bottom: 1.5rem;
+        padding-bottom: 0;
+        margin: 1rem -1.5rem 0 -1.5rem;
+        width: 100%;
     
         p {
           margin-top: 0;
@@ -236,29 +237,29 @@
     }
 
     @media screen and (max-width: 768px) {
-        height: auto;
+        height: 24rem;
+
+        a.button {
+            width: 90%;
+            margin-bottom: 0;
+        }
 
         .content {
             width: 90%;
             margin: auto;
             display: flex;
             flex-direction: column;
-            order: 2;
-        }
-
-        img {
-            order: 1;
-            position: static;
-        }
-
-        a.button {
-            order: 3;
-            margin: 0 auto 1rem auto;
-            width: 90%;
-            padding: 1rem;
-            justify-content: center;
         }
     }
+
+    @media screen and (max-width: 580px) {
+        .content {
+            width: 80%;
+            align-items: flex-start;
+            text-align: left;
+            @include slowfade();
+        }
+      }
 }
 
 section.insights {
