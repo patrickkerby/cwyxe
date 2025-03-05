@@ -120,7 +120,7 @@ button {
 }
 
 .btn-hollow {
-  border: solid 2px $cw-red;
+  border: solid 2px $cw-red !important;
   color: $cw-red !important;
   text-transform: uppercase;
   font-weight: 400;
@@ -129,6 +129,7 @@ button {
   padding: 1.1875rem;
   text-align: center;
   background: rgba($cw-red-dark, 0);
+
   @include slowfade();
 
   &:hover {
