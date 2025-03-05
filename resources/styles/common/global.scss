@@ -133,8 +133,8 @@ button {
   @include slowfade();
 
   &:hover {
-    background: $cw-red;
-    color: #fff;
+    background: $cw-red !important;
+    color: #fff !important;
     @include slowfade();
     text-decoration: none;
   }
