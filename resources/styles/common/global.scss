@@ -128,7 +128,7 @@ button {
   justify-content: center;
   padding: 1.1875rem;
   text-align: center;
-  background: rgba($cw-red-dark, 0);
+  background: rgba($cw-red-dark, 0) !important;
 
   @include slowfade();
 
