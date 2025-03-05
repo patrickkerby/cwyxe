@@ -121,7 +121,7 @@ button {
 
 .btn-hollow {
   border: solid 2px $cw-red;
-  color: $cw-red;
+  color: $cw-red !important;
   text-transform: uppercase;
   font-weight: 400;
   display: flex;

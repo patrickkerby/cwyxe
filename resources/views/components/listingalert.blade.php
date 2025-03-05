@@ -5,7 +5,7 @@
     <label>Email</label>
     <input type="text" placeholder="john@example.com">
     @if(is_singular('property'))
-    <button class="buttoan btn-hollow">Submit</button>
+        <button class="button btn-hollow">Submit</button>
     @else
     <button class="button">Submit</button>
     @endif
