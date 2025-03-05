@@ -104,6 +104,7 @@
 
     .wysiwyg {
         column-gap: 4rem;
+        display: flex;
 
         h2 {
             column-span: all;
@@ -120,45 +121,24 @@
             break-before: column;
         }
 
-        &.v2 {
-            display: flex;
-        }
-
         .columns-2 {
             width: 50%;
         }
 
-        .span-colums {
-            column-span: all;
-            display: flex;
-            margin-bottom: 2rem;
-        }
-
-        @media (max-width: 900px) {
-            column-gap: 2rem;
-        }
-
-        @media (max-width: 800px) {
-            column-gap: 1rem;
-        }
-
-        &.columns-two {
-            column-count: 2;
-        }
-
-        &.columns-three {
-            column-count: 3;
-
-            h3 {
-                margin-top: 0;
-            }
-        }
-
         @media (max-width: 779px) {
             column-count: auto !important;
+            width: 100%;
+            flex-direction: column;
 
             h3 {
                 margin-top: 2rem !important;
+            }
+
+            .columns-1,
+            .columns-2,
+            .columns-3 {
+                width: 100%;
+                margin-bottom: 2rem;
             }
         }
     }
