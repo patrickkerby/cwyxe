@@ -133,9 +133,10 @@
             .columns-2,
             .columns-3 {
                 width: 100%;
+                margin-bottom: 0;
 
                 > :last-child {
-                    margin-bottom: 2rem;
+                    margin-bottom: 0;
                 }
             }
         }
