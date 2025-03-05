@@ -181,6 +181,20 @@
         padding-bottom: 4rem;
     }
 
+    @media (max-width: 779px) {
+        &.extrapadding-both {
+            padding: 3rem 0;
+        }
+    
+        &.extrapadding-top {
+            padding-top: 3rem;   
+        }
+    
+        &.extrapadding-bottom {
+            padding-bottom: 3rem;
+        }
+    }
+
     p:last-child,
     ul:last-child,
     li:last-child {
