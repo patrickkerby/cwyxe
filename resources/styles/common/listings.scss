@@ -145,6 +145,36 @@
     }
 }
 
+// Mobile Flyout
+
+.facetwp-flyout.active {
+    width: 400px !important;
+}
+
+.facetwp-flyout-close,
+.facetwp-flyout-content {
+    padding: 1.5rem !important;
+}
+
+.flyout-item {
+    margin-bottom: 1.5rem !important;
+
+    .facetwp-facet {
+        .facetwp-input-wrap {
+            width: 100%;
+
+            input.facetwp-search {
+                width: 100% !important;
+            }
+        }
+    }
+}
+
+.flyout-row h3 {
+    font-size: 1.25rem;
+    margin: 0 0 1rem 0;
+}
+
 // Map Info Windows
 
 .gm-style .gm-style-iw-c,
@@ -223,8 +253,7 @@ button.gm-ui-hover-effect {
 
 // Utils
 .facetwp-map-filtering,
-.gm-style-iw-ch,
-.flyout-row h3 {
+.gm-style-iw-ch {
     display: none;
 }
 
