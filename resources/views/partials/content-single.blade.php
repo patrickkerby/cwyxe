@@ -11,19 +11,19 @@
 
 @if($lead_gen)
 
-  <form class="cws-form" id="request_form" action="https://hook.us1.make.com/p0r1wtndfmnd8qkkin7eo4l545qng2bc" method="POST">
-    <label class="cws-form-label" for="name">Name</label>
-    <input id="name" class="cws-form-input" name="name" required="" type="text" />
-    <label class="cws-form-label" for="company">Company</label>
-    <input id="company" class="cws-form-input" name="company" required="" type="text" />
-    <label class="cws-form-label" for="email">Email</label>
-    <input id="email" class="cws-form-input" name="email" required="" type="email" />
+  <form id="request_form" action="https://hook.us1.make.com/p0r1wtndfmnd8qkkin7eo4l545qng2bc" method="POST">
+    <label for="name">Name</label>
+    <input id="name" name="name" required="" type="text" />
+    <label for="company">Company</label>
+    <input id="company" name="company" required="" type="text" />
+    <label for="email">Email</label>
+    <input id="email" name="email" required="" type="email" />
     <input id="field_53fdd05" name="page" type="hidden" />
-  <div class="form-row">
-    <input id="subscribe" class="cws-form-checkbox" name="subscribe" type="checkbox" value="yes" />
-    <label class="cws-form-checkbox-label" for="subscribe">Yes, I would like to receive property listings, news, and market intelligence from Cushman &amp; Wakefield Saskatoon.</label>
-  </div>
-  <button class="cws-form-button button" type="submit">Download Summary Report</button>
+    <div class="form-row">
+      <input id="subscribe" name="subscribe" type="checkbox" value="yes" />
+      <label for="subscribe">Yes, I would like to receive property listings, news, and market intelligence from Cushman &amp; Wakefield Saskatoon.</label>
+    </div>
+    <button type="submit">Download Summary Report</button>
   </form>
 
   <script>

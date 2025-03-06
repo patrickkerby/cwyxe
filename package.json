@@ -23,6 +23,7 @@
     "@roots/sage": "6.23.2"
   },
   "dependencies": {
-    "@roots/bud-sass": "^6.23.2"
+    "@roots/bud-sass": "^6.23.2",
+    "siema": "^1.5.1"
   }
 }

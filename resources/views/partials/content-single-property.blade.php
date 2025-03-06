@@ -7,6 +7,7 @@
   $details_meta = array("listing_date", "property_id", "year_built", "building_class", "space_type", "property_use_type", "zoning", "occupancy", "construction_status");
   $rate_meta = array("amount", "rate_type");
   $dimensions = get_fields('dimensions_section');
+  $additional_images = get_field('additional_images');
 
   $args = [
     "post_type"      => 'property',
@@ -43,9 +44,20 @@
   </section>
   <section class="container">
     <div class="content">   
-      @hasfield('primary_image')   
-        <img src="@field('primary_image', 'url')" alt="@field('primary_image', 'alt')">
-      @endfield
+      <div class="gallery">
+        <div class="siema images">
+          @hasfield('primary_image')   
+            <img src="@field('primary_image', 'url')" alt="@field('primary_image', 'alt')">        
+          @endfield
+          @foreach ($additional_images as $image)
+            <img src="{{ $image['url'] }}" alt="{{ $image['alt'] }}">
+          @endforeach      
+        </div>
+        <button class="prev arrow">Prev</button>
+        <button class="next arrow right">Next</button>
+      </div>
+
+
 
       @if($featured_meta)
         <div class="property-meta-featured">

@@ -7342,6 +7342,7 @@ __metadata:
     "@roots/bud": "npm:6.23.2"
     "@roots/bud-sass": "npm:^6.23.2"
     "@roots/sage": "npm:6.23.2"
+    siema: "npm:^1.5.1"
   languageName: unknown
   linkType: soft
 
@@ -7529,6 +7530,13 @@ __metadata:
     get-intrinsic: "npm:^1.2.4"
     object-inspect: "npm:^1.13.1"
   checksum: 10c0/d2afd163dc733cc0a39aa6f7e39bf0c436293510dbccbff446733daeaf295857dbccf94297092ec8c53e2503acac30f0b78830876f0485991d62a90e9cad305f
+  languageName: node
+  linkType: hard
+
+"siema@npm:^1.5.1":
+  version: 1.5.1
+  resolution: "siema@npm:1.5.1"
+  checksum: 10c0/fcb13182ad346ae409fb197e3f2aad2177cef4916d825b82af8751ce4904a375e76dcc59ede9611b7c6bfc6958ef6dde509e08ba402b2be2c8c41b720ed05f75
   languageName: node
   linkType: hard
 

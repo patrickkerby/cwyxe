@@ -1,4 +1,5 @@
 import domReady from '@roots/sage/client/dom-ready';
+import Siema from 'siema';
 
 /**
  * Application entrypoint
@@ -76,6 +77,15 @@ domReady(async () => {
 
 
   })(jQuery);
+
+  // Listing carousel, using Siema library (https://pawelgrzybek.github.io/siema/#installation)
+  const mySiema = new Siema();
+  const prev = document.querySelector('.prev');
+  const next = document.querySelector('.next');
+  
+  prev.addEventListener('click', () => mySiema.prev(1));
+  next.addEventListener('click', () => mySiema.next(1));
+  
 
 });
 

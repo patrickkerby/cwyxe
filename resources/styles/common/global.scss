@@ -192,6 +192,33 @@ button {
   }
 }
 
+.gallery {
+  position: relative;
+}
+
+.arrow {
+  position: absolute;
+  overflow: hidden;
+  top: 48%;
+  left: 1.5rem;
+  z-index: 9999;
+  width: 0.25rem;
+  height: 0.25rem;
+  background: transparent;
+  border-top: .25rem solid #fff;
+  border-right: .25rem solid #fff;
+  box-shadow: 0 0 0 lightgray;
+  transition: all 200ms ease;
+  text-indent: -9999999999px;
+  transform: translate3d(0,-50%,0) rotate(-135deg);
+}
+
+.arrow.right {
+  right: 1.5rem;
+  left: unset;
+  transform: translate3d(0,-50%,0) rotate(45deg);
+}
+
 .main {
   width: 86%;
   max-width: 88rem;
