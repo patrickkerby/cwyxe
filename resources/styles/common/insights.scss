@@ -11,6 +11,10 @@
         @media screen and (max-width: 860px) {
             width: 100%;
         }
+
+        @media screen and (max-width: 430px) {
+            width: 90%;
+        }
     }
 
     section.page-header h1 {
@@ -26,6 +30,10 @@
     @media screen and (max-width: 860px) {
         width: 100%;
         margin: 0 2rem;
+    }
+    
+    @media screen and (max-width: 430px) {
+        margin: 0 auto;
     }
 
     .grid-head {
