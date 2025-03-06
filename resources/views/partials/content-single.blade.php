@@ -27,29 +27,23 @@
   </form>
 
   <script>
-
-    function getLastPartOfCurrentUrl() {
+    function getLastPartOfCurrentUrl() { 
       // Get the current page URL
       const url = window.location.href;
-
       // Remove query parameters and fragment identifier
       const cleanedUrl = url.split('?')[0].split('#')[0];
-
       // Get the last part of the URL path
       const parts = cleanedUrl.split('/');
       const lastPart = parts.pop() || parts.pop(); // Handle potential trailing slash
       return lastPart;
-
     }
-
     document.addEventListener('DOMContentLoaded', function() {
-        const hiddenField = document.getElementById('form-field-page_field');
+        const hiddenField = document.getElementById('form-field-field_53fdd05');
         if (hiddenField) {
             hiddenField.value = getLastPartOfCurrentUrl();
         }
     });
-
-  </script>
+    </script>
 @endif
 
 
