@@ -11,7 +11,7 @@
 
 @if($lead_gen)
 
-  <form id="request_form" action="https://hook.us1.make.com/p0r1wtndfmnd8qkkin7eo4l545qng2bc" method="POST">
+  <form id="request_form" action="https://hook.us1.make.com/yyb8lpbnyq952cmwmf0ial4019bivyjh" method="POST">
     <label for="name">Name</label>
     <input id="name" name="name" required="" type="text" />
     <label for="company">Company</label>
