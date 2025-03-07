@@ -38,7 +38,7 @@
       return lastPart;
     }
     document.addEventListener('DOMContentLoaded', function() {
-        const hiddenField = document.getElementById('form-field-field_53fdd05');
+      const hiddenField = document.getElementById('field_53fdd05');
         if (hiddenField) {
             hiddenField.value = getLastPartOfCurrentUrl();
         }
