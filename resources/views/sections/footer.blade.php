@@ -23,6 +23,6 @@
   </div>
   <span class="copyright">
     <p>Copyright ⓒ {{ date('Y') }} Cushman & Wakefield Saskatoon, Ltd. | Independently Owned and Operated | All rights reserved</p>
-    <p><a href="">Privacy Policy</a> | <a href="">Site Map</a></p>
+    <p><a href="/privacy-policy">Privacy Policy</a> | <a href="/sitemap_index.xml">Site Map</a></p>
   </span>
 </footer>
