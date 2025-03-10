@@ -31,7 +31,8 @@ class Insights extends Composer
                 'link' => get_permalink($post->ID),
                 'thumbnail' => get_the_post_thumbnail_url($post->ID),
                 'excerpt' => get_the_excerpt($post->ID),
-                'terms' => get_the_term_list($post->ID, 'category', '', ', ')
+                'terms' => get_the_term_list($post->ID, 'category', '', ', '),
+                'date' => get_the_date('F j, Y', $post->ID)
             ];
         }, $insights);
     }

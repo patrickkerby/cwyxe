@@ -79,7 +79,7 @@
                 <div class="insight card">
                     <img src="{{ $insight['thumbnail'] }}" alt="{{ $insight['name'] }}">
                     <div class="content">
-                        <span class="meta"><time class="dt-published" datetime="{{ get_post_time('c', true) }}">{{ get_the_date() }}</time> in {!! $insight['terms'] !!}</span>
+                        <span class="meta"><time class="dt-published">{{ $insight['date'] }}</time> in {!! $insight['terms'] !!}</span>
                         <h4>{{ $insight['name'] }}</h4>
                         <p>{!! $insight['excerpt'] !!}</p>
                         <a href="{{ $insight['link'] }}" class="excerpt">Read More</a>                        
