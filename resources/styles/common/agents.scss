@@ -3,8 +3,9 @@
   flex-direction: row;
   // flex-wrap: wrap;
   width: 100%;
+  max-width: 63rem;
   justify-content: space-between;
-  margin: 5rem 0;
+  margin: 5rem auto;
   column-gap: 2rem;
 
   @media screen and (max-width: 930px) {
