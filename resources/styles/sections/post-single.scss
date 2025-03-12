@@ -297,3 +297,10 @@
     }
   }
 }
+
+.single-agent article .content h1,
+.single-agent article .content h2 {
+  @media screen and (max-width: 680px) {
+    display: none;
+  }
+}
