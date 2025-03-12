@@ -1,4 +1,4 @@
-{{ do_shortcode('[mc4wp_form id=27307]') }}   
+{!! do_shortcode('[mc4wp_form id=27307]') !!}
 
 {{-- 
 
