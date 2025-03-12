@@ -103,7 +103,7 @@
                 @if($property)
                     @include('partials.property-card')
                 @endif
-                @if ($loop->iteration == 3 )
+                @if ($loop->iteration == 6 )
                     @break
                 @endif
             @endforeach
