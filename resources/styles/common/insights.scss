@@ -125,6 +125,11 @@
                 margin: 0.5rem 0;
             }
 
+            a.thumbnail {
+                display: flex;
+                margin: auto 0 auto auto;
+            }
+
             img {                
                 flex-basis: content;
                 height: 8rem;                

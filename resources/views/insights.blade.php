@@ -36,7 +36,7 @@
 
                 <div class="@if($loop->iteration > 2)wide @endif insight card">
                     @set($cat, get_the_category($post->id))                
-                    <a href="@permalink">
+                    <a class="thumbnail" href="@permalink">
                         @thumbnail('full')
                     </a>
                     <div class="content">  
