@@ -1,3 +1,10 @@
+.single-agent .article h1,
+.single-agent .article h2 {
+  @media screen and (max-width: 680px) {
+    display: none;
+  }
+}
+
 .agents-grid {
   display: flex;
   flex-direction: row;
