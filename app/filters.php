@@ -178,8 +178,8 @@ add_action('facetwp_scripts', function () {
     $args['icon'] = [
       'url' => get_stylesheet_directory_uri() . '/resources/images/map-icons/CWS-map-icon-single.svg',
       'scaledSize' => [
-        'width' => 30,
-        'height' => 30
+        'width' => 24,
+        'height' => 32
       ]
     ];
     return $args;
@@ -198,8 +198,8 @@ add_action('facetwp_scripts', function () {
         let icon_default = {
           url: '/app/themes/cwyxe/resources/images/map-icons/CWS-map-icon-single.svg',
           scaledSize: {
-            width: 30,
-            height: 30
+            width: 24,
+            height: 32
           }
         };
    
@@ -207,8 +207,8 @@ add_action('facetwp_scripts', function () {
         let icon_active = {
           url: '/app/themes/cwyxe/resources/images/map-icons/CWS-map-icon-selected.svg',
           scaledSize: {
-            width: 30,
-            height: 30
+            width: 24,
+            height: 32
           }
         };
    
@@ -254,10 +254,11 @@ add_action('facetwp_scripts', function () {
     return $args;
   } );
 
+  // Preselect availability facet when you load the property search page
   add_filter( 'facetwp_preload_url_vars', function( $url_vars ) {
-    if ( 'property-search' == FWP()->helper->get_uri() ) { // Replace 'demo/cars' with the URI of your page (everything after the domain name, excluding any slashes at the beginning and end)
-      if ( empty( $url_vars['availability'] ) ) { // Replace 'make' with the name of your facet
-        $url_vars['availability'] = [ 'lease' ]; // Replace 'audi' with the facet choice that needs to be pre-selected. Use the technical name/slug as it appears in the URL when filtering
+    if ( 'property-search' == FWP()->helper->get_uri() ) {
+      if ( empty( $url_vars['availability'] ) ) { 
+        $url_vars['availability'] = [ 'lease' ];
       }
     }
     return $url_vars;
@@ -280,18 +281,7 @@ function my_mce_before_init_insert_formats( $init_array ) {
 			'title' => 'Intro Text',  
 			'selector' => 'p',  
 			'classes' => 'intro-text',
-		),
-    array(  
-			'title' => 'H3 (Start New Column)',  
-      'selector' => 'h3',
-			'classes' => 'column-start',
-    ),
-		array(  
-			'title' => 'Span all columns',  
-			'inline' => 'span',  
-			'classes' => 'span-colums',
-			'wrapper' => true,
-		),
+		)
 	);  
 	// Insert the array, JSON ENCODED, into 'style_formats'
 	$init_array['style_formats'] = wp_json_encode( $style_formats );  
