@@ -223,7 +223,7 @@
                 <img src="{{ $headshot['url'] }}" alt="">
             </div>
             <div class="contact-details">
-              <h4>Agent @title($agent_id)</h4>          
+              <h4>@title($agent_id)</h4>          
               <ul>
                 @group('contact_details', $agent_id)
                   @hassub('office_phone')
