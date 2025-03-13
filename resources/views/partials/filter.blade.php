@@ -9,11 +9,11 @@
     </div>
     <div class="card">
         <h5>Available Space Unit</h5>
-        {!! facetwp_display( 'facet', 'available_space_postfix' ) !!}
+        {!! facetwp_display( 'facet', 'available_space_unit' ) !!}
     </div>
     <div class="card">
         <h5>Available Space</h5>
-        {!! facetwp_display( 'facet', 'available_space_filter' ) !!}
+        {!! facetwp_display( 'facet', 'min_max_area' ) !!}
     </div>
     <div class="card">
         <h5>Broker</h5>
