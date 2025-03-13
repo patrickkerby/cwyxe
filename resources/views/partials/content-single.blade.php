@@ -7,7 +7,7 @@
     @php(the_content())
 
     @if($lead_gen)
-      <form id="request_form" action="https://hook.us1.make.com/yyb8lpbnyq952cmwmf0ial4019bivyjh" method="POST">
+      {{-- <form id="request_form" action="https://hook.us1.make.com/yyb8lpbnyq952cmwmf0ial4019bivyjh" method="POST">
         <label for="name">Name</label>
         <input id="name" name="name" required="" type="text" />
         <label for="company">Company</label>
@@ -20,7 +20,9 @@
           <label for="subscribe">Yes, I would like to receive property listings, news, and market intelligence from Cushman &amp; Wakefield Saskatoon.</label>
         </div>
         <button type="submit">Download Summary Report</button>
-      </form>
+      </form> --}}
+
+      {!! do_shortcode('[hf_form slug="lead-generator"]') !!}
 
       <script>
         function getLastPartOfCurrentUrl() { 
