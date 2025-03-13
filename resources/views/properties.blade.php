@@ -22,7 +22,7 @@
         {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4tACHjkBLlcqFPGeMycOSvDadNWVurS0&callback=Function.prototype&loading=async"></script> --}}
         <div class="grid-head">
             <h2>Property Results</h2>
-            {!! facetwp_display( 'facet', 'sort_listings' ) !!}
+            {{-- {!! facetwp_display( 'facet', 'sort_listings' ) !!} --}}
         </div>
         <section class="map">
             <button class="button facetwp-flyout-open">Show filters</button>
