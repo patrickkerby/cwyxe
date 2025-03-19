@@ -1,12 +1,13 @@
 .agents-grid {
   display: flex;
   flex-direction: row;
-  // flex-wrap: wrap;
+  flex-wrap: wrap;
   width: 100%;
   max-width: 63rem;
   justify-content: space-between;
   margin: 5rem auto;
   column-gap: 2rem;
+  row-gap: 2rem;
 
   @media screen and (max-width: 930px) {
     flex-direction: column;

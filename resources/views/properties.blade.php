@@ -8,7 +8,6 @@
         "orderby"        => ["title" => "ASC"],        
         "facetwp"        => true 
     ];
-       
     // Run the query
     $properties_loop = new WP_Query( $args );
 @endphp
