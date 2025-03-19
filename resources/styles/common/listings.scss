@@ -11,14 +11,27 @@
             padding-left: 0;
             background: none;
             padding: 0.25rem 1rem;
-            border: solid 1px $cw-charcoal;
+            border: solid 2px $cw-grey;
             border-radius: 18px;
-            opacity: 0.7;
+            opacity: 0.4;
             margin-bottom: 1.5rem;
+
+            @include slowfade();
 
             &.checked {
                 background: none;
+                border: solid 2px $cw-red;
                 opacity: 1;
+
+                .facetwp-display-value {
+                    color: $cw-red !important;
+                }
+
+                @include slowfade();
+            }
+
+            .facetwp-display-value {
+                color: $cw-grey !important;
 
                 @include slowfade();
             }
