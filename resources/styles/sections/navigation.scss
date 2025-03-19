@@ -37,12 +37,19 @@ header.banner {
     z-index: 6;
   }
 
+  .nav-desktop,
+  .menu-primary-menu-container {
+    width: 100%;
+  }
+
   .nav-primary {
+    width: 100%;
+
     ul {
       display: flex;
       flex-direction: row;
       list-style-type: none;
-      justify-content: flex-end;
+      justify-content: flex-start;
       align-items: center;
       gap: 2.5rem;
 
@@ -79,22 +86,26 @@ header.banner {
           }
         }
 
-        &.contact a {
-          padding: 0.9375rem 1.2rem;
-          justify-content: center;
-          align-items: center;
-          background: $cw-red;
-          color: white;
-          display: flex;
-          font-size: 0.9375rem;
-          font-weight: 400;
-          text-transform: uppercase;
-          line-height: 1.15;
+        &.contact {
+          margin-left: auto;
 
-          @media screen and (max-width: 860px) {
-            padding: 0.7rem 0.5rem;
-            font-size: 0.8rem;
-            @include slowfade();
+          a {
+            padding: 0.9375rem 1.2rem;
+            justify-content: center;
+            align-items: center;
+            background: $cw-red;
+            color: white;
+            display: flex;
+            font-size: 0.9375rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            line-height: 1.15;
+
+            @media screen and (max-width: 860px) {
+              padding: 0.7rem 0.5rem;
+              font-size: 0.8rem;
+              @include slowfade();
+            }
           }
         }
 
