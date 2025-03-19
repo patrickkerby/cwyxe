@@ -30,6 +30,10 @@
 
 .facetwp-counter {
     color: #808080;
+
+    .facetwp-facet-availability & {
+        display: none;
+    }
 }
 
 .insights .facetwp-checkbox,
