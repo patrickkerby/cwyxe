@@ -1,4 +1,7 @@
 @if(is_page('property-search'))
+    <div class="search-type">
+        {!! facetwp_display( 'facet', 'availability' ) !!}
+    </div>
     <div class="card">
         <h5>Property Status</h5>
         {!! facetwp_display( 'facet', 'status' ) !!}
