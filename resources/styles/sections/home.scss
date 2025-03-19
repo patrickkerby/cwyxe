@@ -192,12 +192,23 @@
     flex-direction: column;
     align-items: flex-start;
 
+    &::after {
+        background-color: $cw-indigo;
+        bottom: 0;
+        content: "";
+        left: 0;
+        opacity: .8;
+        position: absolute;
+        top: 0;
+        width: 10%;
+    }
+
     .content { 
         background: #ffffff;
         border-top: solid 3px $cw-blue;
         width: 32%;
         padding: 2rem 1.5rem 1.25rem 1.5rem;
-        margin-left: 7rem;
+        margin-left: 11rem;
 
         h3,
         p {
