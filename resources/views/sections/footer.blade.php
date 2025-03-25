@@ -1,7 +1,8 @@
 <footer class="global-footer">
   <div>
     <p>@option('footer') </p>
-    <a href="">@option('primary_email')</a>
+    <a class="icon" href="mailto: @option('primary_email')"><img src="@asset('images/icons/email.svg')" /></a>
+    <a class="icon" href="@option('linked_in')"><img src="@asset('images/icons/linkedin.svg')" /></a>
   </div>
   <div class="footer-menu">
     <nav>
@@ -13,7 +14,7 @@
       @endif
     </nav>
     <nav>
-      <h5>Our Services</h5>      
+      <h5>Our Services</h5>
       @if (has_nav_menu('footer_navigation2'))
         <nav class="nav-footer" aria-label="{{ wp_get_nav_menu_name('footer_navigation2') }}">
           {!! wp_nav_menu(['theme_location' => 'footer_navigation2', 'menu_class' => 'nav', 'echo' => false]) !!}

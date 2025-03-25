@@ -28,7 +28,7 @@ class Home extends Composer
     return array_values(array_filter(array_map(function ($post) {
         $general_settings = get_field('general_settings', $post->ID);
         $is_featured = $general_settings['featured_property'];
-
+        
         if ($is_featured) {
             $status_terms = get_the_terms($post->ID, 'property-status');
             $status_color = get_field('property_status_colour', 'term_' . $status_terms[0]->term_id);
