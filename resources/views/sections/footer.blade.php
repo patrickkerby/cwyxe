@@ -2,7 +2,7 @@
   <div>
     <p>@option('footer') </p>
     <a class="icon" href="mailto: @option('primary_email')"><img src="@asset('images/icons/email.svg')" /></a>
-    <a class="icon" href="@option('linked_in')"><img src="@asset('images/icons/linkedin.svg')" /></a>
+    <a class="icon" target="_blank" href="@option('linked_in')"><img src="@asset('images/icons/linkedin.svg')" /></a>
   </div>
   <div class="footer-menu">
     <nav>
