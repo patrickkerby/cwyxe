@@ -87,8 +87,6 @@ header.banner {
         }
 
         &.contact {
-          margin-left: auto;
-
           a {
             padding: 0.9375rem 1.2rem;
             justify-content: center;
@@ -195,6 +193,26 @@ header.banner {
   
         &.menu-item-has-children.active a {
           background: url("/images/menu-arrow.svg") right center no-repeat;
+        }
+
+        &.menu-item-has-children.marketbeat {
+          margin-left: auto;
+
+          a {
+            text-indent: -9999999px;
+            padding: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+            background: url("/images/icons/person.svg") no-repeat;
+          }
+
+          ul li a {
+            background: none;
+            width: unset;
+            height: unset;
+            text-indent: 0;
+            padding: 1rem;
+          }
         }
   
         &.menu-item-has-children ul li a,
