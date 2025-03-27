@@ -246,35 +246,6 @@
       <div class="listing-alerts form">        
         <x-listing-alert />
       </div>
-      <div class="listing-alerts form">        
-        <script>(function() {
-	window.mc4wp = window.mc4wp || {
-		listeners: [],
-		forms: {
-			on: function(evt, cb) {
-				window.mc4wp.listeners.push(
-					{
-						event   : evt,
-						callback: cb
-					}
-				);
-			}
-		}
-	}
-})();
-</script><!-- Mailchimp for WordPress v4.10.2 - https://wordpress.org/plugins/mailchimp-for-wp/ --><form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-27307 mc4wp-form-submitted mc4wp-form-success" method="post" data-id="27307" data-name="Listing Alerts"><div class="mc4wp-form-fields"><h4>Sign up for listing alerts</h4>
-<label>First Name</label>
-<input type="text" name="FNAME" placeholder="John">
-<label>Last Name</label>
-<input type="text" name="LNAME" placeholder="Smith">
-<label for="email">Email address: </label>
-<input type="email" id="email" name="EMAIL" placeholder="Your email address" required="">
-
-<input class="btn-hollow" type="submit" value="Sign up">
-</div><label style="display: none !important;">Leave this field empty if you're human: <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off"></label><input type="hidden" name="_mc4wp_timestamp" value="1743110285"><input type="hidden" name="_mc4wp_form_id" value="27307"><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-1"><div class="mc4wp-response"><div class="mc4wp-alert mc4wp-success" role="alert"><p>Thank you, your sign-up request was successful! Please check your email inbox to confirm.</p></div></div></form><!-- / Mailchimp for WordPress Plugin -->
-
-
-      </div>
     </div>
   </section>
   <section class="related-properties">
