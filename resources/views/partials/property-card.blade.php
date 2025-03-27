@@ -6,13 +6,15 @@
             @endfield
         </div>
         <div class="content">    
-            @foreach ($status_terms as $status)
-                @php
-                    $status_color = get_field('property_status_colour', 'term_'.$status->term_id);
-                    $map = get_field('map');
-                @endphp
-                <span class="property_type status" style="background-color:{{$status_color}}">{{ $status->name }}</span>
-            @endforeach
+            @if($status_terms)
+                @foreach ($status_terms as $status)
+                    @php
+                        $status_color = get_field('property_status_colour', 'term_'.$status->term_id);
+                        $map = get_field('map');
+                    @endphp
+                    <span class="property_type status" style="background-color:{{$status_color}}">{{ $status->name }}</span>
+                @endforeach
+            @endif
             <span class="availability">For @group('general_settings') @sub('availability')@endgroup • @term('property-type')</span>                    
             <h3><a href="@permalink">@title</a></h3>
             <p>@field('address')</p>            

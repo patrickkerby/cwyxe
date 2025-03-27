@@ -29,7 +29,11 @@ class Properties extends Composer
     
     return array_map(function ($post) {
         $status_terms = get_the_terms( $post->ID, 'property-status' );
-        $status_color = get_field('property_status_colour', 'term_'.$status_terms[0]->term_id);
+        if ($status_terms) {
+            $status_color = get_field('property_status_colour', 'term_'.$status_terms[0]->term_id);
+        } else {
+            $status_color = '#000';
+        }
         $general_settings = get_field('general_settings', $post->ID);
         $rates = get_field('rates', $post->ID);
         $amount = $rates['amount'];
