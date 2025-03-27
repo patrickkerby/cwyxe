@@ -131,5 +131,14 @@ button.button {
     p {
         font-size: 1.25rem;
         font-weight: 400;
+        text-align: center;
     }
+}
+
+.hf-message-success {
+    font-size: 1.25rem;
+    font-weight: 400;
+    text-align: center;
+    width: 100%;
+    padding: 2rem auto;
 }
