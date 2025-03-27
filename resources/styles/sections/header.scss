@@ -8,12 +8,14 @@ section.page-header {
   min-height: 24rem;
   max-height: 42rem;
   max-width: 88rem;
+  padding-bottom: 1rem;
 
   .home & {
     height: calc(100vh - 12rem);
     max-height: 42rem;
     min-height: 36rem;
     justify-content: center;
+    padding-bottom: 2rem;
 
     .header-content {
       margin: 5rem auto;
@@ -39,7 +41,7 @@ section.page-header {
       background: rgba(29, 23, 64, 0.8);
       position: absolute;
       width: 67%;
-      height: 100%;
+      height: calc(100% - 1rem);
       transform: skewX(-27deg);
       left: -25%;
       top: 0;
@@ -160,6 +162,17 @@ section.page-header {
     height: 100%;
   }
 
+  &::before {
+    content: "";
+    background: url("/images/dot-grid.png") center center repeat-x;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2rem;
+  }
+
+  
   &.no-bg {
     background: none;
     min-height: 0;

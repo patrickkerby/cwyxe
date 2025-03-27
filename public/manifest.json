@@ -1,5 +1,5 @@
 {
-  "app.css": "css/app.c6179c.css",
+  "app.css": "css/app.fd9037.css",
   "app.js": "js/app.bab2b6.js",
   "editor.css": "css/editor.ef46db.css",
   "editor.js": "js/editor.8443dd.js",
@@ -13,6 +13,7 @@
   "fonts/Gotham-BoldItalic.woff2": "fonts/Gotham-BoldItalic.6582c4.woff2",
   "fonts/Gotham-Light.woff2": "fonts/Gotham-Light.689b17.woff2",
   "fonts/Gotham-Bold.woff2": "fonts/Gotham-Bold.781a2d.woff2",
+  "images/dot-grid.png": "images/dot-grid.ad3c8d771ad74796.png",
   "images/cw-saskatoon-logo-small.png": "images/cw-saskatoon-logo-small.04308e.png",
   "images/icons/meta-checkmark.svg": "images/icons/meta-checkmark.819069.svg",
   "images/icons/meta-calendar.svg": "images/icons/meta-calendar.27ce8c.svg",

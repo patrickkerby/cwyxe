@@ -36,40 +36,40 @@
 
 @unless(is_singular('agent') || is_singular('property') || is_page('property-search'))
   <section class="page-header @if(!get_field('background_image')) no-bg @endif">
-    <div class="breadcrumb">
-      <x-breadcrumb />
-    </div>
-    <div class="header-content">
-      @hasfield('eyebrow_headline')
-        <span class="eyebrow">@field('eyebrow_headline')</span>
-      @endfield
-      @hasfield('primary_headline')
-        <h1>
-            @field('primary_headline')
-        </h1>
-        @else 
-        <h1>
-          @title
-        </h1>
+      <div class="breadcrumb">
+        <x-breadcrumb />
+      </div>
+      <div class="header-content">
+        @hasfield('eyebrow_headline')
+          <span class="eyebrow">@field('eyebrow_headline')</span>
         @endfield
-      @hasfield('secondary_headline')
-        <h2>
-          @field('secondary_headline')
-        </h2>
+        @hasfield('primary_headline')
+          <h1>
+              @field('primary_headline')
+          </h1>
+          @else 
+          <h1>
+            @title
+          </h1>
+          @endfield
+        @hasfield('secondary_headline')
+          <h2>
+            @field('secondary_headline')
+          </h2>
+          @endfield
+        @hasfield('primary_link')
+          <a href="@field('primary_link')" class="button">Learn More</a>
         @endfield
-      @hasfield('primary_link')
-        <a href="@field('primary_link')" class="button">Learn More</a>
-      @endfield
-      @hasfield('description')
-        <p class="description">@field('description')</p>
-      @endfield
-    </div>
-    @hasfield('background_image')
-      <img src="@field('background_image', 'url')" alt="">
-    @endfield    
-    @if(is_single())
-      <span class="meta">@include('partials.entry-meta')</span>
-    @endif
+        @hasfield('description')
+          <p class="description">@field('description')</p>
+        @endfield
+      </div>
+      @hasfield('background_image')
+        <img src="@field('background_image', 'url')" alt="">
+      @endfield    
+      @if(is_single())
+        <span class="meta">@include('partials.entry-meta')</span>
+      @endif
   </section>
 @endunless
 
