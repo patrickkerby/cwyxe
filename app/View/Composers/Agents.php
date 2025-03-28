@@ -31,6 +31,8 @@ class Agents extends Composer
           $photo = $photo_object['url'];
           $vcard_filename = $firstname . '-' . $lastname . '.vcf';
           $vcard_filename = strtolower($vcard_filename);
+          $address = get_field('office_address', 'option');
+
 
           // Add personal data to the vCard
           $vcard->addName($lastname, $firstname, $additional, $prefix, $suffix);
@@ -45,14 +47,14 @@ class Agents extends Composer
           $vcard->addAddress(
               null,
               null,
-              get_field('street', $post->ID) ?: '',
-              get_field('city', $post->ID) ?: '',
-              null,
-              get_field('postcode', $post->ID) ?: '',
-              get_field('country', $post->ID) ?: ''
+              $address['street'] ?: '',
+              $address['city'] ?: '',
+              $address['postal_code'] ?: '',
+              $address['province'] ?: '',
+              $address['country'] ?: ''
           );
           $vcard->addURL(get_permalink($post->ID) ?: '');
-          $vcard->addPhoto($photo);
+          // $vcard->addPhoto($photo);
 
           // return vcard as a string
           //return $vcard->getOutput();
