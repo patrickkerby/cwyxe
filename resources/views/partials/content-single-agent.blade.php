@@ -76,15 +76,15 @@
           @hassub('mobile_phone')
             <li><span>Mobile</span> @sub('mobile_phone')</li>
           @endsub
+          <li><a class="emphasized-link" href="/app/uploads/vcards/@sub('first_name')-@sub('last_name').vcf">Download vCard</a></li>
+          <li><a href="#listings">View My listings</a></li>
           @endgroup
-          <li><a class="emphasized-link" href="">Download vCard</a></li>
-          <li><a href="">View My listings</a></li>
       </ul>
     </div>
   </div>
 </article>
 
-<section class="container centered">
+<section class="container centered" id="listings">
   <h4>My Listings</h4>
   <div class="properties-grid">
     {{-- @foreach ($properties_loop as $property)
