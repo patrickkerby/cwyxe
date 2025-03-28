@@ -1,6 +1,12 @@
-@php
-        $agents = get_field('agent');
+@set($fname, get_field('contact_details')['first_name'])
+@set($lname, get_field('contact_details')['last_name'])
 
+@set($name, $fname . '-' . $lname)
+
+@php
+  $vcard_filename = strtolower($name);
+
+  $agents = get_field('agent');
 
     $args = [
       "post_type"      => 'property',
@@ -16,8 +22,8 @@
     ),
   ];       
   $properties_loop = new WP_Query( $args );
-
 @endphp
+
 <article @php post_class('h-entry') @endphp>
 
   <div class="content">
@@ -76,9 +82,9 @@
           @hassub('mobile_phone')
             <li><span>Mobile</span> @sub('mobile_phone')</li>
           @endsub
-          <li><a class="emphasized-link" href="/app/uploads/vcards/@sub('first_name')-@sub('last_name').vcf">Download vCard</a></li>
+        @endgroup
+          <li><a class="emphasized-link" href="/app/uploads/vcards/{{$vcard_filename}}.vcf">Download vCard</a></li>
           <li><a href="#listings">View My listings</a></li>
-          @endgroup
       </ul>
     </div>
   </div>
