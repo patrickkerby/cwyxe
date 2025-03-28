@@ -64,7 +64,7 @@ class Agents extends Composer
           $upload_dir = wp_upload_dir();
           $upload_dir['baseurl']; 
 
-          // $vcard->setSavePath($upload_dir['basedir'] . '/vcards/');
+          $vcard->setSavePath('/vcards/');
           $vcard->save();
 
 
