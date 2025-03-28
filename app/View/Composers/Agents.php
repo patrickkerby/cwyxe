@@ -41,8 +41,8 @@ class Agents extends Composer
           $vcard->addCompany(get_field('company', $post->ID) ?: '');
           $vcard->addJobtitle($contact_details['title'] ?: '');
           $vcard->addEmail($contact_details['email'] ?: '');
-          $vcard->addPhoneNumber($contact_details['office_phone'] ?: '', 'OFFICE');
-          $vcard->addPhoneNumber($contact_details['mobile_phone'] ?: '', 'MOBILE');
+          $vcard->addPhoneNumber($contact_details['office_phone'] ?: '', 'WORK');
+          $vcard->addPhoneNumber($contact_details['mobile_phone'] ?: '', 'CELL');
           
           $vcard->addAddress(
               null,
