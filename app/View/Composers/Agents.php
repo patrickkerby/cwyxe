@@ -29,7 +29,8 @@ class Agents extends Composer
           $suffix = '';
           $photo_object = get_field('headshot', $post);
           $photo = $photo_object['url'];
-
+          $vcard_filename = $firstname . '-' . $lastname . '.vcf';
+          $vcard_filename = strtolower($vcard_filename);
 
           // Add personal data to the vCard
           $vcard->addName($lastname, $firstname, $additional, $prefix, $suffix);
@@ -53,6 +54,16 @@ class Agents extends Composer
           $vcard->addURL(get_permalink($post->ID) ?: '');
           $vcard->addPhoto($photo);
 
+          // return vcard as a string
+          //return $vcard->getOutput();
+
+          // return vcard as a download
+          // return $vcard->download();
+
+          // save vcard on disk
+          $vcard->setSavePath(get_template_directory() . '/resources/images/vcards/');
+          $vcard->save();
+
 
           // Return the agent data along with the vCard output
           return [
@@ -63,7 +74,7 @@ class Agents extends Composer
               'headshot' => get_field('headshot', $post),
               'broker_attributes' => get_the_terms($post->ID, 'broker-attribute'),
               'contact_details' => get_field('contact_details', $post),
-              'vcard' => $vcard->getOutput(), // Add the vCard output here
+              'vcard-filename' => $vcard_filename
           ];
       }, $agents);
   }
