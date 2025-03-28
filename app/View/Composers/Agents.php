@@ -61,7 +61,7 @@ class Agents extends Composer
           // return $vcard->download();
 
           // save vcard on disk
-          $vcard->setSavePath('/uploads/vcards/');
+          $vcard->setSavePath('app/uploads/vcards');
           $vcard->save();
 
 
