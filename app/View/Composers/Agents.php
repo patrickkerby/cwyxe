@@ -54,7 +54,7 @@ class Agents extends Composer
               $address['country'] ?: ''
           );
           $vcard->addURL(get_permalink($post->ID) ?: '');
-          // $vcard->addPhoto($photo);
+          $vcard->addPhoto($photo);
 
           // return vcard as a string
           //return $vcard->getOutput();
