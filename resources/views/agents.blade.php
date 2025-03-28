@@ -33,7 +33,7 @@
             @if (@$agent['contact_details']['email'])
               <li><a class="email" href="mailto:{{ @$agent['contact_details']['email'] }}">{{ @$agent['contact_details']['email'] }}</a></li>                
             @endif
-            <li><a class="emphasized-link" href="uploads/vcards/{{$agent['vcard-filename']}}">Download vCard</a></li>
+            <li><a class="emphasized-link" href="/uploads/vcards/{{$agent['vcard-filename']}}">Download vCard</a></li>
           </ul>
         </div>
       </div>
