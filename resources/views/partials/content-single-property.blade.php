@@ -226,6 +226,13 @@
               <h4>@title($agent_id)</h4>          
               <ul>
                 @group('contact_details', $agent_id)
+                  @php
+                      $details = get_field('contact_details', $agent_id);
+                      $fname = $details['first_name'];
+                      $lname = $details['last_name'];
+                      $name = $fname . '-' . $lname;
+                      $vcard_filename = strtolower($name);
+                  @endphp
                   @hassub('office_phone')
                     <li><span>Office:</span> @sub('office_phone')</li>
                   @endsub
@@ -236,8 +243,8 @@
                     <li><a href="mailto:@sub('email')">@if($loop->count == 1) @sub('email') @else Email Agent @endif</a></li>
                   @endsub
                 @endgroup
-                <li><a class="emphasized-link @if($loop->count == 1) btn-hollow @endif" href="">Download vCard</a></li>
-                @if($loop->count == 1)<li><a class="emphasized-link" href="">View My listings</a></li>@endif
+                <li><a class="emphasized-link @if($loop->count == 1) btn-hollow @endif" href="/app/uploads/vcards/{{$vcard_filename}}.vcf"">Download vCard</a></li>
+                @if($loop->count == 1)<li><a class="emphasized-link" href="@permalink($agent_id)">View My listings</a></li>@endif 
               </ul>
             </div>
           </div>

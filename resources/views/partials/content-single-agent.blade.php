@@ -1,6 +1,5 @@
 @set($fname, get_field('contact_details')['first_name'])
 @set($lname, get_field('contact_details')['last_name'])
-
 @set($name, $fname . '-' . $lname)
 
 @php
