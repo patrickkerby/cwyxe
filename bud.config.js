@@ -24,6 +24,7 @@ export default async (app) => {
      */
     .assets(['images'])
     .assets(['fonts'])
+    .assets(['vcards'])
 
     /**
      * Matched files trigger a page reload when modified
