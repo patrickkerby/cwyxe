@@ -52,7 +52,7 @@ class Agents extends Composer
               get_field('country', $post->ID) ?: ''
           );
           $vcard->addURL(get_permalink($post->ID) ?: '');
-          // $vcard->addPhoto($photo);
+          $vcard->addPhoto($photo);
 
           // return vcard as a string
           //return $vcard->getOutput();
