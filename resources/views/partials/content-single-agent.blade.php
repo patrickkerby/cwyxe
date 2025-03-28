@@ -83,6 +83,7 @@
     </div>
   </div>
 </article>
+
 <section class="container centered">
   <h4>My Listings</h4>
   <div class="properties-grid">

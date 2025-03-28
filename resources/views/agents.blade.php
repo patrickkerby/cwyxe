@@ -7,8 +7,14 @@
 @section('content')
   @include('partials.page-header')
   <section class="agents-grid">
+
+    
+    
     @foreach ($agents as $agent)
       <div class="agent card">
+
+        @dump($agent['vcard'])
+
         <div class="headshot">
           <a href="{{ $agent['link'] }}"><img src="{{ $agent['headshot']['url'] }}" alt="{{ $agent['headshot']['alt'] }}"></a>
         </div>

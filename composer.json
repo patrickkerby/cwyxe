@@ -40,7 +40,7 @@
   },
   "require": {
     "php": "^7.4|^8.2",
-    "jeroendesloovere/vcard": "^1.7",
+    "jeroendesloovere/vcard": "dev-master",
     "log1x/crumb": "^1.1",
     "log1x/sage-directives": "^2.0",
     "log1x/sage-html-forms": "^1.0",

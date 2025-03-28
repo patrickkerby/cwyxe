@@ -3,7 +3,7 @@
         'name' => 'roots/sage',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '5e5195c699fcf2d250bbd625ed6a8e7a5cfd6d6b',
+        'reference' => '9418ed857048faef8fd672c0da9adc1266a91da2',
         'type' => 'wordpress-theme',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -326,12 +326,14 @@
             'dev_requirement' => false,
         ),
         'jeroendesloovere/vcard' => array(
-            'pretty_version' => 'v1.7.4',
-            'version' => '1.7.4.0',
-            'reference' => '11a1cc62ffc2074838b138e9ae0790951004dd8e',
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '8713e08726c331543fd210bbea58f5850cd2ff83',
             'type' => 'library',
             'install_path' => __DIR__ . '/../jeroendesloovere/vcard',
-            'aliases' => array(),
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
             'dev_requirement' => false,
         ),
         'laravel/prompts' => array(
@@ -608,7 +610,7 @@
         'roots/sage' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '5e5195c699fcf2d250bbd625ed6a8e7a5cfd6d6b',
+            'reference' => '9418ed857048faef8fd672c0da9adc1266a91da2',
             'type' => 'wordpress-theme',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
