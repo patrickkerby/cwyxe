@@ -24,6 +24,9 @@
             {{-- {!! facetwp_display( 'facet', 'sort_listings' ) !!} --}}
         </div>
         <section class="map">
+            <div class="search-type display-mobile">
+                {!! facetwp_display( 'facet', 'availability' ) !!}
+            </div>
             <button class="button facetwp-flyout-open">Show filters</button>
             {!! facetwp_display( 'facet', 'map' ) !!}
         </section>        

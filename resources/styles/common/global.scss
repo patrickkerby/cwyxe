@@ -733,3 +733,15 @@ button {
   opacity: 1;
   transition: opacity 1s ease-out;
 }
+
+.display-mobile {
+  display: none;
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+  }
+}
+
+.facetwp-ignore {
+  display: none;
+}

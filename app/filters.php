@@ -291,3 +291,18 @@ function my_mce_before_init_insert_formats( $init_array ) {
 } 
 // Attach callback to 'tiny_mce_before_init' 
 add_filter( 'tiny_mce_before_init', 'App\my_mce_before_init_insert_formats' );  
+
+add_action( 'wp_head', function() {
+  ?>
+    <script>
+      (function($) {
+        $(function() {
+          if ('object' != typeof FWP) return;
+          FWP.hooks.addFilter('facetwp/flyout/facets', function(facets) {
+            return ['availability', 'status', 'property_type', 'available_space_unit', 'min_max_area', 'broker' ,'reset']; /* Choose which facets to display in the flyout, and/or change the facet display order */
+          });
+        });
+      })(jQuery);
+    </script>
+  <?php
+}, 100 );
