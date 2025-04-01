@@ -306,3 +306,12 @@ add_action( 'wp_head', function() {
     </script>
   <?php
 }, 100 );
+
+
+add_filter( 'enter_title_here', function( $input, $post ) {
+    if ( 'property' === $post->post_type ) {
+        return __( 'Property Listing Title', 'your_textdomain' );
+    }
+    return $input;
+},
+10, 2 );

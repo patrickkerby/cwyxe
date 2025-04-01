@@ -734,6 +734,10 @@ button {
   transition: opacity 1s ease-out;
 }
 
+.hide {
+  visibility: hidden;
+}
+
 .display-mobile {
   display: none;
 
