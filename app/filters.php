@@ -90,7 +90,8 @@ add_filter('excerpt_more', function () {
 });
 
 add_filter( 'acf/fields/google_map/api', function($api) {
-    $api['key'] = 'AIzaSyC9FpCzc8M_A2PED1msFpzSaLT5cT46350';
+    $api['key'] = env('GOOGLEAPI');
+    
     return $api;
 } );
 
