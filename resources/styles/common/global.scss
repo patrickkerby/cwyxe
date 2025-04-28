@@ -113,6 +113,11 @@ button {
   @include slowfade();
 }
 
+.button span,
+button span {
+  color: #fff !important;
+}
+
 .emphasized-link {
   font-size: 0.9375rem;
   font-weight: 400;
