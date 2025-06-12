@@ -59,6 +59,16 @@ domReady(async () => {
       $('body').toggleClass('is-active');
     });
 
+    $('.mega').hover(function() {
+      $(this).toggleClass('is-active');
+      $('.mega-content').addClass('is-active');
+    });
+
+    $('.mega').mouseleave(function() {
+      $('.mega-content').removeClass('is-active');
+      $('.mega').removeClass('is-active');
+    });
+
     // Add class to body when scrolling to add white background
     var targetDiv = $('body');
 

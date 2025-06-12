@@ -28,6 +28,52 @@
   </header>
 </section>
 
+<div class="mega-content mega">
+          <div>
+            <h3>Latest Insights</h3>
+            <ul class="mega-list">
+              @foreach (get_posts(['post_type' => 'post', 'tag' => 'insights', 'posts_per_page' => 2]) as $post)
+                <li>
+                  <a href="{{ get_permalink($post) }}">
+                    {{ get_the_title($post) }}
+                  </a>
+                  <span class="post-date">{{ get_the_date('', $post) }}</span>
+                </li>
+              @endforeach
+            </ul>
+            <a href="/insights/?_insights_types=insights" class="menu-cta">Access all the latest Insights</a>
+          </div>
+          <div>
+            <h3>Saskatoon Reports</h3>
+            <h4>Latest Reports</h4>
+            <ul class="mega-list">
+              @foreach (get_posts(['post_type' => 'post', 'category_name' => 'saskatchewan-research', 'posts_per_page' => 2]) as $post)
+                <li>
+                  <a href="{{ get_permalink($post) }}">
+                    {{ get_the_title($post) }}
+                  </a>
+                  <span class="post-date">{{ get_the_date('', $post) }}</span>
+                </li>
+              @endforeach
+            </ul>
+            <a href="/insights/?_insights_topics=saskatchewan-research" class="menu-cta">Access The full MarketBeat Reports</a>
+          </div>
+          <div>
+            <h3>News</h3>
+            <ul class="mega-list">
+              @foreach (get_posts(['post_type' => 'post', 'tag' => 'news', 'posts_per_page' => 2]) as $post)
+                <li>
+                  <a href="{{ get_permalink($post) }}">
+                    {{ get_the_title($post) }}
+                  </a>
+                  <span class="post-date">{{ get_the_date('', $post) }}</span>
+                </li>
+              @endforeach
+            </ul>
+            <a href="/insights/?_insights_types=news" class="menu-cta">Access all latest News</a>
+          </div>
+      </div>
+
 @if(is_singular('agent') || is_singular('property'))
 <div class="breadcrumb">
   <x-breadcrumb />
