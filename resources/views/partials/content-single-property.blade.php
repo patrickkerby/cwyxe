@@ -47,10 +47,10 @@
       <div class="gallery">
         <div class="siema images">
           @hasfield('primary_image')   
-            <img src="@field('primary_image', 'url')" alt="@field('primary_image', 'alt')">        
+            <img src="@field('primary_image', 'url')" class="siema-slide" alt="@field('primary_image', 'alt')">        
           @endfield
           @foreach ($additional_images as $image)
-            <img src="{{ $image['url'] }}" alt="{{ $image['alt'] }}">
+            <img src="{{ $image['url'] }}" class="siema-slide" alt="{{ $image['alt'] }}">
           @endforeach      
         </div>
         <button class="prev arrow">Prev</button>

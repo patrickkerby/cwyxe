@@ -45,6 +45,12 @@ h3 {
   @media screen and (max-width: 780px) {
     font-size: 1.5rem;
   }
+
+  &.teal {
+    color: $cw-blue;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+  }
 }
 
 h4 {

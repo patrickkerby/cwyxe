@@ -95,16 +95,19 @@ domReady(async () => {
 
     });
 
-
-  })(jQuery);
-
-  // Listing carousel, using Siema library (https://pawelgrzybek.github.io/siema/#installation)
+    // Listing carousel, using Siema library (https://pawelgrzybek.github.io/siema/#installation)
   const mySiema = new Siema();
   const prev = document.querySelector('.prev');
   const next = document.querySelector('.next');
   
   prev.addEventListener('click', () => mySiema.prev(1));
   next.addEventListener('click', () => mySiema.next(1));
+  
+  var slide = document.querySelector('.siema .siema-slide');
+if(slide) document.querySelector('.siema').style.maxWidth = slide.clientWidth + 'px';
+
+  })(jQuery);
+
   
 
 });

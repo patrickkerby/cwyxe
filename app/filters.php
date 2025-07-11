@@ -282,6 +282,11 @@ function my_mce_before_init_insert_formats( $init_array ) {
 			'title' => 'Intro Text',  
 			'selector' => 'p',  
 			'classes' => 'intro-text',
+		),
+    array(  
+			'title' => 'Teal Heading 3',  
+			'selector' => 'h3',  
+			'classes' => 'teal',
 		)
 	);  
 	// Insert the array, JSON ENCODED, into 'style_formats'
