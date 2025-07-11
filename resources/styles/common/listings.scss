@@ -119,6 +119,10 @@
     .card {
         border: 1px solid #ECEFF1;
 
+        &.featured {
+            order: -1;
+        }
+
         img {
             height: 15rem;
             width: 100%;

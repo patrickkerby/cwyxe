@@ -389,12 +389,15 @@ nav.nav-mobile nav {
 .nav-mobile input:checked ~ nav {
   width: 280px;
   box-shadow: -1rem -2rem 2rem rgba(0, 0, 0, 0.3);
+  background: #fff !important;
 
   ul {
     opacity: 1;
     background: #fff;
     overflow: scroll;
     height: 100vh;
+    margin: 0;
+    padding: 6rem 3rem 3rem;
 
     ul {
       height: auto;
@@ -422,6 +425,15 @@ nav.nav-mobile nav {
     border-radius: 0;
     top: 0;
     right: 0;
+
+      ul {
+        margin-top: 9rem;
+        padding-top: 0;
+
+        ul {
+          margin-top: 0;
+        }
+      }
   }
 
   @media (max-height: 580px) {
