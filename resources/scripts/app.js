@@ -59,14 +59,24 @@ domReady(async () => {
       $('body').toggleClass('is-active');
     });
 
-    $('.mega').hover(function() {
+    $('.insights-mega').hover(function() {
       $(this).toggleClass('is-active');
-      $('.mega-content').addClass('is-active');
+      $('.insights-mega-content').addClass('is-active');
     });
 
-    $('.mega').mouseleave(function() {
-      $('.mega-content').removeClass('is-active');
-      $('.mega').removeClass('is-active');
+    $('.insights-mega').mouseleave(function() {
+      $('.insights-mega-content').removeClass('is-active');
+      $('.insights-mega').removeClass('is-active');
+    });
+
+    $('.reports-mega').hover(function() {
+      $(this).toggleClass('is-active');
+      $('.reports-mega-content').addClass('is-active');
+    });
+
+    $('.reports-mega').mouseleave(function() {
+      $('.reports-mega-content').removeClass('is-active');
+      $('.reports-mega').removeClass('is-active');
     });
 
     // Add class to body when scrolling to add white background

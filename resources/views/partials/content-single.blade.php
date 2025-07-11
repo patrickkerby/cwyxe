@@ -1,10 +1,33 @@
 @php
   $lead_gen = get_field('lead_gen_form');
+  $protect = get_field('prevent_text_selection');
+  if ($protect) {
+    $protect = 'noselect';
+  } else {
+    $protect = '';
+  }
+  $test = "test";
 @endphp
 
-<article @php(post_class('h-entry'))>
-  <section>    
-    @php(the_content())
+<article @php post_class('h-entry') @endphp>
+  <section class="{{$protect}}">    
+    @php
+
+      the_content();
+
+      // This loop requires a /partials template that is named exactly the same as the layout title in ACF flexible content page builder
+      $id = get_the_ID();
+      if ( have_rows( 'page_builder', $id ) ) :
+        // loop through the selected ACF layouts and display the matching partial
+        while ( have_rows( 'page_builder', $id ) ) : the_row();
+          $layout = get_row_layout();
+          @endphp
+            @include( "partials.page-builder.{$layout}")
+          @php
+        endwhile;
+      elseif ( get_the_content() ) :
+      endif;
+    @endphp      
 
     @if($lead_gen)
       {{-- <form id="request_form" action="https://hook.us1.make.com/yyb8lpbnyq952cmwmf0ial4019bivyjh" method="POST">

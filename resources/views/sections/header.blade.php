@@ -28,51 +28,78 @@
   </header>
 </section>
 
-<div class="mega-content mega">
-          <div>
-            <h3>Latest Insights</h3>
-            <ul class="mega-list">
-              @foreach (get_posts(['post_type' => 'post', 'tag' => 'insights', 'posts_per_page' => 2]) as $post)
-                <li>
-                  <a href="{{ get_permalink($post) }}">
-                    {{ get_the_title($post) }}
-                  </a>
-                  <span class="post-date">{{ get_the_date('', $post) }}</span>
-                </li>
-              @endforeach
-            </ul>
-            <a href="/insights/?_insights_types=insights" class="menu-cta">Access all the latest Insights</a>
-          </div>
-          <div>
-            <h3>Saskatoon Reports</h3>
-            <h4>Latest Reports</h4>
-            <ul class="mega-list">
-              @foreach (get_posts(['post_type' => 'post', 'category_name' => 'saskatchewan-research', 'posts_per_page' => 2]) as $post)
-                <li>
-                  <a href="{{ get_permalink($post) }}">
-                    {{ get_the_title($post) }}
-                  </a>
-                  <span class="post-date">{{ get_the_date('', $post) }}</span>
-                </li>
-              @endforeach
-            </ul>
-            <a href="/insights/?_insights_topics=saskatchewan-research" class="menu-cta">Access The full MarketBeat Reports</a>
-          </div>
-          <div>
-            <h3>News</h3>
-            <ul class="mega-list">
-              @foreach (get_posts(['post_type' => 'post', 'tag' => 'news', 'posts_per_page' => 2]) as $post)
-                <li>
-                  <a href="{{ get_permalink($post) }}">
-                    {{ get_the_title($post) }}
-                  </a>
-                  <span class="post-date">{{ get_the_date('', $post) }}</span>
-                </li>
-              @endforeach
-            </ul>
-            <a href="/insights/?_insights_types=news" class="menu-cta">Access all latest News</a>
-          </div>
-      </div>
+<div class="insights-mega-content insights-mega mega mega-content">
+    <div>
+      <h3>Latest Insights</h3>
+      <ul class="mega-list">
+        @foreach (get_posts(['post_type' => 'post', 'tag' => 'insights', 'posts_per_page' => 2]) as $post)
+          <li>
+            <a href="{{ get_permalink($post) }}">
+              {{ get_the_title($post) }}
+            </a>
+            <span class="post-date">{{ get_the_date('', $post) }}</span>
+          </li>
+        @endforeach
+      </ul>
+      <a href="/insights/?_insights_types=insights" class="menu-cta">Access all the latest Insights</a>
+    </div>
+    
+    <div>
+      <h3>Latest News</h3>
+      <ul class="mega-list">
+        @foreach (get_posts(['post_type' => 'post', 'tag' => 'news', 'posts_per_page' => 2]) as $post)
+          <li>
+            <a href="{{ get_permalink($post) }}">
+              {{ get_the_title($post) }}
+            </a>
+            <span class="post-date">{{ get_the_date('', $post) }}</span>
+          </li>
+        @endforeach
+      </ul>
+      <a href="/insights/?_insights_types=news" class="menu-cta">Access all latest News</a>
+    </div>
+</div>
+<div class="reports-mega-content reports-mega mega mega-content">
+  <div>
+    <h3>Saskatoon Marketbeat Reports</h3>
+    <ul class="mega-list">
+      @foreach (get_posts(['post_type' => 'post', 'category_name' => 'saskatchewan-research', 'posts_per_page' => 2]) as $post)
+        <li>
+          <a href="{{ get_permalink($post) }}">
+            {{ get_the_title($post) }}
+          </a>
+          <span class="post-date">{{ get_the_date('', $post) }}</span>
+        </li>
+      @endforeach
+    </ul>
+    <a href="/insights/?_insights_topics=saskatchewan-research" class="menu-cta">See Archive</a>
+  </div>
+  <div>
+    <h3>National Market Reports</h3>
+    <ul class="mega-list">
+      @foreach (get_posts(['post_type' => 'post', 'category_name' => 'canadian-research', 'posts_per_page' => 2]) as $post)
+        <li>
+          <a href="{{ get_permalink($post) }}">
+            {{ get_the_title($post) }}
+          </a>
+          <span class="post-date">{{ get_the_date('', $post) }}</span>
+        </li>
+      @endforeach
+    </ul>
+    <a href="/insights/?_insights_topics=canadian-research" class="menu-cta">See Archive</a>
+  </div>
+  <div class="cta">
+    <h3>Access our full Saskatoon<br> MartketBeat Reports</h3>
+    <p>Go beyond the free summaries to get annual access to our full market research <br>
+      <strong>Get all 12 reports for $850/year</strong>
+    </p>
+    <div class="buttons">
+      <a href="/subscribe" class="button">Subscribe Now</a>
+      {{-- @shortcode('[swpm_payment_button id="27292" class="button" button_text="Pay Now"]') --}}
+      <a href="/insights/pro-marketbeat-reports/">Learn More</a>
+    </div>
+  </div>
+</div>
 
 @if(is_singular('agent') || is_singular('property'))
 <div class="breadcrumb">
@@ -109,13 +136,13 @@
         @hasfield('description')
           <p class="description">@field('description')</p>
         @endfield
+        @if(is_single())
+          <span class="meta">@include('partials.entry-meta')</span>
+        @endif
       </div>
       @hasfield('background_image')
         <img src="@field('background_image', 'url')" alt="">
       @endfield    
-      @if(is_single())
-        <span class="meta">@include('partials.entry-meta')</span>
-      @endif
   </section>
 @endunless
 

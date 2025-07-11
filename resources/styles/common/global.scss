@@ -118,6 +118,10 @@ button span {
   color: #fff !important;
 }
 
+.intro-text {
+  font-size: 1.25rem;
+}
+
 .emphasized-link {
   font-size: 0.9375rem;
   font-weight: 400;
@@ -255,14 +259,21 @@ button span {
 }
 
 .meta {
-  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  border-top: solid 1px #fff;
+  padding-top: 0.5rem;
+  margin-top: 1rem;
+  display: inline-block;
+  margin: 1rem auto 0 0;
 
-  span {
+  .no-bg & span,
+  .no-bg & time {
     color: $cw-charcoal !important;
   }
 
   p {
     display: inline;
+    font-size: 0.875rem;
   }
 }
 
@@ -289,6 +300,9 @@ button span {
     gap: 0.5rem;
   }
 
+  nav span a,
+  nav span a:link,
+  nav span a:hover,
   a:link span,
   a:active span,
   span,
@@ -296,8 +310,8 @@ button span {
     color: rgba($color: #fff, $alpha: 0.7);
     @include slowfade();
 
-    .single &,
-    .insights & {
+    .single .no-bg &,
+    .insights .no-bg & {
       color: $cw-red;
     }
   }
@@ -318,8 +332,8 @@ button span {
     color: #fff;
     text-wrap-mode: nowrap;
 
-    .single &,
-    .insights & {
+    .single .no-bg &,
+    .insights .no-bg & {
       color: $cw-charcoal;
     }
   }
@@ -755,3 +769,10 @@ button span {
   display: none;
 }
 
+.noselect {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Standard syntax */
+  cursor: default;
+}
