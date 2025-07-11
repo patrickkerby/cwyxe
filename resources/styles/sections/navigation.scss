@@ -580,6 +580,7 @@ nav.nav-mobile nav {
         margin: 0;
         padding: 0.5rem 2rem;
         row-gap: 0.25rem;
+        align-items: flex-start;
 
         &::after {
           display: none;
