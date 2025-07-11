@@ -14,6 +14,7 @@
             border: solid 2px #eceff1;
             text-transform: uppercase;
             margin-bottom: 1.5rem;
+            font-size: 0.9rem;
 
             @include slowfade();
 
@@ -21,6 +22,7 @@
                 background: $cw-red;
                 border: solid 2px $cw-red;
                 opacity: 1;
+                color: #fff;
 
                 .facetwp-display-value {
                     color: #fff !important;
@@ -32,7 +34,7 @@
             .facetwp-display-value {
                 color: $cw-charcoal-light !important;
                 font-weight: 400;
-                font-size: 1rem;
+                font-size: 0.9rem;
 
                 @include slowfade();
             }
