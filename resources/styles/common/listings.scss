@@ -3,8 +3,19 @@
         display: flex;
         column-gap: 1rem;
 
+        @media (max-width: 1200px) {
+           column-gap: 0.5rem; 
+        }
+
+        @media (max-width: 1130px) {
+           flex-direction: column;
+           row-gap: 0.5rem; 
+           margin-bottom: 1rem !important;
+        }
+
         span.facetwp-display-value::before {
             content: "For ";
+            margin-right: 0.25rem;
         }
 
         .facetwp-radio {
@@ -15,6 +26,18 @@
             text-transform: uppercase;
             margin-bottom: 1.5rem;
             font-size: 0.9rem;
+
+            @media (max-width: 1420px) {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.8rem;
+            }
+
+            @media (max-width: 1130px) {
+                font-size: 0.9rem;
+                padding: 0.25rem 1rem;
+                margin-bottom: 0;
+                margin-right: auto;
+            }
 
             @include slowfade();
 
@@ -35,6 +58,7 @@
                 color: $cw-charcoal-light !important;
                 font-weight: 400;
                 font-size: 0.9rem;
+                display: inline-flex;
 
                 @include slowfade();
             }

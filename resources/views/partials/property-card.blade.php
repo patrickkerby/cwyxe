@@ -1,5 +1,5 @@
 @if(is_page('property-search') || is_singular('agent') || is_singular('property'))
-    <div class="property card @group('general_settings')@hassub('featured_property')featured @endsub @endgroup">
+     <div class="property card @group('general_settings')@hassub('featured_property')featured @endsub @endgroup">
         <div class="image">
             @hasfield('primary_image')                
             <a href="@permalink"><img src="@field('primary_image', 'url')" alt="@field('primary_image', 'alt')"></a>
