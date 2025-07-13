@@ -677,6 +677,10 @@ nav.nav-mobile nav {
           column-gap: 1.25rem;
           align-items: center;
           margin-top: 1.25rem;
+
+          div {
+              width: auto;
+            }
         }
 
         form {
@@ -686,10 +690,6 @@ nav.nav-mobile nav {
         button {
             margin: 0;
             width: auto;
-
-            div {
-              width: auto;
-            }
         }
 
         a {
