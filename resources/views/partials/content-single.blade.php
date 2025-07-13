@@ -56,7 +56,7 @@
           </p>
           <div class="buttons">
             {{-- <a href="/subscribe" class="button">Subscribe Now</a> --}}
-            @shortcode('[swpm_payment_button id="27292" class="button" button_text="Pay Now"]')
+            @shortcode('[swpm_payment_button id="27292" class="button" button_text="Subscribe Now"]')
             <a href="/insights/pro-marketbeat-reports/">Learn More</a>
           </div>
         </div>
