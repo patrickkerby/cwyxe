@@ -142,3 +142,125 @@ button.button {
     width: 100%;
     padding: 2rem auto;
 }
+
+.lead-gen-form {
+    margin-top: 4rem;
+    margin-bottom: 4rem;;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @media (max-width: 580px) {
+        flex-direction: column;
+        row-gap: 2rem;
+    }
+
+    .form-content {
+        width: 48%;    
+
+        @media (max-width: 580px) {
+            width: 100%;
+        }
+
+        h5 {
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+    }
+
+    form {
+        max-width: 600px;
+        margin: 0 auto;
+        background: none;
+        padding: 0;
+
+        .btn-hollow {
+            margin-top: 0;
+        }
+    }
+
+    .cta {
+        flex-direction: column;
+        width: 48%;
+        height: auto;
+        margin: 0 0 auto 0;
+        padding: 3rem 2rem;
+        row-gap: 0.25rem;
+        align-items: flex-start;
+
+        @media (max-width: 580px) {
+            width: 100%;
+        }
+
+        &::after {
+            display: none;
+        }
+
+        h3 {
+            color: #fff;
+            text-transform: none;
+            margin-bottom: 1rem !important;
+        }
+
+        p {
+            font-size: 0.9rem;
+            line-height: 1rem;
+
+            strong {
+            color: #fff;
+            margin-top: 0.5rem;
+            display: flex;
+            }
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            column-gap: 1.25rem;
+            align-items: center;
+            margin-top: 1.25rem;
+
+            @media (max-width: 1024px) {
+                flex-direction: column;
+                row-gap: 1rem;
+                align-items: flex-start;
+
+                a {
+                    padding: 0;
+                }
+            }
+        }
+
+        a {
+            color: #fff;
+            float: left;
+            height: 2rem;
+            padding: .5rem 0.75rem;
+            margin: 0;
+            font-size: 0.875rem;
+            line-height: 1.2;
+            text-decoration: underline;
+
+            &:hover {
+                color: #fff;
+                text-decoration: none;
+            }
+
+            &.button {
+                background: $cw-red;
+                color: #fff !important;
+                font-weight: 500;
+                text-transform: none;
+                line-height: 1.2;
+                text-decoration: none;
+                padding: 0.5rem 1rem 0.75rem 1rem;
+
+                &:hover {
+                    background: darken($cw-red, 10%);
+                    color: #fff !important;
+                }
+            }
+        }
+    }
+}
