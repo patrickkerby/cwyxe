@@ -189,7 +189,7 @@ button.button {
         align-items: flex-start;
 
         @media (max-width: 580px) {
-            width: 100%;
+            width: 100%; 
         }
 
         &::after {
