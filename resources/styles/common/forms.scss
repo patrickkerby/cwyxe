@@ -260,6 +260,10 @@ button.button {
                     background: darken($cw-red, 10%);
                     color: #fff !important;
                 }
+
+                @media (max-width: 580px) {
+                    margin-bottom: 0;
+                }
             }
         }
     }
