@@ -484,7 +484,7 @@ nav.nav-mobile nav {
     right: 0;
 
       ul {
-        margin-top: 9rem;
+        margin: 9rem 0 4rem 0;
         padding-top: 0;
 
         ul {
@@ -501,6 +501,7 @@ nav.nav-mobile nav {
     border-radius: 0;
     top: 0;
     right: 0;
+    overflow-y: scroll;
   }
 }
 
