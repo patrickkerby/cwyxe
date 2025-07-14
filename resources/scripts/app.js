@@ -59,22 +59,36 @@ domReady(async () => {
       $('body').toggleClass('is-active');
     });
 
-    $('.insights-mega').hover(function() {
+    $('.nav-desktop .insights-mega').hover(function() {
       $(this).toggleClass('is-active');
       $('.insights-mega-content').addClass('is-active');
     });
 
-    $('.insights-mega').mouseleave(function() {
+    $('.nav-mobile .insights-mega').click(function() {
+      $(this).toggleClass('is-active');
+      $('.insights-mega-content').addClass('is-active');
+    });
+
+    $('.nav-desktop .insights-mega').mouseleave(function() {
       $('.insights-mega-content').removeClass('is-active');
       $('.insights-mega').removeClass('is-active');
     });
 
-    $('.reports-mega').hover(function() {
+    $('.nav-desktop .reports-mega').hover(function() {
       $(this).toggleClass('is-active');
       $('.reports-mega-content').addClass('is-active');
     });
 
-    $('.reports-mega').mouseleave(function() {
+    $('.nav-mobile .reports-mega').click(function() {
+      $(this).toggleClass('is-active');
+      $('.reports-mega-content').addClass('is-active');
+    });
+
+    $('.menu-item-has-children').click(function() {
+      $(this).toggleClass('is-active');
+    });
+
+    $('.nav-desktop .reports-mega').mouseleave(function() {
       $('.reports-mega-content').removeClass('is-active');
       $('.reports-mega').removeClass('is-active');
     });
