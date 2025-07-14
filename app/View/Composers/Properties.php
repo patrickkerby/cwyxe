@@ -39,7 +39,6 @@ class Properties extends Composer
         $amount = $rates['amount'];
         $price_str = preg_replace('/(\d)(?=(?:\d{3})+$)/', '$1,', $amount);
 
-
         return [
             'name' => get_the_title($post->ID),
             'slug' => $post->post_name,
@@ -48,12 +47,14 @@ class Properties extends Composer
             'property_status' => $status_terms,
             'property_status_color' => $status_color,
             'availability' => $general_settings['availability'],
+            'featured' => $general_settings['featured_property'],
             'address' => get_field('address', $post->ID),
             'price' => $price_str,
             'primary_image' => get_field('primary_image', $post->ID),
             'agents' => get_field('agent', $post->ID)
           ];
     }, $properties);
+
   }
 
   public function with()

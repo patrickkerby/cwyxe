@@ -29,6 +29,7 @@
 </section>
 
 <div class="insights-mega-content insights-mega mega mega-content">
+  <span class="close-arrow"></span>
     <div>
       <h3>Latest Insights</h3>
       <ul class="mega-list">
@@ -60,6 +61,7 @@
     </div>
 </div>
 <div class="reports-mega-content reports-mega mega mega-content">
+  <span class="close-arrow"></span>
   <div>
     <h3>Saskatoon Marketbeat Reports</h3>
     <ul class="mega-list">

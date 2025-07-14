@@ -6,10 +6,24 @@
         "post_type"      => 'property',
         "posts_per_page" => 10,
         "orderby"        => ["title" => "ASC"],        
-        "facetwp"        => true 
+        "facetwp"        => true,
+
     ];
     // Run the query
     $properties_loop = new WP_Query( $args );
+
+    // $featured_array = [];
+    // foreach( $properties_loop->posts as $post) {
+    //     $general_settings = get_field('general_settings', $post->ID);
+    //     $featured = $general_settings['featured_property'] ?? false;
+        
+    //     if ( $featured ) {
+    //         $featured_array[] = $post;
+    //     }
+    // }
+    // print("<pre>".print_r($properties_loop,true)."</pre>");
+
+
 @endphp
 @extends('layouts.app')
 @section('content')
@@ -36,7 +50,6 @@
                     $properties_loop->the_post(); 
                     $status_terms = get_the_terms( $properties_loop->post->ID, 'property-status' );
                     @endphp
-                    
                     @include('partials.property-card')
                 @php endwhile;
                 else : @endphp

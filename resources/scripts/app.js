@@ -79,6 +79,13 @@ domReady(async () => {
       $('.reports-mega').removeClass('is-active');
     });
 
+    $('.close-arrow').click(function() {
+      $('.reports-mega-content').removeClass('is-active');
+      $('.reports-mega').removeClass('is-active');
+      $('.insights-mega-content').removeClass('is-active');
+      $('.insights-mega').removeClass('is-active');
+    });
+
     // Add class to body when scrolling to add white background
     var targetDiv = $('body');
 

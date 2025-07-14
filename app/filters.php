@@ -321,3 +321,4 @@ add_filter( 'enter_title_here', function( $input, $post ) {
     return $input;
 },
 10, 2 );
+
