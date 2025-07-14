@@ -447,11 +447,11 @@ nav.nav-mobile nav {
   width: 100vw;
   box-shadow: -1rem -2rem 2rem rgba(0, 0, 0, 0.3);
   background: #fff !important;
+  overflow: scroll;
 
   ul {
     opacity: 1;
     background: #fff;
-    overflow: scroll;
     height: 100vh;
     margin: 0;
     padding: 11rem 3rem 5rem 4.5rem;
@@ -501,7 +501,6 @@ nav.nav-mobile nav {
     border-radius: 0;
     top: 0;
     right: 0;
-    overflow-y: scroll;
   }
 }
 
