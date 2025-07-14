@@ -785,8 +785,13 @@ nav.nav-mobile nav {
           }
 
           .buttons {
-            margin: 0;
+            margin: 1rem 0 0 0;
             padding: 0;
+
+            button {
+              padding: 0.5rem 1rem;
+              margin: 0;
+            }
           }
         }
       }
