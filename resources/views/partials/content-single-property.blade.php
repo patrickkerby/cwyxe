@@ -4,7 +4,7 @@
   $property_type = get_the_terms( $post->ID, 'property-type' );
   $featured_meta = get_field('highlighted_property_details' );
   $dimensions_meta = array("building_size", "lot_size", "area_size", "max_contiguous", "min_divisible");
-  $details_meta = array("listing_date", "property_id", "year_built", "building_class", "space_type", "property_use_type", "zoning", "occupancy", "construction_status");
+  $details_meta = array("property_id", "year_built", "building_class", "space_type", "property_use_type", "zoning", "occupancy", "construction_status");
   $rate_meta = array("amount", "rate_type");
   $dimensions = get_fields('dimensions_section');
   $additional_images = get_field('additional_images');
