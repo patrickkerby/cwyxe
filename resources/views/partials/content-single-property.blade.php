@@ -135,7 +135,7 @@
             @group('property_details')
               @set($label, get_sub_field_object($key)['label'])
               @hassub($key)
-                <div class="detail">        
+                <div class="detail {{ $key }}">        
                   <strong>{{ $label }}</strong>
                   <p>@sub($key)</p>
                 </div>
