@@ -91,7 +91,7 @@
     <a href="/insights/?_insights_topics=canadian-research" class="menu-cta">See Archive</a>
   </div>
   <div class="cta">
-    <h3>Access our full Saskatoon<br> MartketBeat Reports</h3>
+    <h3>Access our full Saskatoon<br> MarketBeat Reports</h3>
     <p>Go beyond the free summaries to get annual access to our full market research <br>
       <strong>Get all 12 reports for $850/year</strong>
     </p>
