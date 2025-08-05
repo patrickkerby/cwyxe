@@ -93,9 +93,9 @@
                         $price_str = preg_replace('/(\d)(?=(?:\d{3})+$)/', '$1,', $price);
                     @endphp
                     <span class="value">${{ $price_str }}</span>
-                  @elseif($group == 'dimensions_section')
+                    @elseif($group == 'dimensions_section')
                     @set($postfix, $value.'_postfix')
-                    <span class="value">@sub($value) @sub($postfix)</span>
+                    <span class="value">&plusmn; @sub($value) @sub($postfix)</span>
                   @else
                     <span class="value">@sub($value)</span>
                   @endif
@@ -158,7 +158,7 @@
                   $value = (float) $value; @endphp
                     <div class="detail">        
                       <strong>{{ $label }}</strong>
-                      <p>{{ number_format($value, 2, '.') }} @sub($dimension.'_postfix')</p>
+                      <p>&plusmn; {{ number_format($value, 2, '.') }} @sub($dimension.'_postfix')</p>
                     </div>
                 @endsub
               @endforeach
