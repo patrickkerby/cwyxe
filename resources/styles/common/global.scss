@@ -181,6 +181,7 @@ button span {
   gap: 0.75rem;
   align-items: center;
 
+  // pill links are hollow (as found on the broker pages)
   a {
     display: flex;
     padding: 0.25rem 1rem;
@@ -204,6 +205,22 @@ button span {
       background: $cw-red;
       @include slowfade();
     }
+  }
+
+  // spans are filled, as found on the property pages
+  span {
+    display: inline-flex;
+    padding: 0.25rem 1rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 2rem;
+    background: #7F8283;
+    color: #fff;
+    font-weight: 500;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    margin: 0 0 1.25rem 0;
   }
 }
 
@@ -347,22 +364,6 @@ button span {
   svg {
     width: 1rem;
   }
-}
-
-/* Availability Pills */
-.property_type {
-  display: inline-flex;
-  padding: 0.25rem 1rem;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  border-radius: 2rem;
-  background: #7F8283;
-  color: #fff;
-  font-weight: 500;
-  font-size: 0.6rem;
-  text-transform: uppercase;
-  margin: 0 0 1.25rem 0;
 }
 
 /* Tabs */

@@ -1,12 +1,26 @@
 @if(is_page('property-search') || is_singular('agent') || is_singular('property'))
      <div class="property card @group('general_settings')@hassub('featured_property')featured @endsub @endgroup">
         <div class="image">
+            @if($status_terms)
+                @php
+                    $char_count = mb_strlen($status_terms[0]->name, "UTF-8");
+
+                    if ($char_count < 10) {
+                        $status_size = 'status-small';      
+                    } else {
+                        $status_size = 'status-large';
+                    }
+                @endphp
+                <span class="status_banner {{ $status_size }}">{{ $status_terms[0]->name }}</span>
+            @endif
+
             @hasfield('primary_image')                
             <a href="@permalink"><img src="@field('primary_image', 'url')" alt="@field('primary_image', 'alt')"></a>
             @endfield
         </div>
         <div class="content">    
-            @if($status_terms)
+            {{-- @if($status_terms)            
+                <div class="pills">
                 @foreach ($status_terms as $status)
                     @php
                         $status_color = get_field('property_status_colour', 'term_'.$status->term_id);
@@ -14,7 +28,8 @@
                     @endphp
                     <span class="property_type status" style="background-color:{{$status_color}}">{{ $status->name }}</span>
                 @endforeach
-            @endif
+                </div>
+            @endif --}}
             <span class="availability">For @group('general_settings') @sub('availability')@endgroup • @term('property-type')</span>                    
             <h3><a href="@permalink">@title</a></h3>
             <p>@field('address')</p>            
@@ -44,9 +59,11 @@
             @endif
         </div>
         <div class="content">
+            <span class="pills">
             @foreach($property['property_status'] as $status)
                 <span class="property_type status" style="background-color:{{ $property['property_status_color'] }}">{{ $status->name }}</span>
             @endforeach
+            </span>
             <span class="availability">
                 @if($property['availability'])
                     For {{$property['availability']}} • 

@@ -23,12 +23,18 @@
 <article @php post_class('h-entry') @endphp>
 
   <section class="property-header">
+    {{-- 
+    Commenting out this block, as history shows that the client will most likely flip flop and want this back in 6 weeks.
+    -- 
+    <span class="pills">
     @foreach ($status_terms as $status)
       @php
         $status_color = get_field('property_status_colour', 'term_'.$status->term_id);
       @endphp
       <span class="property_type status" style="background-color:{{$status_color}}">{{ $status->name }}</span>
     @endforeach
+    </span> 
+    --}}
     <span class="availability">
       @group('general_settings')
         For @sub('availability') • 
@@ -44,7 +50,21 @@
   </section>
   <section class="container">
     <div class="content">   
-      <div class="gallery">
+      <div class="gallery">        
+
+        @if ($status_terms)
+          @php
+            $char_count = mb_strlen($status_terms[0]->name, "UTF-8");
+
+            if ($char_count < 10) {
+              $status_size = 'status-small';      
+            } else {
+              $status_size = 'status-large';
+            }        
+          @endphp
+          <span class="status_banner {{ $status_size }}">{{ $status_terms[0]->name }}</span>
+        @endif
+        
         <div class="siema images">
           @hasfield('primary_image')   
             <img src="@field('primary_image', 'url')" class="siema-slide" alt="@field('primary_image', 'alt')">        
@@ -56,8 +76,6 @@
         <button class="prev arrow">Prev</button>
         <button class="next arrow right">Next</button>
       </div>
-
-
 
       @if($featured_meta)
         <div class="property-meta-featured">
