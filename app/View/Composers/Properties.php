@@ -29,6 +29,8 @@ class Properties extends Composer
     
     return array_map(function ($post) {
         $status_terms = get_the_terms( $post->ID, 'property-status' );
+        $availability_conditions = get_the_terms( $post->ID, 'availability-condition' );
+
         if ($status_terms) {
             $status_color = get_field('property_status_colour', 'term_'.$status_terms[0]->term_id);
         } else {
@@ -47,6 +49,7 @@ class Properties extends Composer
             'property_status' => $status_terms,
             'property_status_color' => $status_color,
             'availability' => $general_settings['availability'],
+            'availability_condition' => $availability_conditions,
             'featured' => $general_settings['featured_property'],
             'address' => get_field('address', $post->ID),
             'price' => $price_str,

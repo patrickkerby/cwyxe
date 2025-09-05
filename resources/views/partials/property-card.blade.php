@@ -1,9 +1,9 @@
 @if(is_page('property-search') || is_singular('agent') || is_singular('property'))
      <div class="property card @group('general_settings')@hassub('featured_property')featured @endsub @endgroup">
         <div class="image">
-            @if($status_terms)
+            @if($availability_condition)
                 @php
-                    $char_count = mb_strlen($status_terms[0]->name, "UTF-8");
+                    $char_count = mb_strlen($availability_condition[0]->name, "UTF-8");
 
                     if ($char_count < 10) {
                         $status_size = 'status-small';      
@@ -11,7 +11,7 @@
                         $status_size = 'status-large';
                     }
                 @endphp
-                <span class="status_banner {{ $status_size }}">{{ $status_terms[0]->name }}</span>
+                <span class="status_banner {{ $status_size }}">{{ $availability_condition[0]->name }}</span>
             @endif
 
             @hasfield('primary_image')                
@@ -19,7 +19,7 @@
             @endfield
         </div>
         <div class="content">    
-            {{-- @if($status_terms)            
+            @if($status_terms)            
                 <div class="pills">
                 @foreach ($status_terms as $status)
                     @php
@@ -29,7 +29,7 @@
                     <span class="property_type status" style="background-color:{{$status_color}}">{{ $status->name }}</span>
                 @endforeach
                 </div>
-            @endif --}}
+            @endif
             <span class="availability">For @group('general_settings') @sub('availability')@endgroup • @term('property-type')</span>                    
             <h3><a href="@permalink">@title</a></h3>
             <p>@field('address')</p>            

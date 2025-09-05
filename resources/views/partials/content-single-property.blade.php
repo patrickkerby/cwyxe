@@ -1,6 +1,7 @@
 @php
   $agents = get_field('agent');
   $status_terms = get_the_terms( $post->ID, 'property-status' );
+  $availability_condition_single = get_the_terms( $post->ID, 'availability-condition' );
   $property_type = get_the_terms( $post->ID, 'property-type' );
   $featured_meta = get_field('highlighted_property_details' );
   $dimensions_meta = array("building_size", "lot_size", "area_size", "max_contiguous", "min_divisible");
@@ -23,9 +24,7 @@
 <article @php post_class('h-entry') @endphp>
 
   <section class="property-header">
-    {{-- 
-    Commenting out this block, as history shows that the client will most likely flip flop and want this back in 6 weeks.
-    -- 
+    
     <span class="pills">
     @foreach ($status_terms as $status)
       @php
@@ -34,7 +33,7 @@
       <span class="property_type status" style="background-color:{{$status_color}}">{{ $status->name }}</span>
     @endforeach
     </span> 
-    --}}
+   
     <span class="availability">
       @group('general_settings')
         For @sub('availability') • 
@@ -52,9 +51,9 @@
     <div class="content">   
       <div class="gallery">        
 
-        @if ($status_terms)
+        @if ($availability_condition_single)
           @php
-            $char_count = mb_strlen($status_terms[0]->name, "UTF-8");
+            $char_count = mb_strlen($availability_condition_single[0]->name, "UTF-8");
 
             if ($char_count < 10) {
               $status_size = 'status-small';      
@@ -62,7 +61,7 @@
               $status_size = 'status-large';
             }        
           @endphp
-          <span class="status_banner {{ $status_size }}">{{ $status_terms[0]->name }}</span>
+          <span class="status_banner {{ $status_size }}">{{ $availability_condition_single[0]->name }}</span>
         @endif
         
         <div class="siema images">
@@ -280,6 +279,8 @@
         while ( $related_properties->have_posts() ) :
             $related_properties->the_post(); 
             $status_terms = get_the_terms( $related_properties->post->ID, 'property-status' );
+            $availability_condition = get_the_terms( $related_properties->post->ID, 'availability-condition' );
+
             @endphp
             
             @include('partials.property-card')
