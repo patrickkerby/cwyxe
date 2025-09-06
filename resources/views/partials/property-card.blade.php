@@ -33,22 +33,26 @@
             <span class="availability">For @group('general_settings') @sub('availability')@endgroup • @term('property-type')</span>                    
             <h3><a href="@permalink">@title</a></h3>
             <p>@field('address')</p>            
-
-            @hasfields('rates')
-                @group('rates')                        
-                    @if(get_sub_field('negotiable') == TRUE)
-                        @set($negotiable, '(negotiable)')
-                    @else
-                        @set($negotiable, '')
-                    @endif
-                    @php
-                        $price = get_sub_field('amount');
-                        $price_str = preg_replace('/(\d)(?=(?:\d{3})+$)/', '$1,', $price);    
-                    @endphp
-                    
-                    <span class="price">For @sub('rate_type'): @hassub('amount')${{ $price_str }} @sub('rate_postfix')@endsub {{ $negotiable }}</span>
-                @endgroup 
-            @endhasfields
+            
+            
+                @hasfields('rates')
+                    @group('rates')                        
+                        @if(get_sub_field('negotiable') == TRUE)
+                            @set($negotiable, '(negotiable)')
+                        @else
+                            @set($negotiable, '')
+                        @endif
+                        @php
+                            $price = get_sub_field('amount');
+                            $price_str = preg_replace('/(\d)(?=(?:\d{3})+$)/', '$1,', $price);    
+                        @endphp
+                        @if($availability_condition && ($availability_condition[0]->slug == 'leased' || $availability_condition[0]->slug == 'sold'))
+                            {{-- Do nothing --}}
+                        @else
+                            <span class="price">For @sub('rate_type'): @hassub('amount')${{ $price_str }} @sub('rate_postfix')@endsub {{ $negotiable }}</span>
+                        @endif
+                    @endgroup 
+                @endhasfields
         </div>
     </div>
 @else
@@ -77,7 +81,9 @@
             </span>
             <h3><a href="{{ $property['link']}}">{{ $property['name']}}</a></h3>
             <p>{{ $property['address']}}</p>
-            <span class="price">Lease price: ${{ $property['price']}}</span>
+            @unless($availability_condition[0]->slug == 'leased' || $availability_condition[0]->slug == 'sold')
+                <span class="price">Lease price: ${{ $property['price']}}</span>
+            @endunless
         </div>
     </div>
 @endif
