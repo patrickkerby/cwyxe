@@ -81,7 +81,7 @@
             </span>
             <h3><a href="{{ $property['link']}}">{{ $property['name']}}</a></h3>
             <p>{{ $property['address']}}</p>
-            @unless($availability_condition[0]->slug == 'leased' || $availability_condition[0]->slug == 'sold')
+            @unless(!empty($property['availability_condition']) &&$property['availability_condition'][0]->slug == 'leased' || !empty($property['availability_condition']) && $property['availability_condition'][0]->slug == 'sold')
                 <span class="price">Lease price: ${{ $property['price']}}</span>
             @endunless
         </div>

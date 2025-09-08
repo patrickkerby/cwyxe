@@ -37,6 +37,10 @@ class Home extends Composer
 
             $price_str = preg_replace('/(\d)(?=(?:\d{3})+$)/', '$1,', $amount);
             
+            $availability_condition = get_the_terms( $post->ID, 'availability-condition' );
+            if (!$availability_condition) {
+                $availability_condition = [];
+            }
 
             return [
                 'name' => get_the_title($post->ID),
@@ -46,6 +50,7 @@ class Home extends Composer
                 'property_status' => $status_terms,
                 'property_status_color' => $status_color,
                 'availability' => $general_settings['availability'],
+                'availability_condition' => $availability_condition,
                 'address' => get_field('address', $post->ID),
                 'price' => $price_str,
                 'primary_image' => get_field('primary_image', $post->ID),
