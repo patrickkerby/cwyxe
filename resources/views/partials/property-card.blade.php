@@ -57,6 +57,18 @@
     </div>
 @else
     <div class="property card">
+        @if($property['availability_condition'])
+                @php
+                    $char_count = mb_strlen($property['availability_condition'][0]->name, "UTF-8");
+
+                    if ($char_count < 10) {
+                        $status_size = 'status-small';
+                    } else {
+                        $status_size = 'status-large';
+                    }
+                @endphp
+                <span class="status_banner {{ $status_size }}">{{ $property['availability_condition'][0]->name }}</span>
+            @endif
         <div class="image">
             @if($property['primary_image'])
             <a href="{{ $property['link']}}"><img src="{{ $property['primary_image']['url']}}" alt="{{ $property['primary_image']['url']}}"></a>
@@ -81,7 +93,7 @@
             </span>
             <h3><a href="{{ $property['link']}}">{{ $property['name']}}</a></h3>
             <p>{{ $property['address']}}</p>
-            @unless(!empty($property['availability_condition']) &&$property['availability_condition'][0]->slug == 'leased' || !empty($property['availability_condition']) && $property['availability_condition'][0]->slug == 'sold')
+            @unless(!empty($property['availability_condition']) && $property['availability_condition'][0]->slug == 'leased' || !empty($property['availability_condition']) && $property['availability_condition'][0]->slug == 'sold')
                 <span class="price">Lease price: ${{ $property['price']}}</span>
             @endunless
         </div>

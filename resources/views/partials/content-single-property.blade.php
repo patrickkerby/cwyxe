@@ -9,13 +9,28 @@
   $rate_meta = array("amount", "rate_type");
   $dimensions = get_fields('dimensions_section');
   $additional_images = get_field('additional_images');
+  $property_type_slugs = [];
+
+  if ($property_type) {
+    foreach ($property_type as $item) {
+      $property_type_slugs[] = $item->slug;
+    }
+    // $property_type_slugs = implode(',', $property_type_slugs);
+  }
 
   $args = [
     "post_type"      => 'property',
-    "posts_per_page" => 3,
+    "posts_per_page" => 6,
     "orderby"        => ["title" => "ASC"],
-    "category"       => $property_type[0]->term_id,
-    "post__not_in"   => [$post->ID]
+    "post__not_in"   => [$post->ID],
+    "tax_query" => array(
+        array(
+            'taxonomy' => 'property-type', // Replace with your custom taxonomy slug
+            'field'    => 'slug',               // Can be 'slug', 'term_id', or 'name'
+            'terms'    => $property_type_slugs, // Replace with your desired term slugs or IDs
+            'operator' => 'IN',                 // Use 'IN' for matching any of the terms, 'AND' for all terms, 'NOT IN' for excluding terms
+        ),
+      ),
   ];
   $related_properties = new WP_Query( $args );
 
@@ -25,14 +40,16 @@
 
   <section class="property-header">
     
+    @if($status_terms)
     <span class="pills">
-    @foreach ($status_terms as $status)
-      @php
-        $status_color = get_field('property_status_colour', 'term_'.$status->term_id);
-      @endphp
-      <span class="property_type status" style="background-color:{{$status_color}}">{{ $status->name }}</span>
-    @endforeach
-    </span> 
+      @foreach ($status_terms as $status)
+        @php
+          $status_color = get_field('property_status_colour', 'term_'.$status->term_id);
+        @endphp
+        <span class="property_type status" style="background-color:{{$status_color}}">{{ $status->name }}</span>
+      @endforeach
+      </span> 
+    @endif
    
     <span class="availability">
       @group('general_settings')
@@ -93,7 +110,7 @@
               @endif
             @endoptions
 
-            @unless($availability_condition_single[0]->slug == 'leased' && $meta['label'] == 'Amount' || $availability_condition_single[0]->slug == 'sold' && $meta['label'] == 'Amount')             
+            @unless(!empty($property['availability_condition']) && $availability_condition_single[0]->slug == 'leased' && $meta['label'] == 'Amount' || !empty($property['availability_condition']) && $availability_condition_single[0]->slug == 'sold' && $meta['label'] == 'Amount')             
               <div class="{{ $value }} {{ $icon_value }}" style="background-image:url({{ $background_img }});">
                 @if(in_array($value, $dimensions_meta))
                   @set($group, 'dimensions_section')
@@ -199,7 +216,7 @@
               @set($negotiable, '')
             @endif
                 
-            @unless($availability_condition_single[0]->slug == 'leased' || $availability_condition_single[0]->slug == 'sold')
+            @unless(!empty($property['availability_condition']) && $availability_condition_single[0]->slug == 'leased' || !empty($property['availability_condition']) && $availability_condition_single[0]->slug == 'sold')
               <div class="detail">
                 @php 
                   $price = get_sub_field('amount');
@@ -279,18 +296,26 @@
   <section class="related-properties">
     <h4>Similar Properties</h4>
     <div class="properties-grid">
-      @php if ( $related_properties->have_posts() ) :
-        while ( $related_properties->have_posts() ) :
+      @php 
+        $count = 0;
+        if ( $related_properties->have_posts() ) :
+          while ( $related_properties->have_posts() ) :
             $related_properties->the_post(); 
             $status_terms = get_the_terms( $related_properties->post->ID, 'property-status' );
             $availability_condition = get_the_terms( $related_properties->post->ID, 'availability-condition' );
-
+            if ( $availability_condition ) {
+              continue;
+            }
+            $count++;
             @endphp
             
             @include('partials.property-card')
-        @php endwhile;
+            
+            @php
+            if ($count >= 3) break;
+          endwhile;
         else : @endphp
-            <p><?php  _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+        <p><?php  _e( 'Sorry, no posts matched your criteria.' ); ?></p>
       @php endif;
 
       wp_reset_postdata(); @endphp      

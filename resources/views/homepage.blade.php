@@ -99,8 +99,11 @@
     <section class="featured-properties">
         <h4>Featured Properties</h4>
         <div class="properties-grid">
-            @foreach ($featuredProperties as $property)
-                @if($property)
+            @foreach ($featuredProperties as $property)                
+                @if ( !empty($property['availability_condition']))
+                    @continue
+                @endif
+                @if($property)                
                     @include('partials.property-card')
                 @endif
                 @if ($loop->iteration == 6 )
