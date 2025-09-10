@@ -90,17 +90,17 @@
     </ul>
     <a href="/insights/?_insights_topics=canadian-research" class="menu-cta">See Archive</a>
   </div>
-  <div class="cta">
+  {{-- <div class="cta">
     <h3>Access our full Saskatoon<br> MarketBeat Reports</h3>
     <p>Go beyond the free summaries to get annual access to our full market research <br>
       <strong>Get all 12 reports for $850/year</strong>
     </p>
     <div class="buttons">
-      {{-- <a href="/subscribe" class="button">Subscribe Now</a> --}}
+      <a href="/subscribe" class="button">Subscribe Now</a>
       @shortcode('[swpm_payment_button id="27292" class="button" button_text="Subscribe Now"]')
       <a href="/insights/pro-marketbeat-reports/">Learn More</a>
     </div>
-  </div>
+  </div> --}}
 </div>
 
 @if(is_singular('agent') || is_singular('property'))
