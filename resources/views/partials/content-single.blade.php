@@ -46,7 +46,7 @@
       </form> --}}
       <div class="lead-gen-form">
         <div class="form-content">
-          {{-- <h5>Download a printable copy of this summary</h5> --}}
+          <h5>Download a printable copy of this summary</h5>
           {!! do_shortcode('[hf_form slug="lead-generator"]') !!}
         </div>
         {{-- <div class="cta">
