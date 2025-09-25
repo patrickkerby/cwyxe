@@ -110,30 +110,33 @@
               @endif
             @endoptions
 
-            @unless(!empty($property['availability_condition']) && $availability_condition_single[0]->slug == 'leased' && $meta['label'] == 'Amount' || !empty($property['availability_condition']) && $availability_condition_single[0]->slug == 'sold' && $meta['label'] == 'Amount')             
+            @unless(!empty($availability_condition_single) && $availability_condition_single[0]->slug == 'leased' && $meta['label'] == 'Amount' || !empty($availability_condition_single) && $availability_condition_single[0]->slug == 'sold' && $meta['label'] == 'Amount')             
               <div class="{{ $value }} {{ $icon_value }}" style="background-image:url({{ $background_img }});">
                 @if(in_array($value, $dimensions_meta))
                   @set($group, 'dimensions_section')
                 @elseif(in_array($value, $details_meta))
                   @set($group, 'property_details')
                 @elseif(in_array($value, $rate_meta))
-                  @set($group, 'rates')
+                    @set($group, 'rates')
                 @endif
                 @group($group)
                   @hassub($value)
-                    <span class="label">{{ $meta['label'] }}</span>
-                    @if($meta['label'] == 'Amount')       
-                      @php
-                          $price = get_sub_field($value);
-                          $price_str = preg_replace('/(\d)(?=(?:\d{3})+$)/', '$1,', $price);
-                      @endphp
-                      <span class="value">${{ $price_str }}</span>
-                      @elseif($group == 'dimensions_section')
-                      @set($postfix, $value.'_postfix')
-                      <span class="value">&plusmn; @sub($value) @sub($postfix)</span>
-                      @else
-                      <span class="value">@sub($value)</span>
-                    @endif
+
+                    @unless(!empty($availability_condition_single) && $availability_condition_single[0]->slug == 'leased' && $meta['label'] == 'Amount' || !empty($availability_condition_single) && $availability_condition_single[0]->slug == 'sold' && $meta['label'] == 'Amount')
+                      <span class="label">{{ $meta['label'] }}</span>
+                      @if($meta['label'] == 'Amount')       
+                        @php
+                            $price = get_sub_field($value);
+                            $price_str = preg_replace('/(\d)(?=(?:\d{3})+$)/', '$1,', $price);
+                        @endphp
+                        <span class="value">${{ $price_str }}</span>
+                        @elseif($group == 'dimensions_section')
+                        @set($postfix, $value.'_postfix')
+                        <span class="value">&plusmn; @sub($value) @sub($postfix)</span>
+                        @else
+                        <span class="value">@sub($value)</span>
+                      @endif
+                    @endunless
                   @endsub
                 @endgroup
               </div>
@@ -215,8 +218,8 @@
             @else
               @set($negotiable, '')
             @endif
-                
-            @unless(!empty($property['availability_condition']) && $availability_condition_single[0]->slug == 'leased' || !empty($property['availability_condition']) && $availability_condition_single[0]->slug == 'sold')
+            
+            @unless(!empty($availability_condition_single) && $availability_condition_single[0]->slug == 'leased' || !empty($availability_condition_single) && $availability_condition_single[0]->slug == 'sold')
               <div class="detail">
                 @php 
                   $price = get_sub_field('amount');
