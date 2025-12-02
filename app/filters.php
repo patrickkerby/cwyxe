@@ -322,3 +322,22 @@ add_filter( 'enter_title_here', function( $input, $post ) {
 },
 10, 2 );
 
+// Only use with the "Info window ajax loading" setting disabled
+add_filter( 'facetwp_map_marker_args', function( $args, $post_id ) {
+  if ( empty( $args['infoWindowContent'] ) ) {
+    $args['clickable'] = false;
+    $args['pinOptions']['pinClass'] = 'unclickable'; // Set a custom pin class
+  }
+  return $args;
+}, 10, 2 );
+ 
+// Set a 'default' cursor when the marker is unclickable
+add_action( 'wp_head', function () {
+  ?>
+  <style>
+    .unclickable {
+      cursor: default; /* set default cursor */
+    }
+  </style>
+  <?php
+}, 100 );

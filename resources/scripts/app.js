@@ -47,7 +47,6 @@ domReady(async () => {
           $('html, body').animate({
             scrollTop: $('.properties-container').offset().top
           }, 500);
-
         }
       }
     });
@@ -78,8 +77,6 @@ domReady(async () => {
       $('.reports-mega-content').removeClass('is-active');
       $('.reports-mega').removeClass('is-active');
     });
-
-    
 
     $('.nav-mobile .insights-mega').click(function() {
       $(this).toggleClass('is-active');
