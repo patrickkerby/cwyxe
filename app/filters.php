@@ -342,3 +342,51 @@ add_action( 'wp_head', function () {
   </style>
   <?php
 }, 100 );
+
+add_action( 'facetwp_scripts', function() {
+  ?>
+  <script>
+    (function($) {
+      $(function() {
+ 
+        if ('object' != typeof FWP) return;
+ 
+        // Define a custom renderer function
+        var customrenderer = {
+ 
+          render: function({count, position}, stats, map) {
+ 
+            // Create cluster element with CSS class for styling
+            const clusterElement = document.createElement('div');
+            clusterElement.className = 'my-cluster-class';
+            clusterElement.textContent = count;
+ 
+            // Set cluster title text, visible on hover
+            const title = `Cluster of ${count} markers`;
+ 
+            // Adjust zIndex to be above other markers
+            const zIndex = 1000000 + count;
+ 
+            const clusterOptions = {
+              map,
+              position,
+              zIndex,
+              title,
+              content: clusterElement,
+            };
+ 
+            return new google.maps.marker.AdvancedMarkerElement(clusterOptions);
+          }
+ 
+        };
+ 
+        FWP.hooks.addFilter('facetwp_map/clusterer', function(clusterargs, clusterconfig) {
+          clusterargs['renderer'] = customrenderer;
+          return clusterargs;
+        });
+ 
+      });
+    })(fUtil);
+  </script>
+  <?php
+}, 100 );
