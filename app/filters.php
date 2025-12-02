@@ -103,6 +103,7 @@ add_filter( 'facetwp_map_init_args', function ( $args ) {
   $args['init']['fullscreenControl'] = true; // full screen icon
   $args['init']['mapId'] = '98064b9348db619a'; // map style id
   $args['init']['styles'] = ''; // map style array
+  $args['init']['clickableIcons']    = false; // disable clicking on POIs (street names, neighborhoods, etc.)
   
   /** this overwrites all 4 lines above and will disable ALL of the default ui icons instead of the individual icons above */
   // $args['init']['disableDefaultUI']  = true; // disable the default ui
