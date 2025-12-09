@@ -390,3 +390,59 @@ add_action( 'facetwp_scripts', function() {
   </script>
   <?php
 }, 100 );
+
+// Sort properties: Featured first, then menu_order, then post date
+// Hook into FacetWP to sort all filtered posts before pagination
+add_filter( 'facetwp_filtered_query', function( $query_args ) {
+    // Only apply to property post type queries, and avoid recursion
+    if ( isset( $query_args['post_type'] ) && 
+         $query_args['post_type'] === 'property' && 
+         !isset( $query_args['_facetwp_sorted'] ) ) {
+        
+        // Get all filtered posts (FacetWP has already applied filters)
+        $all_args = $query_args;
+        $all_args['posts_per_page'] = -1;
+        $all_args['facetwp'] = true;
+        $all_args['_facetwp_sorted'] = true; // Prevent recursion
+        $all_query = new WP_Query( $all_args );
+        
+        // Sort posts with multi-level sorting
+        $posts_to_sort = $all_query->posts;
+        usort($posts_to_sort, function($a, $b) {
+            // Get featured status
+            $general_settings_a = get_field('general_settings', $a->ID);
+            $general_settings_b = get_field('general_settings', $b->ID);
+            $featured_a = $general_settings_a['featured_property'] ?? false;
+            $featured_b = $general_settings_b['featured_property'] ?? false;
+            
+            // Priority 1: Featured first
+            if ($featured_a && !$featured_b) {
+                return -1;
+            }
+            if (!$featured_a && $featured_b) {
+                return 1;
+            }
+            
+            // Priority 2: menu_order
+            $menu_order_a = $a->menu_order ?? 0;
+            $menu_order_b = $b->menu_order ?? 0;
+            if ($menu_order_a != $menu_order_b) {
+                return $menu_order_a <=> $menu_order_b;
+            }
+            
+            // Priority 3: Post date
+            return strtotime($a->post_date) <=> strtotime($b->post_date);
+        });
+        
+        // Extract sorted post IDs
+        $sorted_post_ids = array_map(function($post) {
+            return $post->ID;
+        }, $posts_to_sort);
+        
+        // Modify query to use sorted post IDs - FacetWP will handle pagination
+        $query_args['post__in'] = $sorted_post_ids;
+        $query_args['orderby'] = 'post__in';
+    }
+    
+    return $query_args;
+}, 10, 1 );
