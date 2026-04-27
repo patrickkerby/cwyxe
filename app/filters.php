@@ -446,3 +446,17 @@ add_filter( 'facetwp_filtered_query', function( $query_args ) {
     
     return $query_args;
 }, 10, 1 );
+
+/**
+* Use ACF 'primary_image' field as the Yoast OG image for property listings.
+*/
+add_filter( 'wpseo_opengraph_image', function( $image ) {
+  if ( is_singular( 'property' ) ) {
+    $primary_image = get_field( 'primary_image' );
+  
+    if ( ! empty( $primary_image['url'] ) ) {
+      return $primary_image['url'];
+    }
+  }
+  return $image;
+}, 10, 1 );
