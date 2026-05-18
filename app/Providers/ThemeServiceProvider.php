@@ -2,9 +2,8 @@
 
 namespace App\Providers;
 
+use App\Api\Routes\ListingRoutes;
 use Roots\Acorn\Sage\SageServiceProvider;
-
-use Illuminate\Support\ServiceProvider;
 
 class ThemeServiceProvider extends SageServiceProvider
 {
@@ -26,5 +25,17 @@ class ThemeServiceProvider extends SageServiceProvider
     public function boot()
     {
         parent::boot();
+
+        $this->registerListingApi();
+    }
+
+    /**
+     * Client-facing listings REST API (Airtable sync).
+     */
+    protected function registerListingApi(): void
+    {
+        add_action('rest_api_init', static function () {
+            (new ListingRoutes())->register();
+        });
     }
 }
