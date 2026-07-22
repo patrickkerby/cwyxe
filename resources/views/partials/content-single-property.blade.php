@@ -52,9 +52,12 @@
     @endif
    
     <span class="availability">
-      @group('general_settings')
-        For @sub('availability') • 
-      @endgroup
+      @php
+        $availability_label = \App\Support\AvailabilityFormatter::format(get_field('general_settings')['availability'] ?? '');
+      @endphp
+      @if($availability_label)
+        For {{ $availability_label }} • 
+      @endif
       @foreach ($property_type as $type)      
         {{ $type->name }}@if (!$loop->last), @endif
       @endforeach

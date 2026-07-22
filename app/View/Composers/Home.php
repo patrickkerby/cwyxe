@@ -2,6 +2,7 @@
 
 namespace App\View\Composers;
 
+use App\Support\AvailabilityFormatter;
 use Roots\Acorn\View\Composer;
 
 class Home extends Composer
@@ -26,8 +27,8 @@ class Home extends Composer
     ]);
     
     return array_values(array_filter(array_map(function ($post) {
-        $general_settings = get_field('general_settings', $post->ID);
-        $is_featured = $general_settings['featured_property'];
+        $general_settings = get_field('general_settings', $post->ID) ?: [];
+        $is_featured = $general_settings['featured_property'] ?? false;
         
         if ($is_featured) {
             $status_terms = get_the_terms($post->ID, 'property-status');
@@ -49,7 +50,7 @@ class Home extends Composer
                 'property_type' => get_the_terms($post->ID, 'property-type'),
                 'property_status' => $status_terms,
                 'property_status_color' => $status_color,
-                'availability' => $general_settings['availability'],
+                'availability' => AvailabilityFormatter::format($general_settings['availability'] ?? ''),
                 'availability_condition' => $availability_condition,
                 'address' => get_field('address', $post->ID),
                 'price' => $price_str,

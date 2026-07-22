@@ -30,7 +30,7 @@
                 @endforeach
                 </div>
             @endif
-            <span class="availability">For @group('general_settings') @sub('availability')@endgroup • @term('property-type')</span>                    
+            <span class="availability">For {{ \App\Support\AvailabilityFormatter::format(get_field('general_settings')['availability'] ?? '') }} • @term('property-type')</span>                    
             <h3><a href="@permalink">@title</a></h3>
             <p>@field('address')</p>            
             
@@ -82,8 +82,8 @@
             </span>
             <span class="availability">
                 @if($property['availability'])
-                    For {{$property['availability']}} • 
-                @endif 
+                    For {{ $property['availability'] }} • 
+                @endif
                 @foreach ($property['property_type'] as $type)
                     @if(!$loop->first)                        
                         /

@@ -2,6 +2,7 @@
 
 namespace App\View\Composers;
 
+use App\Support\AvailabilityFormatter;
 use Roots\Acorn\View\Composer;
 
 class Properties extends Composer
@@ -39,9 +40,9 @@ class Properties extends Composer
         } else {
             $status_color = '#000';
         }
-        $general_settings = get_field('general_settings', $post->ID);
-        $rates = get_field('rates', $post->ID);
-        $amount = $rates['amount'];
+        $general_settings = get_field('general_settings', $post->ID) ?: [];
+        $rates = get_field('rates', $post->ID) ?: [];
+        $amount = $rates['amount'] ?? '';
         $price_str = preg_replace('/(\d)(?=(?:\d{3})+$)/', '$1,', $amount);
 
         return [
@@ -51,7 +52,7 @@ class Properties extends Composer
             'property_type' => get_the_terms( $post->ID, 'property-type' ),
             'property_status' => $status_terms,
             'property_status_color' => $status_color,
-            'availability' => $general_settings['availability'],
+            'availability' => AvailabilityFormatter::format($general_settings['availability'] ?? ''),
             'availability_condition' => $availability_condition,
             'featured' => $general_settings['featured_property'],
             'address' => get_field('address', $post->ID),
