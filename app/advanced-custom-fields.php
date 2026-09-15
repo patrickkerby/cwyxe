@@ -12,6 +12,13 @@ add_action('acf/init', function () {
         return;
     }
 
+    $json_dir = get_stylesheet_directory() . '/acf-json';
+    add_filter('acf/settings/save_json', fn () => $json_dir);
+    add_filter('acf/settings/load_json', function ($paths) use ($json_dir) {
+        $paths[] = $json_dir;
+        return array_unique($paths);
+    });
+
     acf_add_options_page([
         'page_title' => 'Office Settings',
         'menu_title' => 'Office Settings',

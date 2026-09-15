@@ -1,0 +1,26 @@
+{
+    "key": "ui_options_page_66e0c13be7075",
+    "title": "Cushman Wakefield YXE Settings",
+    "active": true,
+    "menu_order": 0,
+    "page_title": "Cushman Wakefield YXE Settings",
+    "menu_slug": "cw-options",
+    "parent_slug": "none",
+    "advanced_configuration": 1,
+    "icon_url": "",
+    "menu_title": "CWYXE Settings",
+    "position": 1,
+    "redirect": 0,
+    "description": "",
+    "menu_icon": {
+        "type": "dashicons",
+        "value": "dashicons-admin-site"
+    },
+    "update_button": "Update",
+    "updated_message": "Options Updated",
+    "capability": "edit_posts",
+    "data_storage": "options",
+    "post_id": "",
+    "autoload": 0,
+    "modified": 1789502172
+}
