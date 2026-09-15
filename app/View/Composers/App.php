@@ -3,6 +3,7 @@
 namespace App\View\Composers;
 
 use App\Support\SiteOptions;
+use App\Support\Terms;
 use Roots\Acorn\View\Composer;
 
 class App extends Composer
@@ -48,22 +49,18 @@ class App extends Composer
     
     public function propertyTypes()
     {
-        $property_types = get_terms( array(
-        'taxonomy'   => 'property-type',
-        'hide_empty' => true,
-        ) );
+        $property_types = Terms::all('property-type', true);
 
-        foreach ( $property_types as $property_type ) {
-            $property_type->featured = get_field('homepage_highlight', 'term_'.$property_type->term_id);
-            $property_type->image = get_field('property_type_photo', 'term_'.$property_type->term_id);
+        foreach ($property_types as $property_type) {
+            $property_type->featured = get_field('homepage_highlight', 'term_' . $property_type->term_id);
+            $property_type->image = get_field('property_type_photo', 'term_' . $property_type->term_id);
         }
 
-        return array (
+        return [
             'all_types' => $property_types,
-            'featured_property_types' => array_filter($property_types, function($property_type) {
-                return $property_type->featured;
-            }),
-
-        );
+            'featured_property_types' => array_values(array_filter($property_types, function ($property_type) {
+                return ! empty($property_type->featured);
+            })),
+        ];
     }
 }

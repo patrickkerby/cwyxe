@@ -1,6 +1,9 @@
-@set($fname, get_field('contact_details')['first_name'])
-@set($lname, get_field('contact_details')['last_name'])
-@set($name, $fname . '-' . $lname)
+@php
+  $contact_details = get_field('contact_details') ?: [];
+  $fname = $contact_details['first_name'] ?? '';
+  $lname = $contact_details['last_name'] ?? '';
+  $name = $fname . '-' . $lname;
+@endphp
 
 @php
   $vcard_filename = strtolower($name);
@@ -103,7 +106,8 @@
     @php if ( $properties_loop->have_posts() ) :
       while ( $properties_loop->have_posts() ) :
         $properties_loop->the_post(); 
-        $status_terms = get_the_terms( $properties_loop->post->ID, 'property-status' );
+        $status_terms = \App\Support\Terms::forPost( $properties_loop->post->ID, 'property-status' );
+        $availability_condition = \App\Support\Terms::forPost( $properties_loop->post->ID, 'availability-condition' );
     @endphp
 @include('partials.property-card')
 

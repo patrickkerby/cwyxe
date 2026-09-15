@@ -12,4 +12,6 @@
 @endfields
     </ul>
 @endhasfields
+@hasfield('image')
 <img src="@field('image', 'url')" alt="@field('image', 'alt')">
+@endfield

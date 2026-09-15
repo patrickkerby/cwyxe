@@ -21,6 +21,10 @@ class ListingAlert extends Component
      */
     public function render()
     {
+        if (! function_exists('do_shortcode') || $this->formId < 1) {
+            return '';
+        }
+
         return $this->view('components.listingalert');
     }
 }

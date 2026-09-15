@@ -16,7 +16,9 @@
         {{-- @dump($agent['vcard']) --}}
 
         <div class="headshot">
-          <a href="{{ $agent['link'] }}"><img src="{{ $agent['headshot']['url'] }}" alt="{{ $agent['headshot']['alt'] }}"></a>
+          @if(!empty($agent['headshot']['url']))
+          <a href="{{ $agent['link'] }}"><img src="{{ $agent['headshot']['url'] }}" alt="{{ $agent['headshot']['alt'] ?? $agent['name'] }}"></a>
+          @endif
         </div>
         <div class="contact-details">
           <h3><a href="{{ $agent['link'] }}">{{ $agent['name'] }}</a></h3>

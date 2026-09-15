@@ -407,9 +407,8 @@ add_filter( 'facetwp_filtered_query', function( $query_args ) {
         // Sort posts with multi-level sorting
         $posts_to_sort = $all_query->posts;
         usort($posts_to_sort, function($a, $b) {
-            // Get featured status
-            $general_settings_a = get_field('general_settings', $a->ID);
-            $general_settings_b = get_field('general_settings', $b->ID);
+            $general_settings_a = get_field('general_settings', $a->ID) ?: [];
+            $general_settings_b = get_field('general_settings', $b->ID) ?: [];
             $featured_a = $general_settings_a['featured_property'] ?? false;
             $featured_b = $general_settings_b['featured_property'] ?? false;
             

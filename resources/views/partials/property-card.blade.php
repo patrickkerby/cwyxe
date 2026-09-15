@@ -30,7 +30,7 @@
                 @endforeach
                 </div>
             @endif
-            <span class="availability">For {{ \App\Support\AvailabilityFormatter::format(get_field('general_settings')['availability'] ?? '') }} • @term('property-type')</span>                    
+            <span class="availability">For {{ \App\Support\AvailabilityFormatter::format((get_field('general_settings') ?: [])['availability'] ?? '') }} • @term('property-type')</span>                    
             <h3><a href="@permalink">@title</a></h3>
             <p>@field('address')</p>            
             
@@ -70,21 +70,21 @@
                 <span class="status_banner {{ $status_size }}">{{ $property['availability_condition'][0]->name }}</span>
             @endif
         <div class="image">
-            @if($property['primary_image'])
-            <a href="{{ $property['link']}}"><img src="{{ $property['primary_image']['url']}}" alt="{{ $property['primary_image']['url']}}"></a>
+            @if(!empty($property['primary_image']['url']))
+            <a href="{{ $property['link']}}"><img src="{{ $property['primary_image']['url']}}" alt="{{ $property['primary_image']['alt'] ?? $property['name'] }}"></a>
             @endif
         </div>
         <div class="content">
             <span class="pills">
-            @foreach($property['property_status'] as $status)
+            @foreach($property['property_status'] ?? [] as $status)
                 <span class="property_type status" style="background-color:{{ $property['property_status_color'] }}">{{ $status->name }}</span>
             @endforeach
             </span>
             <span class="availability">
-                @if($property['availability'])
+                @if(!empty($property['availability']))
                     For {{ $property['availability'] }} • 
                 @endif
-                @foreach ($property['property_type'] as $type)
+                @foreach ($property['property_type'] ?? [] as $type)
                     @if(!$loop->first)                        
                         /
                     @endif
@@ -93,8 +93,10 @@
             </span>
             <h3><a href="{{ $property['link']}}">{{ $property['name']}}</a></h3>
             <p>{{ $property['address']}}</p>
-            @unless(!empty($property['availability_condition']) && $property['availability_condition'][0]->slug == 'leased' || !empty($property['availability_condition']) && $property['availability_condition'][0]->slug == 'sold')
-                <span class="price">Lease price: ${{ $property['price']}}</span>
+            @unless(!empty($property['availability_condition'][0]->slug) && in_array($property['availability_condition'][0]->slug, ['leased', 'sold'], true))
+                @if($property['price'] !== '' && $property['price'] !== null)
+                    <span class="price">Lease price: ${{ $property['price']}}</span>
+                @endif
             @endunless
         </div>
     </div>

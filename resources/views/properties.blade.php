@@ -33,11 +33,8 @@
             @php if ( $properties_loop->have_posts() ) :
                 while ( $properties_loop->have_posts() ) :
                     $properties_loop->the_post(); 
-                    $status_terms = get_the_terms( $properties_loop->post->ID, 'property-status' );                    
-                    $availability_condition = get_the_terms( $properties_loop->post->ID, 'availability-condition' );
-                    if (!$availability_condition) {
-                        $availability_condition = [];
-                    }
+                    $status_terms = \App\Support\Terms::forPost( $properties_loop->post->ID, 'property-status' );
+                    $availability_condition = \App\Support\Terms::forPost( $properties_loop->post->ID, 'availability-condition' );
                     @endphp
                     @include('partials.property-card')
                 @php endwhile;

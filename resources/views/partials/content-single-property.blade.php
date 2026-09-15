@@ -1,14 +1,17 @@
 @php
   $agents = get_field('agent');
-  $status_terms = get_the_terms( $post->ID, 'property-status' );
-  $availability_condition_single = get_the_terms( $post->ID, 'availability-condition' );
-  $property_type = get_the_terms( $post->ID, 'property-type' );
+  $status_terms = \App\Support\Terms::forPost($post->ID, 'property-status');
+  $availability_condition_single = \App\Support\Terms::forPost($post->ID, 'availability-condition');
+  $property_type = \App\Support\Terms::forPost($post->ID, 'property-type');
   $featured_meta = get_field('highlighted_property_details' );
   $dimensions_meta = array("building_size", "lot_size", "area_size", "max_contiguous", "min_divisible");
   $details_meta = array("property_id", "year_built", "building_class", "space_type", "property_use_type", "zoning", "occupancy", "construction_status");
   $rate_meta = array("amount", "rate_type");
   $dimensions = get_fields('dimensions_section');
-  $additional_images = get_field('additional_images');
+  $additional_images = get_field('additional_images') ?: [];
+  if (! is_array($additional_images)) {
+    $additional_images = [];
+  }
   $property_type_slugs = [];
 
   if ($property_type) {
@@ -23,15 +26,17 @@
     "posts_per_page" => 6,
     "orderby"        => ["title" => "ASC"],
     "post__not_in"   => [$post->ID],
-    "tax_query" => array(
-        array(
-            'taxonomy' => 'property-type', // Replace with your custom taxonomy slug
-            'field'    => 'slug',               // Can be 'slug', 'term_id', or 'name'
-            'terms'    => $property_type_slugs, // Replace with your desired term slugs or IDs
-            'operator' => 'IN',                 // Use 'IN' for matching any of the terms, 'AND' for all terms, 'NOT IN' for excluding terms
-        ),
-      ),
   ];
+  if ($property_type_slugs !== []) {
+    $args['tax_query'] = [
+      [
+        'taxonomy' => 'property-type',
+        'field'    => 'slug',
+        'terms'    => $property_type_slugs,
+        'operator' => 'IN',
+      ],
+    ];
+  }
   $related_properties = new WP_Query( $args );
 
 @endphp
@@ -53,7 +58,7 @@
    
     <span class="availability">
       @php
-        $availability_label = \App\Support\AvailabilityFormatter::format(get_field('general_settings')['availability'] ?? '');
+        $availability_label = \App\Support\AvailabilityFormatter::format((get_field('general_settings') ?: [])['availability'] ?? '');
       @endphp
       @if($availability_label)
         For {{ $availability_label }} • 
@@ -104,12 +109,15 @@
       
             @options('property_details_display_icons')
               @set($icon, get_sub_field($icon_field))
-              @if ( 'dashicons' == $icon['type'] )
+              @if ( is_array($icon) && ($icon['type'] ?? '') == 'dashicons' )
                 @set($icon_value, $icon['value'])
                 @set($background_img, '')
-              @elseif ( 'media_library' == $icon['type'] )
+              @elseif ( is_array($icon) && ($icon['type'] ?? '') == 'media_library' )
                 @set($icon_value, '')
-                @set($background_img, $icon['value']['url'])
+                @set($background_img, $icon['value']['url'] ?? '')
+              @else
+                @set($icon_value, '')
+                @set($background_img, '')
               @endif
             @endoptions
 
@@ -259,21 +267,23 @@
       @if($agents)
         @foreach ($agents as $agent)
           @php
-            $agent_id = $agent->ID;
+            $agent_id = is_object($agent) ? $agent->ID : (int) $agent;
             $headshot = get_field('headshot', $agent_id);
           @endphp
           <div class="agent @if($loop->count > 1) additional-agent @endif">
             <div class="headshot">
+                @if(!empty($headshot['url']))
                 <img src="{{ $headshot['url'] }}" alt="">
+                @endif
             </div>
             <div class="contact-details">
               <h4>@title($agent_id)</h4>          
               <ul>
                 @group('contact_details', $agent_id)
                   @php
-                      $details = get_field('contact_details', $agent_id);
-                      $fname = $details['first_name'];
-                      $lname = $details['last_name'];
+                      $details = get_field('contact_details', $agent_id) ?: [];
+                      $fname = $details['first_name'] ?? '';
+                      $lname = $details['last_name'] ?? '';
                       $name = $fname . '-' . $lname;
                       $vcard_filename = strtolower($name);
                   @endphp

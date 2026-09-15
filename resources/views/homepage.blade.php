@@ -15,32 +15,32 @@
         </div>
         <div class="facet">
             <span>Keyword</span>
-            {!! facetwp_display( 'facet', 'keyword_homepage' ) !!}
+            {!! function_exists('facetwp_display') ? facetwp_display( 'facet', 'keyword_homepage' ) : '' !!}
         </div>
         {{-- {!! facetwp_display( 'facet', 'city_town' ) !!} --}}
         <div class="facet">
             <span>Property Status</span>
-            {!! facetwp_display( 'facet', 'property_status_homepage' ) !!}
+            {!! function_exists('facetwp_display') ? facetwp_display( 'facet', 'property_status_homepage' ) : '' !!}
         </div>
         <div class="facet">
             <span>Property Type</span>
-            {!! facetwp_display( 'facet', 'property_type_homepage' ) !!}
+            {!! function_exists('facetwp_display') ? facetwp_display( 'facet', 'property_type_homepage' ) : '' !!}
         </div>
         <div class="facet">
             <span>Min / Max Area</span>
             
-            {!! facetwp_display( 'facet', 'min_max_fields' ) !!}
-            {!! facetwp_display( 'facet', 'min_max_area_homepage' ) !!}
+            {!! function_exists('facetwp_display') ? facetwp_display( 'facet', 'min_max_fields' ) : '' !!}
+            {!! function_exists('facetwp_display') ? facetwp_display( 'facet', 'min_max_area_homepage' ) : '' !!}
         </div>
 
         <div style="display: none;">
-            {!! facetwp_display( 'facet', 'search' ) !!}
-            {!! facetwp_display( 'facet', 'status' ) !!}
-            {!! facetwp_display( 'facet', 'property_type' ) !!}
-            {!! facetwp_display( 'facet', 'min_max_area' ) !!}
+            {!! function_exists('facetwp_display') ? facetwp_display( 'facet', 'search' ) : '' !!}
+            {!! function_exists('facetwp_display') ? facetwp_display( 'facet', 'status' ) : '' !!}
+            {!! function_exists('facetwp_display') ? facetwp_display( 'facet', 'property_type' ) : '' !!}
+            {!! function_exists('facetwp_display') ? facetwp_display( 'facet', 'min_max_area' ) : '' !!}
         </div>
 
-        <div style="display:none"> {!! facetwp_display( 'template', 'home_page_listings_search' ) !!}</div>
+        <div style="display:none"> {!! function_exists('facetwp_display') ? facetwp_display( 'template', 'home_page_listings_search' ) : '' !!}</div>
         {{-- <button class="fwp-submit" data-href="/property-search/">Map View</button> --}}
         <div class="submit-buttons">
             <button id="listings-search" class="fwp-submit button" data-href="/property-search/">Search</button>
@@ -77,7 +77,9 @@
         <div class="insights-grid">
             @foreach($featuredInsights as $insight)
                 <div class="insight card">
+                    @if(!empty($insight['thumbnail']))
                     <img src="{{ $insight['thumbnail'] }}" alt="{{ $insight['name'] }}">
+                    @endif
                     <div class="content">
                         <span class="meta"><time class="dt-published">{{ $insight['date'] }}</time> in {!! $insight['terms'] !!}</span>
                         <h4>{{ $insight['name'] }}</h4>

@@ -17,68 +17,54 @@ class Agents extends Composer
       ]);
 
       return array_map(function ($post) {
-          // Create a new VCard instance for each agent
           $vcard = new VCard();
 
-          // Define variables for the vCard
-          $contact_details = get_field('contact_details', $post); 
-          $lastname = $contact_details['last_name'] ?: '';
-          $firstname = $contact_details['first_name'] ?: '';
-          $additional = '';
-          $prefix = '';
-          $suffix = '';
+          $contact_details = get_field('contact_details', $post);
+          if (! is_array($contact_details)) {
+              $contact_details = [];
+          }
+
+          $lastname = $contact_details['last_name'] ?? '';
+          $firstname = $contact_details['first_name'] ?? '';
           $photo_object = get_field('headshot', $post);
-          $photo = $photo_object['url'];
-          $vcard_filename = $firstname . '-' . $lastname . '.vcf';
-          $vcard_filename = strtolower($vcard_filename);
+          $photo = is_array($photo_object) ? ($photo_object['url'] ?? '') : '';
+          $vcard_filename = strtolower(trim($firstname . '-' . $lastname) . '.vcf');
           $address = get_field('office_address', 'option');
+          if (! is_array($address)) {
+              $address = [];
+          }
 
-
-          // Add personal data to the vCard
-          $vcard->addName($lastname, $firstname, $additional, $prefix, $suffix);
-
-          // Add work data to the vCard
+          $vcard->addName($lastname, $firstname, '', '', '');
           $vcard->addCompany(get_field('company', $post->ID) ?: '');
-          $vcard->addJobtitle($contact_details['title'] ?: '');
-          $vcard->addEmail($contact_details['email'] ?: '');
-          $vcard->addPhoneNumber($contact_details['office_phone'] ?: '', 'WORK');
-          $vcard->addPhoneNumber($contact_details['mobile_phone'] ?: '', 'CELL');
-          
+          $vcard->addJobtitle($contact_details['title'] ?? '');
+          $vcard->addEmail($contact_details['email'] ?? '');
+          $vcard->addPhoneNumber($contact_details['office_phone'] ?? '', 'WORK');
+          $vcard->addPhoneNumber($contact_details['mobile_phone'] ?? '', 'CELL');
           $vcard->addAddress(
               null,
               null,
-              $address['street'] ?: '',
-              $address['city'] ?: '',
-              $address['postal_code'] ?: '',
-              $address['province'] ?: '',
-              $address['country'] ?: ''
+              $address['street'] ?? '',
+              $address['city'] ?? '',
+              $address['postal_code'] ?? '',
+              $address['province'] ?? '',
+              $address['country'] ?? ''
           );
           $vcard->addURL(get_permalink($post->ID) ?: '');
-          $vcard->addPhoto($photo);
-
-          // return vcard as a string
-          //return $vcard->getOutput();
-
-          // return vcard as a download
-          // return $vcard->download();
-
-          // save vcard on disk
-          $upload_dir = wp_upload_dir();
-          $upload_dir['baseurl']; 
+          if ($photo !== '') {
+              $vcard->addPhoto($photo);
+          }
 
           $vcard->setSavePath('app/uploads/vcards/');
           $vcard->save();
 
-
-          // Return the agent data along with the vCard output
           return [
               'name' => get_the_title($post->ID),
               'slug' => $post->post_name,
               'link' => get_permalink($post->ID),
               'title' => get_field('title', $post),
-              'headshot' => get_field('headshot', $post),
-              'broker_attributes' => get_the_terms($post->ID, 'broker-attribute'),
-              'contact_details' => get_field('contact_details', $post),
+              'headshot' => is_array($photo_object) ? $photo_object : null,
+              'broker_attributes' => \App\Support\Terms::forPost($post->ID, 'broker-attribute'),
+              'contact_details' => $contact_details,
               'vcard-filename' => $vcard_filename
           ];
       }, $agents);

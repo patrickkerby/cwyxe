@@ -43,7 +43,7 @@
                         <span class="meta">
                             @if($primary_term)
                                 <a href="?_insights_topics={{ $primary_term->slug }}">{{ $primary_term->name }}</a>
-                            @else
+                            @elseif(!empty($cat[0]))
                                 <a href="?_insights_topics={{ $cat[0]->slug }}">@category</a>
                             @endif
                         </span>
