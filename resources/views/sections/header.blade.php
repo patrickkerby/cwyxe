@@ -1,7 +1,11 @@
 <section class="banner-container">
   <header class="banner">
     <a class="brand" href="{{ home_url('/') }}">
-      <img alt="{{ $siteName }}" src="@asset('images/cw-saskatoon-logo-small.png')">
+      @if(!empty($office['logo_url']))
+        <img alt="{{ $siteName }}" src="{{ $office['logo_url'] }}">
+      @else
+        <img alt="{{ $siteName }}" src="@asset('images/cw-saskatoon-logo-small.png')">
+      @endif
     </a>
 
  {{-- Mobile Navigation --}}
@@ -63,9 +67,9 @@
 <div class="reports-mega-content reports-mega mega mega-content">
   <span class="close-arrow"></span>
   <div>
-    <h3>Saskatoon Marketbeat Reports</h3>
+    <h3>{{ $office['marketbeat_heading'] }}</h3>
     <ul class="mega-list">
-      @foreach (get_posts(['post_type' => 'post', 'category_name' => 'saskatchewan-research', 'posts_per_page' => 2]) as $post)
+      @foreach (get_posts(['post_type' => 'post', 'category_name' => $office['local_research_category'], 'posts_per_page' => 2]) as $post)
         <li>
           <a href="{{ get_permalink($post) }}">
             {{ get_the_title($post) }}
@@ -74,12 +78,12 @@
         </li>
       @endforeach
     </ul>
-    <a href="/insights/?_insights_topics=saskatchewan-research" class="menu-cta">See Archive</a>
+    <a href="/insights/?_insights_topics={{ $office['local_research_category'] }}" class="menu-cta">See Archive</a>
   </div>
   <div>
     <h3>National Market Reports</h3>
     <ul class="mega-list">
-      @foreach (get_posts(['post_type' => 'post', 'category_name' => 'canadian-research', 'posts_per_page' => 2]) as $post)
+      @foreach (get_posts(['post_type' => 'post', 'category_name' => $office['national_research_category'], 'posts_per_page' => 2]) as $post)
         <li>
           <a href="{{ get_permalink($post) }}">
             {{ get_the_title($post) }}
@@ -88,19 +92,8 @@
         </li>
       @endforeach
     </ul>
-    <a href="/insights/?_insights_topics=canadian-research" class="menu-cta">See Archive</a>
+    <a href="/insights/?_insights_topics={{ $office['national_research_category'] }}" class="menu-cta">See Archive</a>
   </div>
-  {{-- <div class="cta">
-    <h3>Access our full Saskatoon<br> MarketBeat Reports</h3>
-    <p>Go beyond the free summaries to get annual access to our full market research <br>
-      <strong>Get all 12 reports for $850/year</strong>
-    </p>
-    <div class="buttons">
-      <a href="/subscribe" class="button">Subscribe Now</a>
-      @shortcode('[swpm_payment_button id="27292" class="button" button_text="Subscribe Now"]')
-      <a href="/insights/pro-marketbeat-reports/">Learn More</a>
-    </div>
-  </div> --}}
 </div>
 
 @if(is_singular('agent') || is_singular('property'))

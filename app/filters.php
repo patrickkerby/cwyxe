@@ -196,18 +196,16 @@ add_action('facetwp_scripts', function () {
           return;
         }
    
-        // Change URL to the default marker icon
         let icon_default = {
-          url: '/app/themes/cwyxe/resources/images/map-icons/CWS-map-icon-single.svg',
+          url: {!! json_encode(get_stylesheet_directory_uri() . '/resources/images/map-icons/CWS-map-icon-single.svg') !!},
           scaledSize: {
             width: 24,
             height: 32
           }
         };
-   
-        // Change URL to the alternative, 'active' icon
+
         let icon_active = {
-          url: '/app/themes/cwyxe/resources/images/map-icons/CWS-map-icon-selected.svg',
+          url: {!! json_encode(get_stylesheet_directory_uri() . '/resources/images/map-icons/CWS-map-icon-selected.svg') !!},
           scaledSize: {
             width: 24,
             height: 32

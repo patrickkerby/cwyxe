@@ -2,29 +2,16 @@
 
 namespace App\View\Components;
 
+use App\Support\SiteOptions;
 use Roots\Acorn\View\Component;
-use Log1x\Crumb\Facades\Crumb;
 
 class ListingAlert extends Component
 {
-    /**
-     * Create a new component instance.
-     *
-     * @return void
-     */
+    public int $formId;
+
     public function __construct()
     {
-        //
-    }
-
-    /**
-     * The listing items.
-     *
-     * @return string
-     */
-    public function listingAlert()
-    {
-        return $test;
+        $this->formId = SiteOptions::all()['listing_alert_form_id'];
     }
 
     /**

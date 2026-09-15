@@ -2,6 +2,7 @@
 
 namespace App\View\Composers;
 
+use App\Support\SiteOptions;
 use Roots\Acorn\View\Composer;
 
 class App extends Composer
@@ -24,7 +25,8 @@ class App extends Composer
     {
         return [
             'siteName' => $this->siteName(),
-            'propertyTypes' => $this->propertyTypes(),            
+            'propertyTypes' => $this->propertyTypes(),
+            'office' => SiteOptions::all(),
         ];
     }
 

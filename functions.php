@@ -54,7 +54,7 @@ add_action('after_setup_theme', fn () => \Roots\bootloader()->boot(), 0);
 |
 */
 
-collect(['setup', 'filters'])
+collect(['setup', 'filters', 'advanced-custom-fields'])
     ->each(function ($file) {
         if (! locate_template($file = "app/{$file}.php", true, true)) {
             wp_die(
