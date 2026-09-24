@@ -52,6 +52,53 @@ add_action( 'facetwp_scripts', function() {
   <?php
 }, 100 );
 
+// Smooth-scroll to the listings after FacetWP pagination
+add_action( 'facetwp_scripts', function() {
+  ?>
+  <script>
+    (function() {
+      var shouldScrollToListings = false;
+
+      document.addEventListener('click', function(event) {
+        if (event.target.closest('.facetwp-page[data-page]')) {
+          shouldScrollToListings = true;
+        }
+      });
+
+      document.addEventListener('facetwp-loaded', function() {
+        if (!shouldScrollToListings) {
+          return;
+        }
+
+        shouldScrollToListings = false;
+
+        var listings = document.querySelector('.properties-grid, .insights-grid');
+        if (!listings) {
+          return;
+        }
+
+        var offset = 24;
+        var header = document.querySelector('header.banner');
+        if (header) {
+          var position = window.getComputedStyle(header).position;
+          if (position === 'fixed' || position === 'sticky') {
+            offset += header.getBoundingClientRect().height;
+          }
+        }
+
+        var adminBar = document.getElementById('wpadminbar');
+        if (adminBar) {
+          offset += adminBar.getBoundingClientRect().height;
+        }
+
+        var top = listings.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+      });
+    })();
+  </script>
+  <?php
+}, 100 );
+
 
 // Function to change "posts" to "Insights" in the admin side menu
 add_action( 'admin_menu', function() {
