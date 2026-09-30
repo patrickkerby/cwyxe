@@ -301,16 +301,6 @@ add_action('facetwp_scripts', function () {
     return $args;
   } );
 
-  // Preselect availability facet when you load the property search page
-  add_filter( 'facetwp_preload_url_vars', function( $url_vars ) {
-    if ( 'property-search' == FWP()->helper->get_uri() ) {
-      if ( empty( $url_vars['availability'] ) ) { 
-        $url_vars['availability'] = [ 'lease' ];
-      }
-    }
-    return $url_vars;
-  } );
-
 // Callback function to insert 'styleselect' into the $buttons array
 function my_mce_buttons_2( $buttons ) {
 	array_unshift( $buttons, 'styleselect' );
