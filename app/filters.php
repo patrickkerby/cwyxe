@@ -426,60 +426,73 @@ add_action( 'facetwp_scripts', function() {
   <?php
 }, 100 );
 
-// Sort properties: Featured first, then menu_order, then post date
-// Hook into FacetWP to sort all filtered posts before pagination
-add_filter( 'facetwp_filtered_query', function( $query_args ) {
-    // Only apply to property post type queries, and avoid recursion
-    if ( isset( $query_args['post_type'] ) && 
-         $query_args['post_type'] === 'property' && 
-         !isset( $query_args['_facetwp_sorted'] ) ) {
-        
-        // Get all filtered posts (FacetWP has already applied filters)
-        $all_args = $query_args;
-        $all_args['posts_per_page'] = -1;
-        $all_args['facetwp'] = true;
-        $all_args['_facetwp_sorted'] = true; // Prevent recursion
-        $all_query = new WP_Query( $all_args );
-        
-        // Sort posts with multi-level sorting
-        $posts_to_sort = $all_query->posts;
-        usort($posts_to_sort, function($a, $b) {
-            $general_settings_a = get_field('general_settings', $a->ID) ?: [];
-            $general_settings_b = get_field('general_settings', $b->ID) ?: [];
-            $featured_a = $general_settings_a['featured_property'] ?? false;
-            $featured_b = $general_settings_b['featured_property'] ?? false;
-            
-            // Priority 1: Featured first
-            if ($featured_a && !$featured_b) {
-                return -1;
-            }
-            if (!$featured_a && $featured_b) {
-                return 1;
-            }
-            
-            // Priority 2: menu_order
-            $menu_order_a = $a->menu_order ?? 0;
-            $menu_order_b = $b->menu_order ?? 0;
-            if ($menu_order_a != $menu_order_b) {
-                return $menu_order_a <=> $menu_order_b;
-            }
-            
-            // Priority 3: Post date
-            return strtotime($a->post_date) <=> strtotime($b->post_date);
-        });
-        
-        // Extract sorted post IDs
-        $sorted_post_ids = array_map(function($post) {
-            return $post->ID;
-        }, $posts_to_sort);
-        
-        // Modify query to use sorted post IDs - FacetWP will handle pagination
-        $query_args['post__in'] = $sorted_post_ids;
-        $query_args['orderby'] = 'post__in';
+// Keep matching featured properties at the top of FacetWP listing results.
+add_filter( 'facetwp_filtered_query_args', function( $query_args ) {
+    $post_type = $query_args['post_type'] ?? '';
+    $is_property_query = $post_type === 'property'
+        || ( is_array( $post_type ) && in_array( 'property', $post_type, true ) );
+
+    if ( ! $is_property_query ) {
+        return $query_args;
     }
-    
+
+    $post_ids = FWP()->filtered_post_ids ?? [];
+    if ( empty( $post_ids ) ) {
+        return $query_args;
+    }
+
+    $featured_ids = get_posts( [
+        'post_type'              => 'property',
+        'post_status'            => 'publish',
+        'post__in'               => $post_ids,
+        'posts_per_page'         => -1,
+        'fields'                 => 'ids',
+        'no_found_rows'          => true,
+        'suppress_filters'       => true,
+        'facetwp'                => false,
+        'update_post_meta_cache' => false,
+        'update_post_term_cache' => false,
+        'meta_query'             => [
+            [
+                'key'     => 'general_settings_featured_property',
+                'value'   => '1',
+                'compare' => '=',
+            ],
+        ],
+    ] );
+
+    if ( empty( $featured_ids ) ) {
+        return $query_args;
+    }
+
+    $featured_lookup = array_flip( array_map( 'intval', $featured_ids ) );
+    $featured = [];
+    $regular = [];
+
+    foreach ( $post_ids as $post_id ) {
+        $post_id = (int) $post_id;
+        if ( isset( $featured_lookup[ $post_id ] ) ) {
+            $featured[] = $post_id;
+        } else {
+            $regular[] = $post_id;
+        }
+    }
+
+    $query_args['post__in'] = array_merge( $featured, $regular );
+    $query_args['orderby'] = 'post__in';
+    unset( $query_args['order'] );
+
     return $query_args;
-}, 10, 1 );
+}, 20, 1 );
+
+// Apply the sorted FacetWP query on the initial property listing pageload.
+add_filter( 'facetwp_preload_force_query', function( $force, $query ) {
+    $post_type = $query->get( 'post_type' );
+    $is_property_query = $post_type === 'property'
+        || ( is_array( $post_type ) && in_array( 'property', $post_type, true ) );
+
+    return $is_property_query ? true : $force;
+}, 10, 2 );
 
 /**
 * Use ACF 'primary_image' field as the Yoast OG image for property listings.
