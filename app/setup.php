@@ -14,7 +14,26 @@ use function Roots\bundle;
  * @return void
  */
 add_action('wp_enqueue_scripts', function () {
-    bundle('app')->enqueue();
+    $script_deps = [];
+
+    if (defined('FACETWP_URL')) {
+        wp_enqueue_style(
+            'cwyxe-fselect',
+            FACETWP_URL . '/assets/vendor/fSelect/fSelect.css',
+            [],
+            defined('FACETWP_VERSION') ? FACETWP_VERSION : null
+        );
+        wp_enqueue_script(
+            'cwyxe-fselect',
+            FACETWP_URL . '/assets/vendor/fSelect/fSelect.js',
+            [],
+            defined('FACETWP_VERSION') ? FACETWP_VERSION : null,
+            true
+        );
+        $script_deps[] = 'cwyxe-fselect';
+    }
+
+    bundle('app')->enqueueCss()->enqueueJs(true, $script_deps);
 }, 100);
 
 /**

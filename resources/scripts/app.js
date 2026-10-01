@@ -37,6 +37,34 @@ domReady(async () => {
     matchingSection.classList.add("is-active");
   }
 
+  const enhanceSelects = () => {
+    if (typeof window.fSelect !== 'function') {
+      return;
+    }
+
+    document.querySelectorAll('select:not([multiple]):not(.fs-hidden):not(.facetwp-dropdown)').forEach((el) => {
+      if (el.fselect || el._rel || el.closest('.fs-wrap') || !el.offsetParent) {
+        return;
+      }
+
+      window.fSelect(el, { showSearch: false });
+    });
+  };
+
+  const startEnhance = (attempt = 0) => {
+    if (typeof window.fSelect === 'function') {
+      enhanceSelects();
+      return;
+    }
+
+    if (attempt < 20) {
+      setTimeout(() => startEnhance(attempt + 1), 50);
+    }
+  };
+
+  startEnhance();
+  document.addEventListener('facetwp-loaded', enhanceSelects);
+
   (function($) {
     $(document).on('facetwp-loaded', function() {
       if ( ! FWP.loaded ) { // Run on the initial page load only

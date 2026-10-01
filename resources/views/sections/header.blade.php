@@ -48,7 +48,34 @@
       </ul>
       <a href="/insights/?_insights_types=insights" class="menu-cta">Access all the latest Insights</a>
     </div>
-    
+    <div>
+      <h3>{{ $office['marketbeat_heading'] }}</h3>
+      <ul class="mega-list">
+        @foreach (get_posts(['post_type' => 'post', 'category_name' => $office['local_research_category'], 'posts_per_page' => 2]) as $post)
+          <li>
+            <a href="{{ get_permalink($post) }}">
+              {{ get_the_title($post) }}
+            </a>
+            <span class="post-date">{{ get_the_date('', $post) }}</span>
+          </li>
+        @endforeach
+      </ul>
+      <a href="/insights/?_insights_topics={{ $office['local_research_category'] }}" class="menu-cta">See Archive</a>
+    </div>
+    <div>
+      <h3>National Market Reports</h3>
+      <ul class="mega-list">
+        @foreach (get_posts(['post_type' => 'post', 'category_name' => $office['national_research_category'], 'posts_per_page' => 2]) as $post)
+          <li>
+            <a href="{{ get_permalink($post) }}">
+              {{ get_the_title($post) }}
+            </a>
+            <span class="post-date">{{ get_the_date('', $post) }}</span>
+          </li>
+        @endforeach
+      </ul>
+      <a href="/insights/?_insights_topics={{ $office['national_research_category'] }}" class="menu-cta">See Archive</a>
+    </div>  
     <div>
       <h3>Latest News</h3>
       <ul class="mega-list">
@@ -63,37 +90,6 @@
       </ul>
       <a href="/insights/?_insights_types=news" class="menu-cta">Access all latest News</a>
     </div>
-</div>
-<div class="reports-mega-content reports-mega mega mega-content">
-  <span class="close-arrow"></span>
-  <div>
-    <h3>{{ $office['marketbeat_heading'] }}</h3>
-    <ul class="mega-list">
-      @foreach (get_posts(['post_type' => 'post', 'category_name' => $office['local_research_category'], 'posts_per_page' => 2]) as $post)
-        <li>
-          <a href="{{ get_permalink($post) }}">
-            {{ get_the_title($post) }}
-          </a>
-          <span class="post-date">{{ get_the_date('', $post) }}</span>
-        </li>
-      @endforeach
-    </ul>
-    <a href="/insights/?_insights_topics={{ $office['local_research_category'] }}" class="menu-cta">See Archive</a>
-  </div>
-  <div>
-    <h3>National Market Reports</h3>
-    <ul class="mega-list">
-      @foreach (get_posts(['post_type' => 'post', 'category_name' => $office['national_research_category'], 'posts_per_page' => 2]) as $post)
-        <li>
-          <a href="{{ get_permalink($post) }}">
-            {{ get_the_title($post) }}
-          </a>
-          <span class="post-date">{{ get_the_date('', $post) }}</span>
-        </li>
-      @endforeach
-    </ul>
-    <a href="/insights/?_insights_topics={{ $office['national_research_category'] }}" class="menu-cta">See Archive</a>
-  </div>
 </div>
 
 @if(is_singular('agent') || is_singular('property'))

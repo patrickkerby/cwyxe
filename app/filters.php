@@ -301,6 +301,31 @@ add_action('facetwp_scripts', function () {
     return $args;
   } );
 
+add_filter('facetwp_facets', function ($facets) {
+    foreach ($facets as &$facet) {
+        if (($facet['type'] ?? '') === 'dropdown') {
+            $facet['ui_type'] = 'fselect';
+            $facet['multiple'] = $facet['multiple'] ?? 'no';
+        }
+    }
+    unset($facet);
+
+    return $facets;
+});
+
+add_action('facetwp_scripts', function () {
+    ?>
+    <script>
+      if (typeof FWP !== 'undefined' && FWP.hooks) {
+        FWP.hooks.addFilter('facetwp/set_options/fselect', function(opts) {
+          opts.showSearch = false;
+          return opts;
+        });
+      }
+    </script>
+    <?php
+}, 20);
+
 // Callback function to insert 'styleselect' into the $buttons array
 function my_mce_buttons_2( $buttons ) {
 	array_unshift( $buttons, 'styleselect' );
