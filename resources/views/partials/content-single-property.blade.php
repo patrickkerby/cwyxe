@@ -4,7 +4,12 @@
   $availability_condition_single = \App\Support\Terms::forPost($post->ID, 'availability-condition');
   $property_type = \App\Support\Terms::forPost($post->ID, 'property-type');
   $featured_meta = get_field('highlighted_property_details' );
-  $dimensions_meta = array("building_size", "lot_size", "area_size", "max_contiguous", "min_divisible");
+  $is_multi_listing = ! empty((get_field('general_settings') ?: [])['multiple_listings_check']);
+  $multi_listing_meta = array("max_contiguous", "min_divisible");
+  $dimensions_meta = array("building_size", "lot_size", "area_size");
+  if ($is_multi_listing) {
+    $dimensions_meta = array_merge($dimensions_meta, $multi_listing_meta);
+  }
   $details_meta = array("property_id", "year_built", "building_class", "space_type", "property_use_type", "zoning", "occupancy", "construction_status");
   $rate_meta = array("amount", "rate_type");
   $dimensions = get_fields('dimensions_section');
@@ -105,6 +110,9 @@
         <div class="property-meta-featured">
           @foreach ($featured_meta as $meta)
             @set($value, $meta['value'])
+            @if(! $is_multi_listing && in_array($value, $multi_listing_meta, true))
+              @continue
+            @endif
             @set($icon_field, $value . '_icon')
       
             @options('property_details_display_icons')
