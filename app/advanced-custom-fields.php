@@ -60,6 +60,14 @@ add_action('acf/init', function () {
                 'placeholder' => 'Cushman & Wakefield Saskatoon',
             ],
             [
+                'key' => 'field_cw_office_identifier',
+                'label' => 'Office identifier',
+                'name' => 'office_identifier',
+                'type' => 'text',
+                'instructions' => 'Hidden value sent with MarketBeat lead-gen form submissions so Make can tell which site they came from. Saskatoon or Regina.',
+                'placeholder' => 'Saskatoon',
+            ],
+            [
                 'key' => 'field_cw_marketbeat_local_heading',
                 'label' => 'Market reports heading',
                 'name' => 'marketbeat_local_heading',

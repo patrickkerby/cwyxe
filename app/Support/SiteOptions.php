@@ -20,6 +20,8 @@ class SiteOptions
 
     public const DEFAULT_LISTING_ALERT_FORM_ID = 27307;
 
+    public const DEFAULT_OFFICE_IDENTIFIER = 'Saskatoon';
+
     /**
      * @return array{
      *     logo_url: string,
@@ -28,7 +30,8 @@ class SiteOptions
      *     marketbeat_heading: string,
      *     local_research_category: string,
      *     national_research_category: string,
-     *     listing_alert_form_id: int
+     *     listing_alert_form_id: int,
+     *     office_identifier: string
      * }
      */
     public static function all(): array
@@ -41,6 +44,7 @@ class SiteOptions
             'local_research_category' => self::string('local_research_category', self::DEFAULT_LOCAL_RESEARCH_CATEGORY),
             'national_research_category' => self::string('national_research_category', self::DEFAULT_NATIONAL_RESEARCH_CATEGORY),
             'listing_alert_form_id' => self::int('listing_alert_form_id', self::DEFAULT_LISTING_ALERT_FORM_ID),
+            'office_identifier' => self::officeIdentifier(),
         ];
     }
 
@@ -83,6 +87,14 @@ class SiteOptions
         }
 
         return $items;
+    }
+
+    /**
+     * Short office label sent with MarketBeat lead-gen submissions (Saskatoon or Regina).
+     */
+    public static function officeIdentifier(): string
+    {
+        return self::string('office_identifier', self::DEFAULT_OFFICE_IDENTIFIER);
     }
 
     public static function logoUrl(): string

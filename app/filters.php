@@ -532,3 +532,30 @@ add_filter( 'wpseo_opengraph_image', function( $image ) {
   }
   return $image;
 }, 10, 1 );
+
+/**
+ * MarketBeat lead-gen: tag submissions with the office (Saskatoon or Regina).
+ * The Make webhook URL is unchanged and not managed here.
+ */
+add_filter('hf_form_markup', function ($markup, $form) {
+    if (! is_object($form) || ($form->slug ?? '') !== 'lead-generator') {
+        return $markup;
+    }
+
+    $site = esc_attr(\App\Support\SiteOptions::officeIdentifier());
+    $input = sprintf('<input type="hidden" name="site" id="lead-gen-site" value="%s" />', $site);
+
+    if (preg_match('/<input[^>]*name=["\']site["\'][^>]*>/i', $markup)) {
+        return preg_replace('/<input[^>]*name=["\']site["\'][^>]*>/i', $input, $markup, 1);
+    }
+
+    return $input . "\n" . $markup;
+}, 10, 2);
+
+add_action('hf_process_form', function ($form, $submission) {
+    if (! is_object($form) || ($form->slug ?? '') !== 'lead-generator' || ! is_object($submission)) {
+        return;
+    }
+
+    $submission->data['site'] = \App\Support\SiteOptions::officeIdentifier();
+}, 10, 2);
