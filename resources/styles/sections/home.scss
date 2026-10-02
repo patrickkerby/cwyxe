@@ -5,18 +5,38 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    column-gap: 1.5rem;
+    row-gap: 0;
 
     div.facet {
-        width: 23%;
+        width: calc(25% - 1.125rem);
+        min-width: 0;
         overflow: visible;
+        flex: 1 1 0;
 
-        span {
+        > span {
             font-size: 0.875rem;
             font-weight: 300;
         }
 
         .fs-wrap {
             margin: 0.25rem 0 0;
+            min-width: 0;
+            max-width: 100%;
+        }
+
+        .facetwp-facet,
+        .facetwp-input-wrap {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+        }
+
+        input.facetwp-search {
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
         }
     }
 
@@ -41,15 +61,28 @@
         justify-content: center;
     }
 
+    @media screen and (max-width: 1100px) {
+        padding: 2.5rem 2.5rem 3rem 2.5rem;
+        column-gap: 1.25rem;
+
+        div.facet {
+            width: calc(50% - 0.625rem);
+            flex: 1 1 calc(50% - 0.625rem);
+            margin-bottom: 1.25rem;
+        }
+    }
+
     @media screen and (max-width: 768px) {
         padding: 2.5rem 1.5rem 3rem 1.5rem;
         margin-top: 2.5rem;
+        column-gap: 0;
 
         div.facet {
             width: 100%;
+            flex: 1 1 100%;
             margin-bottom: 1.5rem;
 
-            span {
+            > span {
                 width: 100%;
             }
 

@@ -67,8 +67,13 @@ select::-ms-expand {
 }
 
 .fs-arrow {
+    width: 0;
+    height: 0;
+    flex: none;
     right: 0.75rem;
-    border-top-color: #AAACAC;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #AAACAC;
 }
 
 .fs-dropdown {
