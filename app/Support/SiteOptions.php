@@ -12,7 +12,7 @@ class SiteOptions
 
     public const DEFAULT_NEWSLETTER_ORG = 'Cushman & Wakefield Saskatoon';
 
-    public const DEFAULT_MARKETBEAT_HEADING = 'Saskatoon Marketbeat Reports';
+    public const DEFAULT_MARKETBEAT_HEADING = 'Market Reports';
 
     public const DEFAULT_LOCAL_RESEARCH_CATEGORY = 'saskatchewan-research';
 
@@ -42,6 +42,47 @@ class SiteOptions
             'national_research_category' => self::string('national_research_category', self::DEFAULT_NATIONAL_RESEARCH_CATEGORY),
             'listing_alert_form_id' => self::int('listing_alert_form_id', self::DEFAULT_LISTING_ALERT_FORM_ID),
         ];
+    }
+
+    /**
+     * Latest local + national Marketbeat posts for the Insights mega menu.
+     *
+     * @return array<int, array{title: string, url: string, date: string, category: string}>
+     */
+    public static function recentMarketReports(): array
+    {
+        $office = self::all();
+        $items = [];
+
+        foreach ([$office['local_research_category'], $office['national_research_category']] as $slug) {
+            if ($slug === '') {
+                continue;
+            }
+
+            $posts = get_posts([
+                'post_type' => 'post',
+                'category_name' => $slug,
+                'posts_per_page' => 1,
+                'orderby' => 'date',
+                'order' => 'DESC',
+            ]);
+
+            if ($posts === []) {
+                continue;
+            }
+
+            $term = get_category_by_slug($slug);
+            $post = $posts[0];
+
+            $items[] = [
+                'title' => get_the_title($post),
+                'url' => get_permalink($post),
+                'date' => get_the_date('', $post),
+                'category' => ($term && ! is_wp_error($term)) ? (string) $term->name : '',
+            ];
+        }
+
+        return $items;
     }
 
     public static function logoUrl(): string

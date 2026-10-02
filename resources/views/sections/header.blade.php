@@ -51,31 +51,20 @@
     <div>
       <h3>{{ $office['marketbeat_heading'] }}</h3>
       <ul class="mega-list">
-        @foreach (get_posts(['post_type' => 'post', 'category_name' => $office['local_research_category'], 'posts_per_page' => 2]) as $post)
+        @foreach ($megaReports as $report)
           <li>
-            <a href="{{ get_permalink($post) }}">
-              {{ get_the_title($post) }}
+            <a href="{{ $report['url'] }}">
+              {{ $report['title'] }}
             </a>
-            <span class="post-date">{{ get_the_date('', $post) }}</span>
+            @if($report['category'] !== '')
+              <span class="post-topic">{{ $report['category'] }}</span>
+            @endif
+            <span class="post-date">{{ $report['date'] }}</span>
           </li>
         @endforeach
       </ul>
-      <a href="/insights/?_insights_topics={{ $office['local_research_category'] }}" class="menu-cta">See Archive</a>
+      <a href="/insights/" class="menu-cta">See Archive</a>
     </div>
-    <div>
-      <h3>National Market Reports</h3>
-      <ul class="mega-list">
-        @foreach (get_posts(['post_type' => 'post', 'category_name' => $office['national_research_category'], 'posts_per_page' => 2]) as $post)
-          <li>
-            <a href="{{ get_permalink($post) }}">
-              {{ get_the_title($post) }}
-            </a>
-            <span class="post-date">{{ get_the_date('', $post) }}</span>
-          </li>
-        @endforeach
-      </ul>
-      <a href="/insights/?_insights_topics={{ $office['national_research_category'] }}" class="menu-cta">See Archive</a>
-    </div>  
     <div>
       <h3>Latest News</h3>
       <ul class="mega-list">

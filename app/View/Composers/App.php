@@ -28,6 +28,7 @@ class App extends Composer
             'siteName' => $this->siteName(),
             'propertyTypes' => $this->propertyTypes(),
             'office' => SiteOptions::all(),
+            'megaReports' => SiteOptions::recentMarketReports(),
         ];
     }
 

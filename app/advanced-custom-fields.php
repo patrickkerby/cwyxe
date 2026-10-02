@@ -61,11 +61,11 @@ add_action('acf/init', function () {
             ],
             [
                 'key' => 'field_cw_marketbeat_local_heading',
-                'label' => 'Local Marketbeat heading',
+                'label' => 'Market reports heading',
                 'name' => 'marketbeat_local_heading',
                 'type' => 'text',
-                'instructions' => 'Mega menu heading for local reports.',
-                'placeholder' => 'Saskatoon Marketbeat Reports',
+                'instructions' => 'Mega menu heading for the combined regional + national reports column. Default: Market Reports.',
+                'placeholder' => 'Market Reports',
             ],
             [
                 'key' => 'field_cw_local_research_category',
