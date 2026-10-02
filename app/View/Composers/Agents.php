@@ -27,7 +27,6 @@ class Agents extends Composer
           $lastname = $contact_details['last_name'] ?? '';
           $firstname = $contact_details['first_name'] ?? '';
           $photo_object = get_field('headshot', $post);
-          $photo = is_array($photo_object) ? ($photo_object['url'] ?? '') : '';
           $vcard_filename = strtolower(trim($firstname . '-' . $lastname) . '.vcf');
           $address = get_field('office_address', 'option');
           if (! is_array($address)) {
@@ -50,12 +49,25 @@ class Agents extends Composer
               $address['country'] ?? ''
           );
           $vcard->addURL(get_permalink($post->ID) ?: '');
-          if ($photo !== '') {
-              $vcard->addPhoto($photo);
+
+          $photo_path = $this->vcardPhotoPath($photo_object);
+          if ($photo_path) {
+              try {
+                  $vcard->addPhoto($photo_path);
+              } catch (\Throwable $e) {
+                  // Skip the photo rather than failing the people page.
+              }
           }
 
-          $vcard->setSavePath('app/uploads/vcards/');
-          $vcard->save();
+          $vcard_dir = trailingslashit(WP_CONTENT_DIR) . 'uploads/vcards';
+          if (! is_dir($vcard_dir)) {
+              wp_mkdir_p($vcard_dir);
+          }
+
+          if (is_dir($vcard_dir)) {
+              $vcard->setSavePath($vcard_dir);
+              $vcard->save();
+          }
 
           return [
               'name' => get_the_title($post->ID),
@@ -75,5 +87,41 @@ class Agents extends Composer
       return [
         'agents' => $this->agentsLoop()          
       ];
+  }
+
+  /**
+   * Local filesystem path for a headshot, so vCard embedding does not fetch over HTTPS.
+   */
+  private function vcardPhotoPath($photo_object): ?string
+  {
+      if (! is_array($photo_object)) {
+          return null;
+      }
+
+      $attachment_id = (int) ($photo_object['ID'] ?? $photo_object['id'] ?? 0);
+      if ($attachment_id > 0) {
+          $path = get_attached_file($attachment_id);
+          if (is_string($path) && is_readable($path)) {
+              return $path;
+          }
+      }
+
+      $url = $photo_object['url'] ?? '';
+      if (! is_string($url) || $url === '') {
+          return null;
+      }
+
+      $uploads = wp_get_upload_dir();
+      $baseurl = trailingslashit($uploads['baseurl'] ?? '');
+      $basedir = trailingslashit($uploads['basedir'] ?? '');
+
+      if ($baseurl !== '/' && str_starts_with($url, $baseurl)) {
+          $path = $basedir . substr($url, strlen($baseurl));
+          if (is_readable($path)) {
+              return $path;
+          }
+      }
+
+      return null;
   }
 }

@@ -32,7 +32,7 @@
   </header>
 </section>
 
-<div class="insights-mega-content insights-mega mega mega-content">
+<div class="insights-mega-content mega mega-content">
   <span class="close-arrow"></span>
     <div>
       <h3>Latest Insights</h3>

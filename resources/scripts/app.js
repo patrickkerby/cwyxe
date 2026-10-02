@@ -86,24 +86,65 @@ domReady(async () => {
       $('body').toggleClass('is-active');
     });
 
-    $('.insights-mega').hover(function() {
-      $(this).addClass('is-active');
-      $('.insights-mega-content').addClass('is-active');
-    });
+    const closeMega = (name) => {
+      $('.' + name).removeClass('is-active');
+      $('.' + name + '-content').removeClass('is-active');
+    };
 
-    $('.insights-mega-content').mouseleave(function() {
-      $('.insights-mega-content').removeClass('is-active');
-      $('.insights-mega').removeClass('is-active');
-    });
+    const bindDesktopMegaHover = (name) => {
+      const $trigger = $('.nav-desktop .' + name).not('.mega-content');
+      const $panel = $('.' + name + '-content');
 
-    $('.reports-mega').hover(function() {
-      $(this).toggleClass('is-active');
-      $('.reports-mega-content').addClass('is-active');
-    });
+      if (!$trigger.length || !$panel.length) {
+        return;
+      }
 
-    $('.reports-mega').mouseleave(function() {
-      $('.reports-mega-content').removeClass('is-active');
-      $('.reports-mega').removeClass('is-active');
+      let closeTimer;
+
+      const cancelClose = () => window.clearTimeout(closeTimer);
+      const scheduleClose = () => {
+        cancelClose();
+        closeTimer = window.setTimeout(() => closeMega(name), 100);
+      };
+
+      $trigger.on('mouseenter', function() {
+        cancelClose();
+        if (name !== 'insights-mega') {
+          closeMega('insights-mega');
+        }
+        if (name !== 'reports-mega') {
+          closeMega('reports-mega');
+        }
+        $trigger.addClass('is-active');
+        $panel.addClass('is-active');
+      });
+
+      $trigger.on('mouseleave', function(event) {
+        if ($panel.is(event.relatedTarget) || $panel.has(event.relatedTarget).length) {
+          return;
+        }
+        scheduleClose();
+      });
+
+      $panel.on('mouseenter', cancelClose);
+      $panel.on('mouseleave', function(event) {
+        if ($trigger.is(event.relatedTarget) || $trigger.has(event.relatedTarget).length) {
+          return;
+        }
+        scheduleClose();
+      });
+    };
+
+    bindDesktopMegaHover('insights-mega');
+    bindDesktopMegaHover('reports-mega');
+
+    $('.nav-desktop .nav > li').on('mouseenter', function() {
+      if (!$(this).hasClass('insights-mega')) {
+        closeMega('insights-mega');
+      }
+      if (!$(this).hasClass('reports-mega')) {
+        closeMega('reports-mega');
+      }
     });
 
     $('.nav-mobile .insights-mega').click(function() {

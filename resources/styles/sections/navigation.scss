@@ -623,6 +623,15 @@ nav.nav-mobile nav {
     translate: -50% 0;
     justify-content: center;
 
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -1.25rem;
+      height: 1.25rem;
+    }
+
     .admin-bar & {
       top: 6.85rem;
 
