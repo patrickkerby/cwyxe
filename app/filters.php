@@ -383,6 +383,18 @@ add_filter( 'enter_title_here', function( $input, $post ) {
 },
 10, 2 );
 
+// Theme-rendered map infowindow (status + price). Replaces FacetWP admin PHP
+// so Saskatoon and Regina stay in sync. Works with ajax loading on or off.
+add_filter('facetwp_map_marker_args', function ($args, $post_id) {
+    $html = \App\Support\MapInfowindow::render((int) $post_id);
+
+    if ($html !== '') {
+        $args['infoWindowContent'] = $html;
+    }
+
+    return $args;
+}, 5, 2);
+
 // Only use with the "Info window ajax loading" setting disabled
 add_filter( 'facetwp_map_marker_args', function( $args, $post_id ) {
   if ( empty( $args['infoWindowContent'] ) ) {

@@ -276,14 +276,36 @@ button.gm-ui-hover-effect {
         margin: 0.75rem 0.5rem 0.5rem 1rem;
     }
 
+    .availability,
     .property_type {
-        margin: 0 0 0 0.85rem;
+        display: block;
+        margin: 0 0.5rem 0 0.85rem;
+        color: #7F8283;
+        font-size: 0.75rem;
+        font-weight: 400;
+        line-height: 1.125rem;
+        letter-spacing: 0.00875rem;
+        text-transform: uppercase;
     }
 
     p {
-        margin: 0 0.5rem 1rem 1rem;
+        margin: 0 0.5rem 0.35rem 1rem;
         font-size: 0.875rem;
         line-height: 1.2;
+    }
+
+    .price {
+        display: block;
+        margin: 0 0.5rem 1rem 1rem;
+        color: $cw-charcoal;
+        font-size: 0.875rem;
+        font-weight: 500;
+        line-height: 1.2;
+    }
+
+    p:last-child,
+    .price:last-child {
+        margin-bottom: 1rem;
     }
 }
 
