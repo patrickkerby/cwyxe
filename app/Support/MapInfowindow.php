@@ -61,11 +61,11 @@ class MapInfowindow
             'image_url' => is_array($image) ? (string) ($image['url'] ?? '') : '',
             'image_alt' => is_array($image) ? (string) ($image['alt'] ?? get_the_title($postId)) : '',
             'status_line' => implode(' • ', $statusParts),
-            'price' => $hidePrice ? '' : self::formatPrice(is_array($rates) ? $rates : []),
+            'price' => $hidePrice ? '' : self::formatPrice(is_array($rates) ? $rates : [], $availability),
         ];
     }
 
-    private static function formatPrice(array $rates): string
+    private static function formatPrice(array $rates, string $availability): string
     {
         $amount = $rates['amount'] ?? '';
 
@@ -74,14 +74,13 @@ class MapInfowindow
         }
 
         $formatted = preg_replace('/(\d)(?=(?:\d{3})+$)/', '$1,', (string) $amount);
-        $rateType = trim((string) ($rates['rate_type'] ?? ''));
         $postfix = trim((string) ($rates['rate_postfix'] ?? ''));
         $negotiable = ! empty($rates['negotiable']) ? '(negotiable)' : '';
 
         $parts = [];
 
-        if ($rateType !== '') {
-            $parts[] = 'For '.$rateType.':';
+        if ($availability !== '') {
+            $parts[] = 'For '.$availability.':';
         }
 
         $parts[] = '$'.$formatted;
